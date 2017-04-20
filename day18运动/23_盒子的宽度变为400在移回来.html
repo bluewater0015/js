@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;	
+			}
+		</style>
+	</head>
+	<body>
+		<button>点我左右移动</button>
+		<div id="box">
+			
+		</div>
+		<script src="move.js"></script>		
+		<script>
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				move(box,"width",400,function(){
+					move(box,"width",100);
+				});
+			}
+		</script>
+	</body>
+</html>

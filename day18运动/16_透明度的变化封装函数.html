@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				opacity: 1;
+				filter:alpha(opacity=100);
+			}
+		</style>
+	</head>
+	<body>
+		<button>透明度的变化</button>
+		<div id="box">
+			
+		</div>
+		<script src="move.js"></script>
+		<script>
+			//让一个红色的div有透明度逐渐变为无透明度
+			//思路分析
+		/*	
+			1.获取元素节点,给按钮添加点击事件,
+			2.封装函数 获取元素节点属性
+			3.封装函数 实现透明度的变化
+		*/
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				move(box,"opacity",0);
+			}
+			
+			//获取元素属性值
+			/*
+			 *函数名 getStyleAttr
+			 * obj 获取元素
+			 * attr 属性值
+			 *
+			 */
+		/*	
+			function getStyleAttr(obj,attr){
+				if(window.getComputedStyle){
+					return  getComputedStyle(obj,null)[attr];
+				}
+				return currentStyle[attr];
+			}
+		*/
+			//改变透明度
+			/*
+			 *	函数名： change()
+			 *	obj 元素
+			 * 	attr 属性值
+			 * 	target 目标
+			 *
+			 */
+		/*	
+			function change (obj,attr,target){
+				//清除定时器
+				clearInterval(obj.timer);
+				//开启定时器
+				obj.timer = setInterval(function(){
+					//1.获取当前值
+					var current = parseFloat(getStyleAttr(obj,attr)*100);
+					current = Math.round(current);
+					//console.log(current);  //100
+					//2.设置速度
+					var speed = (target - current)/10;
+					speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+					console.log(speed);
+					//3.判断临界值
+					if(current == target){
+						clearInterval(obj.timer);
+					}
+					//4.透明度变化
+					box.style[attr] = (current + speed)/100;
+				},100)
+			}
+		*/
+		</script>
+	</body>
+</html>

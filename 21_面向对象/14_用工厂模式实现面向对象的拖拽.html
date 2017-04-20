@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+			.red{
+				background: red;
+			}
+			.yellow{
+				background: yellow;
+			}
+			.blue{
+				background: blue;
+			}
+			.purple{
+				background: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" class="red">
+			
+		</div>
+		<div id="box1" class="yellow">
+			
+		</div>
+		<div id="box2" class="purple">
+			
+		</div>
+		<div id="box3" class="blue">
+			
+		</div>
+		<script>
+			//工厂模式
+			function  dragObj(id){
+				var obj= function(){
+					//属性
+					//方法
+				}
+				//属性
+				obj.box = document.getElementById(id);
+				//方法
+				//拖拽开始
+				obj.startMove = function(x,y){
+					this.disX = x - obj.box.offsetLeft;
+					this.disY = y - obj.box.offsetTop;
+					document.onmousemove = function(e){
+						var e = e || event;
+						obj.moving(e.clientX,e.clientY);  //传参
+					}
+					document.onmouseup = function(){
+						obj.endMove();
+					}
+				}
+				//拖拽的过程
+				obj.moving = function(x,y){
+					obj.box.style.left = x - this.disX + "px";
+					obj.box.style.top = y - this.disY + "px";
+				}
+				//拖拽结束
+				obj.endMove = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+				//给拖拽元素添加鼠标按压事件
+				obj.box.onmousedown = function(e){
+					var e = e || event;
+					obj.startMove(e.clientX,e.clientY);
+				}
+			}
+			dragObj("box");
+			dragObj("box1");
+			dragObj("box2");
+			dragObj("box3");
+		</script>
+	</body>
+</html>

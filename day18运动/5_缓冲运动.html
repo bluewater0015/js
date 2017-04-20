@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 800px;
+				height: 500px;
+				margin: 0 auto;
+				position: relative;
+				top: 0;
+				left: 0;
+				background: #ccc;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 30px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>缓冲运动</button>
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script>
+			//缓冲运动
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button")[0];
+			var sport = document.getElementById("sport");
+			var speed = 10;
+			var timer = 0;
+			var sportLeft = 0;
+			var sportTop = 0;
+			var max = box.clientWidth - sport.clientWidth;
+			function move(target){
+				btn.onclick = function(){
+					timer = setInterval(function(){
+						//var speed = Math.random()*50;  为什么这样不可以
+						var speed = (target-sport.offsetLeft)/10;
+						speed = speed>0?Math.ceil(speed):Math.floor(speed);
+						sportLeft = sportLeft + speed;
+						sport.style.left = sportLeft + "px";
+						if(sportLeft>=max){ //sportLeft 和 parseInt(sport.style.left) 等价
+							speed = -speed;
+						}
+						if(sportLeft <= 0){
+							speed = 10;
+						}
+					},10)
+				}
+			}
+			move(600);
+			
+		</script>
+	</body>
+</html>

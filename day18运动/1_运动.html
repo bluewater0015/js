@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 30px;
+				top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="sport">
+			
+		</div>
+		<button id="btn">
+			点我有惊喜哦
+		</button>
+		<script>
+			//匀速运动：让物体进行匀速运动
+			//实现红色div块从左向右匀速运动
+			var sport = document.getElementById("sport");
+			var btn = document.getElementById("btn");
+			var timer = 0;
+			var speed = 10;
+			var sportLeft = 0;
+			
+			btn.onclick = function(){
+				function move(){
+					sportLeft = sportLeft + speed;
+					sport.style.left = sportLeft + "px";
+				}
+				timer = setInterval(move,100);
+				sport.innerHTML = "再见";
+			}
+			
+		</script>
+	</body>
+</html>

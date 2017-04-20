@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:400px;
+				height: 840px;
+				background: #f99;
+				margin: 0 auto;
+				position: relative;
+			}
+			img{
+				display: block;
+				width: 400px;
+				height: 200px;
+				margin-bottom: 10px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" style="left:0;top:0;">
+			<img src="img/1.jpg" style="left:0;top:0;" alt="" />
+			<img src="img/2.jpg" style="left:0;top:210px;" alt="" />
+			<img src="img/3.jpg" style="left:0;top:420px;" alt="" />
+			<img src="img/1.jpg" style="left:0;top:630px;" alt="" />
+		</div>
+		<script>
+			//轮播图 3s一次向上切换
+			//思路分析
+			//1.要实现轮播图向上切换
+			//改变top值,给一个速度,加定时器,每次向上运动
+			
+			var box = document.getElementById("box");
+			var img = box.getElementsByTagName("img");
+			var timer = null;
+			box.innerHTML += box.innerHTML;
+			box.onclick = function(){
+				move(-210);
+			}
+			function move(offset){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//1.当前值
+					var newTop = parseInt(box.style.top)+offset;
+					console.log(parseInt(box.style.top));
+					box.style.top = newTop + "px";
+					
+					if(parseInt(box.style.top)==-840){
+						box.style.top = 0;
+					}
+				},1000);
+			}
+		</script>
+	</body>
+</html>

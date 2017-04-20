@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//面向对象程序
+			//为对象添加方法和属性
+			//创建对象 使用new
+			var obj = new Object();
+			//添加属性
+			obj.name = "xiao";
+			//添加方法
+			obj.show = function(){
+				alert(this.name);
+			}
+			//obj.show();
+			
+			//字面量方式
+			var person1 = {
+				name: "tianxia",
+				age: 18,
+				run:function(){
+					alert("名字是："+this.name + "\n年龄是："+this.age);
+				}
+			}
+			person1.run();
+			//如果我要创建多个人呢？那么就一一进行
+			var person2 = {
+				name: "xiao",
+				age: 20,
+				run: function(){
+					console.log("名字是："+this.name + "\n年龄是："+this.age);
+				}
+			}
+			person2.run();
+			//如果创建成百个上千个 这种方法就显得特别麻烦
+			var person3 = {
+				name : "wangxiao",
+				age : 22,
+				run: function(){
+					console.log("姓名是："+this.name + "\n年龄是："+ this.age);
+				}
+			}
+			person3.run();
+		</script>
+	</body>
+</html>

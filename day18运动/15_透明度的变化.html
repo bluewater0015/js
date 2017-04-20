@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button>透明度的变化</button>
+		<div id="box" style="opacity:1;">
+			
+		</div>
+		<script>
+			//实现红色div有透明度变为无透明度
+			//思路分析
+		/*	
+			1.获取按钮和盒子,并给按钮添加点击事件
+			2.封装函数,实现透明度的变化
+				(1)原本的透明度为1 现在要变为0
+			 	(2)获取当前的透明度 1
+			 	(3)给一个速度,每次减去这个速度
+			 	(4)直到为0 进行判断 为0 清除定时器
+			 	(5)把值赋给box.style.opacity
+		*/
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button")[0];
+			var timer = 0;
+			var boxopacity = 1;
+			//1.添加点击事件
+			btn.onclick = function(){
+				change(0);
+			}
+			//2.函数change
+			function change(target){
+				//清除定时器
+				clearInterval(timer);
+				//开启定时器
+				timer = setInterval(function(){
+					//设定速度
+					var speed = (target - boxopacity)/10;
+					//console.log(speed);
+					//
+					boxopacity = boxopacity + speed;
+					console.log(boxopacity);
+					//临界点
+					if(boxopacity<=0.001){
+						clearInterval(timer);
+					}
+					box.style.opacity = boxopacity;
+				},100)
+			}
+		</script>
+	</body>
+</html>

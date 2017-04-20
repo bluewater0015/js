@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//4.求数组的最小数的下标
+			var arr = [2,3,5,7];
+			var min = arr[0];
+			var sign = 0;
+			for(var i=0;i<=arr.length;i++){
+				if(min>arr[i]){
+					min = arr[i];
+					sign = i;
+				}
+			}
+			console.log(min);  //2
+			console.log(sign);	//0	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="password" />
+		<input type="button" value="登录"/>
+		<script>
+			//getElementsByTagName() 方法将返回一个数组
+			//这个数组将保存着所有相同元素名的节点列表。
+			
+			var input = document.getElementsByTagName("input");
+			console.log(input);//HTMLCollection[3]
+			//获取input的第一个元素
+			var input1 = document.getElementsByTagName("input")[0];
+			console.log(input1); //<input type="text">
+			var input2 = document.getElementsByTagName("input").item(0);
+			console.log(input2);//<input type="text">
+			
+			//获取所有input的长度
+			var input3 = document.getElementsByTagName("input").length;
+			console.log(input3);  //3
+		</script>
+	</body>
+</html>

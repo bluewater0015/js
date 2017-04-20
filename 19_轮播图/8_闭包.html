@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function test(){
+				var num = 1;
+				function innertest (){
+					console.log(num);
+				}
+				return innertest;
+			}
+			//console.log(a);  //外部无法访问函数内部的变量
+			var mytest = test();
+			mytest();   //1
+			//test的一个内部函数innertest在test外被调用，这时就创建了一个闭包
+		</script>
+	</body>
+</html>

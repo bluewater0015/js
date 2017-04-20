@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//6.给对象创建方法
+			var obj = {
+				run: function(){
+					return "正在跑步";
+				}
+			}
+			//console.log(obj.run()); //正在跑步
+			
+			//7.使用delete删除对象属性
+			//delete.obj.name 
+			
+			var obj = {
+				name: 'tianxia',
+				age:  18,
+				run:function(){
+					return "正在跑步"
+				}
+			}
+			console.log(obj);//Object {name: "tianxia", age: 18}
+			console.log(obj.run());   //正在跑步
+			delete obj.name;		
+			console.log(obj);		//Object {age: 18}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

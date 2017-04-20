@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 426px;
+				height: 800px;
+				background: url(img/iphone.jpg) no-repeat;
+				position: relative;
+				margin: 0 auto;
+				top:0;
+				left:0;
+			}
+			#move{
+				width:360px;
+				height: 63px;
+				position: absolute;
+				/*left: 488px;*/
+				left: 31px;
+				top: 545px;
+			}
+			#lock{
+				width: 93px;
+				height: 63px;
+				position: absolute;
+				left:0;
+				top:0;
+				background: url(img/unlock_btn.jpg) no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="move">
+				<div id="lock">
+					
+				</div>
+			</div>
+		</div>
+		<script>
+			//拖拽的实现
+			//1.如何让lock图片放在相应的拖拽框中
+			//2.如何判断不超过拖拽框上下左右边界
+			//3.当拖拽大于框中的一半时向右滑动(向右滑动怎么实现)
+			//当拖拽小于框中的一般时不用滑动(不滑动怎么实现)
+			//offsetWidth 元素节点的宽度
+			//offsetHeight 元素节点的高度
+			//offsetX 事件对象的属性，鼠标的位置距离鼠标所在元素节点的左边界的距离
+			//offsetY 事件对象的属性，鼠标的位置距离鼠标所在元素节点的上边界的距离
+			var box = document.getElementById("box");
+			var move = document.getElementById("move");
+			var lock = document.getElementById("lock");
+			lock.onmousedown = function(evt){
+				var evt = evt || event;
+				//var x = evt.clientX - move.offsetLeft;
+				//var y = evt.clientY - move.offsetTop;
+				//得到鼠标距离滑块左边界的距离
+				//var disX = evt.clientX - box.offsetLeft - move.offsetLeft - clock.offsetLeft;
+				var disX = evt.offsetX;
+				console.log(disX); //为什么是一个变化的值？？？？
+				document.onmousemove = function(evt){
+					//最新的left值
+					var x = evt.clientX - box.offsetLeft - move.offsetLeft - disX;
+					//判断是否超出左边界
+					if(x<=0){
+						x=0;
+					}
+					//判断是否超出了右边界
+					if(x>=move.offsetWidth - lock.offsetWidth){
+						x = move.offsetWidth - lock.offsetWidth;
+					}
+					//更新滑块的位置
+					lock.style.left  = x + "px";
+					//move.style.left = evt.clientX - x + "px";
+					//move.style.top = evt.clientY - y + "px";
+					
+				}
+				document.onmouseup = function(evt){
+					var evt = evt || event;
+					document.onmousemove = null;
+					document.onmouseup = null;
+					//var disX = evt.offsetX;
+					var max = (move.offsetWidth - lock.offsetWidth)/2;
+					//得到当前滑块的left值
+					var left = evt.clientX - box.offsetLeft - move.offsetLeft - disX;
+					if(left>max){
+						lock.style.left = move.clientWidth - lock.clientWidth + "px";
+					}else{
+						lock.style.left = 0;
+					}
+				/*	
+					if(move.offseleft>max){
+						move.style.left =  400;
+					}
+					if(move.offseleft<max){
+						move.style.left =37;
+					}
+				*/
+				}
+				return false;
+			}
+		</script>
+	</body>
+</html>

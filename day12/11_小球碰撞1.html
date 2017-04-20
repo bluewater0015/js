@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:500px;
+				height: 500px;
+				background: #ccc;
+				margin: 0 auto;
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+			#ball{
+				width: 30px;
+				height: 30px;
+				border-radius: 30px;
+				background: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			/*#box2{
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				background: blue;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="ball">
+				
+			</div>
+			<div id="box2">
+				
+			</div>
+		</div>
+		<script>
+			//碰撞，两个块在指定的范围内运动，碰壁后会反弹
+			var box = document.getElementById("box");
+			var ball = document.getElementById("ball");
+			//console.log(box1);
+			//var box2 = document.getElementById("box2");
+			var timer = 0;
+			var speed1 = 5;
+			var speed2 = 3;
+			//距离左边的距离
+			//距离上边的距离
+			var ballLeft = 0;
+			var ballTop = 0;
+			//边界值
+			var maxLeft = box.clientWidth - ball.clientWidth;
+			var maxTop = box.clientHeight - ball.clientHeight;
+			function move(){
+				ballLeft = ballLeft + speed1;
+				ballTop = ballTop + speed2;
+				ball.style.left = ballLeft + "px";
+				ball.style.top = ballTop + "px";
+				if(ballLeft>=maxLeft){   //临界值 碰到右边反弹
+					speed1 = -speed1; 
+				}
+				if(ballLeft<=0){		//临界值 碰到左边反弹
+					speed1 = 5;
+				}
+				if(ballTop>=maxTop){	//临界值 碰到下面反弹
+					speed2 = - speed2;
+				}
+				if(ballTop<=0){			//临界值 碰到下面反弹
+					speed2 = 3;
+				}
+			}
+			timer = setInterval(move,10);
+		</script>
+	</body>
+</html>

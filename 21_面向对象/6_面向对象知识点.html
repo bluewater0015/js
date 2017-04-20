@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//面向对象
+			//面向过程: 侧重做一件事的过程
+			//面向对象: 侧重做一件事当中的对象
+			
+			//对象和类
+			//对象:类的具体 包含属性和方法 引用类型
+			//类: 对象的抽象
+			//类可以创建任意多个具有相同属性和方法的对象
+			
+			//类      对象
+			//空调		那台白色的空调
+			//电脑	    我的电脑
+			//人 		我自己
+			
+			//类
+		/*	class Person{
+				name;  //名字
+				age;	//年龄
+				run;	//方法
+			}
+			*/
+			//对象
+			//var xiaoLi = new Person();  //对象有姓名name 年龄age 可以跑步
+			//var xiaowang = new Person();  //对象有姓名name 年龄age 可以玩
+			
+			//例子：小狗吃东西(闻一闻smell 舔一舔lick  咬一咬bite)
+			//分别用面向对象和面向过程分析
+			//面向过程: 小狗先闻一闻 再舔一舔 然后 咬一咬  注重过程
+			
+			function  smell(){
+				console.log("小狗要先闻一下看味道怎么样");
+			}
+			function lick(){
+				console.log("小狗舔一舔");
+			}
+			function bite(){
+				console.log("小狗说让我去咬一口");
+			}
+			//面向对象: 小狗可以 闻一闻  也可以舔一舔 或者也可以 直接吃
+			//smell();
+			//lick();
+			//bite();
+			//面向对象 小狗可以闻一闻 可以舔一舔 可以 咬一咬 注重对象
+			var dog = {}
+			dog.smell = function(){
+				console.log("小狗闻一闻");
+			}
+			dog.lick = function(){
+				console.log("小狗舔一舔");
+			}
+			dog.bite = function(){
+				console.log("小狗咬一咬");
+			}
+			//dog.smell();
+			//dog.lick();
+			//dog.bite();
+			
+			
+			//面向对象三大特点：
+			//1.封装:把属性和方法放在一起
+			//2.继承:子类继承父类(基类)的属性和方法
+			//3.多态:父类可以指向不同的子类,在调用子类相同的方法时可以有不同的执行效果
+			
+			//继承
+			//动物 
+			//Animal{
+			//	cell;	//细胞：属性
+			//	move; 	//可以动：方法
+			//}
+			//狗Dog
+			//继承了Animal,拥有Animal的属性和方法
+			//Dog:Animal{
+			//	leg; 	//腿 狗自己的属性
+			//	wang;	//汪汪的叫 狗自己的方法
+			//}
+			
+			//创建对象
+			//使用new的方式
+			var person = new Object();
+			person.name = "tianxia";
+			person.show = function(){
+				console.log("名字："+person.name);
+			}
+			//person.show();
+			
+			//使用字面量的方式
+			var person = {
+				name:"tianxia",
+				age:18,
+				run:function(){
+					console.log("名字是："+ person.name + "\n年龄是："+ person.age);
+				}
+			}
+			//person.run();
+			
+			//如果创建多个对象
+			var person1 = {
+				name: "xiao",
+				age: 19, 
+				run: function(){
+					console.log("名字是："+ person1.name);
+				}
+			}
+			//person1.run();
+			
+			//如果创建多个对象这样的方法很麻烦
+			//工厂模式(一种设计模式)
+			function obj(name,age){
+				var person = new Object();
+				person.name = name;
+				person.age = age;
+				person.run = function(){
+					//console.log(this);  //object{name:"天下"，age：18}
+					console.log("名字是："+ this.name + "\n年龄是："+this.age);
+				}
+				return person;   //返回这个对象  Cannot read property 'run' of undefined
+			}
+			var person1 = obj("天下",18);
+			var person2 = obj("小小",22);
+			var person3 = obj("小黄",12);
+			person1.run();
+			person2.run();
+			person3.run();
+			
+			//工厂模式虽然解决了创建多个相似对象的问题
+			//但有产生了新的问题 根本搞不清楚他们到底是那个对象的实例。
+		</script>
+	</body>
+</html>

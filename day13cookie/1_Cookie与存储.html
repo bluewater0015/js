@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//Cookie与存储
+			//Cookie也叫HTTPCookie,是客户端和服务器端进行会话使用的
+			//一个能够在浏览器本地存储的技术
+			
+			//cookie的作用主要是在浏览器中存储少量的数据，利用cookie
+			//我们可以实现一些保存数据的功能.
+			
+			//cookie要求服务器对任意HTTP请求发送Set-Cookie,因此cookie
+		/*	
+			cookie由键值对的形式的文本组成: name = value
+			完整的格式为:
+			name=value;[expires=data];[path=路径];[domain=域名];[secure]
+			其中中括号[]表示值是可选.
+			name = value 必选 为你要保存的键值对
+			expires 可选,表示cookie的失效时间,默认值是浏览器关闭时失效
+			path = 路径:可选 访问路径,默认路径为当前文件所在目录
+			domain = 域名:可选,访问域名,限制在该域名访问
+			secure :可选,安全设置,如果设置了必须使用https协议才可获取cookie
+			*/
+			//设置cookie和获取cookie
+			document.cookie = "user="+"张三"	; //设置
+			console.log(document.cookie);
+			
+			//URI编码后设置cookie，和URI解码后获取cookie
+			//encodeURIComponent
+			document.cookie = "user=" + encodeURIComponent("张三");
+			console.log(decodeURIComponent(document.cookie));
+		</script>
+	</body>
+</html>

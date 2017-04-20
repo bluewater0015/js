@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//延时调用
+			//setTimeout()指定的时间过后执行代码
+			//写法1 不建议直接使用字符串
+			//setTimeout("alert('hello')",1000); //1s后执行hello world
+			//写法2
+			function box(){
+				alert("hello");
+			}
+			//setTimeout(box,1000);
+			
+			//写法3 推荐写法
+			
+			var timer = setTimeout(function(){
+				alert("hello");
+			},1000)
+			clearTimeout(timer);
+			
+		</script>
+	</body>
+</html>

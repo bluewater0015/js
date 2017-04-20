@@ -1,0 +1,69 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta charset="utf-8">  
+        <title></title>  
+        <style type="text/css">  
+        *{  
+            margin:0px;  
+            padding:0px;  
+        }  
+            #div1{  
+                width:319px;  
+                height: 340px; 
+                background: #f99; 
+                border: 1px solid #FFF;  
+                position: absolute;  
+                top:100px;  
+                left:-320px;  
+                background-image: url(images/1.png);  
+                background-repeat:no-repeat ;  
+            }  
+            #div1 span{  
+                width:30px;  
+                height: 130px;  
+                border: 1px solid blue;  
+                position: absolute;  
+                right:-23px;  
+                top:95px;  
+                background: red;  
+                font-family: "微软雅黑";  
+                color: #FFFFFF;  
+                text-align: center;  
+                line-height: 40px;  
+                border-radius: 0px 200px 200px 0px;  
+            }  
+        </style>  
+        <script type="text/javascript">  
+            window.onload=function(){  
+                var oDiv=document.getElementById("div1");  
+                var oSpan=oDiv.getElementsByTagName('span')[0];  
+                var time=null;  
+                var speed=8;  
+                oDiv.onmouseover=function(){//这里给整个div加鼠标移入的事件    
+                    clearInterval(time);  
+                    time=setInterval(function(){  
+                        if(oDiv.offsetLeft >= 0){clearInterval(time);}  
+                        else{  
+                            oDiv.style.left=oDiv.offsetLeft+speed+'px';  
+                        }  
+                    },1);  
+                }  
+                oDiv.onmouseout=function(){//这里给整个div加鼠标移出事件  
+                    clearInterval(time);  
+                    time=setInterval(function(){  
+                        if(oDiv.offsetLeft<=-320){clearInterval(time);}  
+                        else{  
+                            oDiv.style.left=oDiv.offsetLeft-speed+'px';  
+                        }  
+                    },1);  
+                }  
+            }  
+        </script>  
+    </head>  
+    <body>  
+        <div id="div1">  
+            <span>分享到</span>  
+        </div>  
+    </body>  
+</html>  

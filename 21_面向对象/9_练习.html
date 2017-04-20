@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建以下构造函数
+		/*
+			Cat 猫
+			属性:fur
+			方法: eat;miaow
+		*/
+			function Cat(fur){
+				this.fur = fur;
+				this.eat = function(){
+					console.log("可以吃东西");
+				}
+				this.miao = function(){
+					console.log("可以叫");
+				}
+			}
+		
+			var cat = new Cat("黄色的毛");
+			//cat.eat();
+			//cat.miao();
+		/*
+		 	CarfieldCat : 加菲猫
+			属性: fur glasses
+			方法:eat miaow talk
+		 */
+			function CarfieldCat(fur,glasses){
+				this.fur = fur;
+				this.glasses = glasses;
+				this.eat = function(){
+					console.log("喜欢吃");
+				}
+				this.miaow = function(){
+					console.log("喜欢喵喵");
+				}
+				this.talk = function(){
+					console.log(this.fur +"\n" + this.glasses);
+				}
+			}
+			var cat1 = new CarfieldCat("黄色","戴眼镜");
+			cat1.eat();
+			cat1.talk();
+			
+			/*
+			 	TomCat:汤姆猫
+				属性 fur friend
+				方法 eat miaow catchMouse
+			*/
+			
+				function TomCat(fur,friend){
+					this.fur = fur;
+					this.friend = friend;
+					this.eat = function(){
+						console.log("喜欢捉老鼠");
+					}
+				}
+				var cat2 = new TomCat("黄色","它的妹妹");
+				cat2.eat();
+		</script>
+	</body>
+</html>

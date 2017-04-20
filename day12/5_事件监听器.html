@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f99;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//事件监听器
+			//1.添加事件监听器
+		/*	
+			box.addEventListener("click",func,false)
+			给box添加点击事件(click),以及执行事件func
+			第1个参数("click"): 事件名称,前面没有on
+			第2个参数(func):执行函数 没有双引号和括号
+			第3个参数(false/true):是否使用捕捉(反向冒泡),默认为false
+			为冒泡
+		*/
+			//IE及以下版本不支持，火狐和谷歌支持
+			//2.移除事件监听器
+		/*	
+			box.removeEventListener("click",func)
+			将box元素的点击事件(click),已经对应的事件执行函数func移除
+		*/
+			var box = document.getElementById("box");
+			box.addEventListener("click",func,false)
+			function func(){
+				alert("hello");
+			}
+			box.removeEventListener("click",func)
+		</script>
+	</body>
+</html>

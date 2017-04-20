@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//原型
+		/*	
+			prototype 是函数中一个自带的属性
+			我们创建的每个函数都有一个prototype(原型)属性,
+			这个属性是一个对象
+			它的用途是:可以让同一个构造函数创建的所有对象共享属性和方法
+			也就是说你可以不在构造函数中定义对象的属性和方法.
+			而是可以直接将这些信息添加到原型对象中.
+		*/
+		
+		//声明一个构造函数
+	/*	function Box(){}
+		Box.prototype.name = "天下";  //在原型里添加属性
+		Box.prototype.age = 18;
+		Box.prototype.show = function(){	//在原型里添加方法
+			//console.log(this);  //输出这个对象
+			return this.name + this.age;
+			//console.log(this.name); //天下
+		}*/
+		//Box.prototype.show();
+		
+		//原型
+		//比较一下原型内的方法 地址是否一致
+		//var box1 = new Box();
+		//var box2 = new Box();
+		//console.log(box1.show == box2.show);  //true 方法的引用地址一致
+	/*	
+		function Box1(name,age){
+			this.name = name;
+			this.age = age;
+			this.show = function(){
+				console.log(this.name); //小小
+			}
+		}
+		var box3 = new Box1("小小",22);
+		var box4 = new Box1("晓晓",23);
+	*/
+		//box3.show();
+		//constructor属性 是原型对象的一个属性，指向原型对象中所属的构造函数；
+		//console.log(Box1.prototype.constructor == Box1);  //true
+		//console.log(box3.show == box4.show);  //false
+		//_proto_属性：是实例对象 指向原型对象的一个指针，
+		//它的作用就是指向构造函数的原型
+		/*
+		function Box(){}
+		Box.prototype.name = "天下";  //在原型里添加属性
+		Box.prototype.age = 18;
+		Box.prototype.show = function(){	//在原型里添加方法
+			return this.name + this.age;
+		}*/
+		/*function Box(name,age){
+			this.name = name;
+			this.age = age;
+			this.run = function(){
+				console.log(this.name);
+			}
+		}*/
+		
+		function Box(){
+			
+		}
+		Box.prototype.name = "天下";
+		Box.prototype.age = 18;
+		Box.prototype.run = function(){
+			console.log("aa");
+		}
+		var  box1 = new Box();
+		var  box2 = new Box();
+		console.log(box1.__proto__);  //object [object]
+		console.log(box1.__proto__ == Box.prototype);
+	
+		//构造函数Person
+			function Person(){
+				
+			}
+			//在构造函数的原型对象添加了属性:name,age, 和方法:show
+			Person.prototype.name = "张三";
+			Person.prototype.age = 33;
+			Person.prototype.show = function(){
+				console.log("是原型中的方法show");
+			}
+			
+			//对象1
+			var person1 = new Person();
+			//console.log(person1.name); //张三
+			//console.log(person1.age); //33
+			//person1.show(); //是原型中的方法show
+			
+			//对象2
+			var person2 = new Person();
+			//console.log(person2.name);
+			//console.log(person2.age);
+			//person2.show();
+			
+			//console.log(person1.show == person2.show);  //true
+			
+			
+			//constructor: 构造器, 原型对象的属性,值是构造函数本身 
+			//Person.prototype: Person的原型对象
+			//console.log(Person.prototype.constructor == Person); //true
+			
+			//实例对象: person1, person2
+			//__proto__ : 是实例对象的属性, 获取该实例对象所在构造函数的原型对象
+			console.log(person1.__proto__ == Person.prototype); //true
+		</script>
+	</body>
+</html>

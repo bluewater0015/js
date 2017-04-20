@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				display: block;
+				width: 100%;
+				height: 30px;
+				background: #f99;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a class="aa" href="#">1</a>
+		<a class="aa" href="#">2</a>
+		<a class="aa" href="#">3</a>
+		<a class="aa" href="#">4</a>
+		<script>
+			//闭包
+			var a = document.querySelectorAll(".aa");
+			//console.log(a);
+			function test(){
+				for(var i=0;i<a.length;i++){
+					(function (index){
+						a[index].onclick = function(){
+							console.log("妹子好好点我"+index);
+						}
+					})(i)
+				}
+			}
+			test();
+		</script>
+	</body>
+</html>

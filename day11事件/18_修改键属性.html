@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//修改键属性
+			//shiftKey 判断是否按下了shift键
+			//ctrlKey 判断是否按下Ctrl键
+			//altKey 判断是否按下alt键
+			//meatKey 判断是否按下windows键,IE不支持
+		/*	
+			1.键码:keyCode属性
+			所有按键,包括功能键(contrl,alt,shift,tab,方向键等)(不包括亮度
+			音量键)在发生keydown和keyup事件时,event对象的keyCode属性中会
+			包含一个代码,与键盘上一个特定的键对应.
+			对数字字母字符集,keyCode属性的值与ASCII码中对应大写字母或数字编码
+			相同,为大写字母
+		*/
+		
+			document.onkeyup = function(evt){
+				var evt = evt || event;
+				alert(evt.keyCode);  //按任意键得到
+			}
+		/*
+			2.字符编码
+			charCode属性
+			firefox chrome safari支持charCode属性
+			这个属性只有发生keypress事件时才包含值
+			而且这个值是按下的,那个键所代表字符的ASCII编码
+			此时的keyCode 通常等于0 或者 也可能等于所按键的编码
+		*/
+		/*
+			document.onkeypress = function(evt){
+				var evt = evt || event;
+				console.log(evt.keyCode);
+				//String.fromCharCode(97) 把ASCII码转化为字符
+				console.log(String.fromCharCode(evt.keyCode))
+				
+			}
+		*/
+		</script>
+	</body>
+</html>

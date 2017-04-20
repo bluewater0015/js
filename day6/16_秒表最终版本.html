@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="hour">00</span>小时<span id="minute">00</span>分<span id="second">00</span>秒<span id="millSec">0</span>毫秒
+		<button id="start">开始计时</button>
+		<button id="end">结束计时</button>
+		<script>
+			//1.获取id
+			//2.添加点击事件
+			//3.设置定时器
+			//4.清除定时器
+			
+			var h = document.getElementById("hour");
+			var m = document.getElementById("minute");
+			var s = document.getElementById("second");
+			var ms = document.getElementById("millSec");
+			var start = document.getElementById("start");
+			var end = document.getElementById("end");
+			
+			
+			var timer;
+			var i = 0;
+			start.onclick = function(){
+				//防止定时器一直处罚  在每次点击开始计时时 清除定时器
+				clearInterval(timer);
+				timer = setInterval(function(){
+					i+=10;
+					var hh = parseInt(i/(1000*60*60));
+					var mm = parseInt(i/(1000*60))%60;
+					var ss = parseInt(i/1000)%60; //先赋值
+					var mss = i%1000;
+					
+					h.innerHTML = hh>10?hh:'0'+hh;
+					m.innerHTML = mm>10?mm:'0'+mm;
+					s.innerHTML = ss>10?ss:'0'+ss; //在进行判断
+					ms.innerHTML = mss;
+				},10)
+			}
+			end.onclick = function(){
+				clearInterval(timer);
+			}
+		</script>
+	</body>
+</html>

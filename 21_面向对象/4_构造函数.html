@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//构造函数
+			//ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象box1
+			//类型属于Box
+			function Box(name){
+				this.name = name;
+				this.show = function(){
+					alert(this.name);
+				}
+			}
+			//var box1 = new Box("xiao"); //new Box()即可
+			//console.log(box1 instanceof Box);   //true\
+			//instanceof 判断某一个实例是否属于某一个类型
+		/*	
+			使用构造函数和使用工厂模式有什么区别?
+			1.构造函数方法没有显示的创建对象(new object())(在内部隐式调用了)
+			2.直接将属性和方法赋值给this对象
+			3.没有return语句
+		*/
+		/*	
+			构造函数与其他函数的唯一区别在于调用他们的方式
+			任何函数,只要通过new操作符来调用,就可作为构造函数
+			而任何函数如果不通过new操作符调用,就是普通函数
+		*/
+		/*
+			var box = new Box("xiao");  //构造模式调用
+			Box("xiao"); 				//普通模式调用
+			ECMAScript中没有类的概念  但构造函数可以理解为就是类
+		*/
+		/*
+			在下面的语句中 Box是类  box是对象
+			var box = new Box("小");    //构造模式调用
+			
+			构造函数的注意事项
+			1.函数名和实例化构造名相同且大写,(非强制,但这么写有助于区分构造函数和普通函数)
+			2.构造函数创建对象,必须使用new运算符
+		*/
+			//构造函数中的方法：
+			var box1 = new Box("天下");
+			var box2 = new Box("天下");
+			
+			console.log(box1.name == box2.name);  //true
+			console.log(box1.show = box2.show);
+			
+		</script>
+	</body>
+</html>

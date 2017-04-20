@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			//opener是一个可读可写的属性，可返回对创建该窗口的window对象的引用
+			//当使用window.open()打开一个窗口，您可以使用opener属性返回来自
+			//目标窗口源（父）窗口的详细信息。
+			
+			myWindow = open("http://www.baidu.com","baidu","width=400,height=400");
+			myWindow.document.write("这是我的窗口");
+			myWindow.opener.document.write("这是源窗口");
+			
+		/*	
+			document.onclick = function(){
+				//opener父窗口对象
+				opener.document.write("是子窗口打开我的");
+			}
+		*/
+		</script>
+	</body>
+</html>

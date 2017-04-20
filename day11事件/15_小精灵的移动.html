@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="img" src="img/girl.gif" alt="" style="width:200px;height:200px;position:absolute;left:0;top:0;"/>
+		<script>
+			//1.鼠标点击到某处，让精灵移动到该处
+			//2.鼠标移动时，让精灵跟随鼠标移动
+			//思路分析:
+			//1.添加onmousedown事件,获取鼠标点击的位置
+			//2.添加onmousemove事件
+			var img = document.getElementById("img");
+			//console.log(img);
+			//onmousedown当鼠标按下还未松开时触发
+			document.onmousedown = function(evt){
+				//console.log("wo");
+				var evt = evt || event;
+				var x = evt.clientX;
+				var y = evt.clientY;
+				
+				img.style.left = x - 100 + "px";
+				img.style.top = y - 100 + "px";
+				//onmousemove鼠标在某个元素上移动时触发
+			/*	document.onmousemove = function(evt){
+					//console.log("wo");
+					var evt = evt || event;
+					var x = evt.clientX;
+					var y = evt.clientY;
+					img.style.left = x - 100 + "px";
+					img.style.top = y - 100 + "px";
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}*/
+				
+				return false;
+			}
+		</script>
+	</body>
+</html>

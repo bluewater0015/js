@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 800px;
+				height: 500px;
+				margin: 20px auto;
+				position: relative;
+				top: 300px;
+				left: 300px;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<button>向上缓冲</button>
+		<button>向右缓冲</button>
+		<button>向下缓冲</button>
+		<button>向左缓冲</button>
+		<div id="box">
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script>
+			//缓冲运动
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button");
+			var sport = document.getElementById("sport");
+			var timer = 0;
+			//var sportLeft = 0;
+			//var sportTop = 0;
+			var max = box.clientWidth - sport.clientWidth;
+			function move(target){
+				clearInterval(timer);
+				for(var i=0;i<btn.length;i++){
+					btn[i].index = i;
+					btn[i].onclick = function(){
+						var index = this.index;
+						timer = setInterval(function(){
+							if(target<0){
+								target = -target;
+							}
+							var speed = (target-sport.offsetLeft)/8;
+							var speed1 = (target-sport.offsetTop)/8;
+							//console.log(sport.offsetLeft);
+							//Math.ceil()向上取整
+							//Math.floor() 向下取整
+							speed = speed>0?Math.ceil(speed):Math.floor(speed);
+							speed1 = speed1>0?Math.ceil(speed1):Math.floor(speed1);
+							//console.log(speed);
+							
+							//console.log(sport.offsetLeft);
+							//向上运动
+							if(index ==0){
+								if(-sport.offsetTop>=target){
+									clearInterval(timer);
+								}
+								sport.style.top = sport.offsetTop - speed1+ "px";
+							}
+							//向右运动
+							if(index ==1){
+								if(sport.offsetLeft >= target){
+									clearInterval(timer);
+								}
+								sport.style.left = sport.offsetLeft + speed + "px";
+							}
+							//向下运动
+							if(index==2){
+								if(sport.offsetTop >= target){
+									clearInterval(timer);
+								}
+								sport.style.top = sport.offsetTop + speed1 + "px";
+							}
+							//向左运动
+							if(index ==3){
+								if(-sport.offsetLeft >= target){
+									clearInterval(timer);
+								}
+								sport.style.left = sport.offsetLeft - speed1 + "px";
+							}
+						},100)
+					}
+				}
+			}
+			move(-200);
+			
+		</script>
+	</body>
+</html>

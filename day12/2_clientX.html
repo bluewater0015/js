@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #9ff;
+				margin: 100px;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+		/*
+			var box = document.getElementById("box");
+			box.onmousemove = function(evt){
+				var evt = evt || event;
+				box.innerHTML = evt.clientX+","+evt.clientY;
+			}
+		*/
+			document.onmousemove = function(evt){
+				var evt = evt || event;
+				box.innerHTML = evt.clientX +","+ evt.clientY;
+				
+			}
+		</script>
+	</body>
+</html>

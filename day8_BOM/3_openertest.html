@@ -1,0 +1,13 @@
+<html>
+<body>
+	<input type="button" value="打开我的窗口" onclick="openWin()" /> 
+	<script type="text/javascript">
+		function openWin(){ 
+		    myWindow=window.open('','','width=200,height=100'); 
+		    myWindow.document.write("<p>这是我的窗口</p>"); 
+		    //myWindow.focus(); 
+		    myWindow.opener.document.write("<p>这个是源窗口!</p>"); 
+		} 
+	</script> 
+</body>
+</html>

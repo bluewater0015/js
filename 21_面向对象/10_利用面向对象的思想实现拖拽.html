@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//面向过程的拖拽
+			/*var oBox =document.getElementById("box");
+			
+			oBox.onmousedown = function(e){
+				var e = e || event;
+				var x = e.clientX;
+				var y = e.clientY;
+				var disX = x - box.offsetLeft;
+				var disY = y - box.offsetTop;
+				document.onmousemove = function(e){
+					var e = e || event;
+					oBox.style.left = e.clientX - disX + "px";
+					oBox.style.top = e.clientY - disY + "px";
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}*/
+			//利用面向对象的思想实现拖拽
+		/*	var oBox =document.getElementById("box");
+			
+			function Move(box){
+				this.mouse = function(){
+					console.log(box);
+					box.onmousedown = function(e){
+						var e = e || event;
+						var x = e.clinetX;
+						var y = e.clientY;
+						var disX = x - box.offsetLeft;
+						var disY = y - box.offsetTop;
+						document.onmousemove = function(e){
+							var e = e || event;
+							box.style.left = e.clientX - disX + "px";
+							box.style.top = e.clientY - disY + "px";
+						}
+						document.onmouseup = function(){
+							document.onmousemove = null;
+						}
+					}
+				}
+			}*/
+			//创建一个对象
+			//var move = new Move("oBox");
+			//move.mouse();
+			
+			//面向对象的拖拽
+			//拖拽开始 拖拽过程 拖拽结束
+			var dragObj = {
+				//属性： 需要拖拽的元素节点
+				//方法：拖拽开始 拖拽的过程 拖拽结束
+			}
+			//属性
+			dragObj.box = document.getElementById("box");
+			//方法
+			//拖拽开始
+			dragObj.startMove = function(x,y){
+				this.disX = x - dragObj.box.offsetLeft;
+				this.disY = y - dragObj.box.offsetTop;
+				//onmousemove
+				document.onmousemove = function(e){
+					var e = e || event;
+					dragObj.moving(e.clientX,e.clientY);
+				}
+				//onmouseup
+				document.onmouseup = function(){
+					dragObj.endMove();
+				}
+			}
+			//拖拽的过程
+			dragObj.moving = function(x,y){
+				dragObj.box.style.left = x - this.disX + "px";
+				dragObj.box.style.top = y - this.disY + "px";
+			}
+			//拖拽结束
+			dragObj.endMove = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+			//onmousedown
+			dragObj.box.onmousedown = function(e){
+				var e =  e || event;
+				dragObj.startMove(e.clientX,e.clientY);  //开始拖拽
+			}
+		</script>
+	</body>
+</html>

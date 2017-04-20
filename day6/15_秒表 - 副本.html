@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>武帝—秒表</title>
+	</head>
+	<body>
+		<span id="hour">00</span>时<span id="minute">00</span>分<span id="second">00</span>秒<span id="millSec">0</span>毫秒
+		<button id="btn">开始计时</button>
+		<script>
+			var h =  document.getElementById("hour");
+			var m = document.getElementById("minute");
+			var s = document.getElementById("second");
+			var ms = document.getElementById("millSec");
+			
+			h.innerHTML ="00";
+			m.innerHTML = "00";
+			s.innerHTML = "00";
+			ms.innerHTML = "00";
+			//我的代码
+			//第一步，获取对象btn
+			var btn=document.getElementById("btn");
+			//第二布，给对象btn添加事件
+			var i=0;//记录毫秒
+			btn.onclick=function(){
+				timer=setInterval(function(){
+					i++;
+					h.innerHTML = parseInt(i/(1000*60*60));
+					h.innerHTML = h.innerHTML>10?h.innerHTML:'0'+h.innerHTML;
+					m.innerHTML = parseInt(i/(1000*60))%60;
+					m.innerHTML = m.innerHTML>10?m.innerHTML:'0'+m.innerHTML;
+					s.innerHTML = parseInt(i/1000)%60;//赋值
+					s.innerHTML = s.innerHTML>10?s.innerHTML :'0'+s.innerHTML;//进一步判断结果
+//					s.innerHTML = (parseInt(i/1000)%60)>10?s.innerHTML:'0'+s.innerHTML;
+					//这个相当于对上一次结果累加，没有重新赋值操作
+					//这个之所以会错,因为它大多数的情况符合后面加0的字符串的条件，
+					//无限次累加就成那样，先给赋值然后再判断才能得到结果。
+					ms.innerHTML = parseInt(i%1000); 
+				},1);
+			}
+//		/*	
+//		 	这样获取的值是定值
+//			var hour = h.innerHTML;
+//			var minute = m.innerHTML;
+//			var second = s.innerHTML;
+//			var millSec = ms.innerHTML;
+//			
+//		*/
+//			var timer;
+//			var i = 0;//记录毫秒
+//			btn.onclick = function(){
+//				timer = setInterval(function(){
+//					i+=10;
+//					h.innerHTML = parseInt(i/(1000*60*60));
+//					h.innerHTML = h.innerHTML>10?h.innerHTML:'0'+h.innerHTML;
+//					m.innerHTML = parseInt(i/(1000*60))%60;
+//					m.innerHTML = m.innerHTML>10?m.innerHTML:'0'+m.innerHTML;
+//				/*	
+//					s.innerHTML = parseInt(i/1000)%60;
+//					s.innerHTML = s.innerHTML>10?s.innerHTML :'0'+s.innerHTML;
+//				*/
+//					s.innerHTML = (parseInt(i/1000)%60)>10?s.innerHTML:'0'+s.innerHTML;
+//					
+//					//s.innerHTML = s.innerHTML>10?s.innerHTML :'0'+s.innerHTML;
+//					
+//					
+//					ms.innerHTML =  i%1000;
+//					
+//				/*	
+//				 	这样是获取不到到的毫秒、秒、分、时是一个定值
+//				 	因为它们是时刻在变化中的，所以不能在外边
+//					hour = parseInt(i/(1000*60*60));
+//					hour = hour>10?hour:'0'+hour;
+//					minute = parseInt(i/(1000*60))%60;
+//					minute = minute>10?minute:'0'+minute;
+//					second = parseInt(i/1000)%60;
+//					second = second>10?second :'0'+second;
+//					millSec =  i%1000;
+//				*/
+//				},10)
+//			}
+			
+		</script>
+	</body>
+</html>

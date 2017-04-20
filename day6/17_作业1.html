@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#bigBox{
+				width: 500px;
+				height: 30px;
+				border: 1px dashed #000;
+			}
+			#smallBox{
+				height: 30px;
+				background: #FF0000;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>进度条</h2>
+		<div id="bigBox">
+			<div id="smallBox" style="height:30px;width:0;">
+				
+			</div>
+			<p id="percent">0%</p>
+		</div>
+		<script>
+			
+			
+			//5.使用定时器实现进度条
+			//ps:获取标签对象，改变style的width值
+		/*	
+			实现进度条的思路:
+			1.首先给一个盒子(border虚线)
+			2.里面包含一个盒子,获取盒子的宽度
+			3.加定时器,每次加宽度,直到和外盒宽度一样 就停止
+		*/
+			
+			var bigBox = document.getElementById("bigBox");
+			var smallBox = document.getElementById("smallBox");
+			var percent = document.getElementById("percent");
+			var timer;
+			var i=0;
+			console.log(parseInt(smallBox.style.width));
+			timer = setInterval(function(){
+				 if(parseInt(smallBox.style.width)<=500){
+				 	i++;
+				 	smallBox.style.width = i+"px";
+				 	
+				 	//percent.innerHTML =parseInt(parseInt(smallBox.style.width)/500*100) +"%";
+					percent.innerHTML  = parseInt(i/500*100) + "%";
+				 }
+			},100)
+			
+			
+		</script>
+	</body>
+</html>

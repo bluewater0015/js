@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.入职薪水10k,每年涨幅入职薪水的5%，50年后工资多少？
+			
+			//var sum = 0;
+		/*	function salary(a,i){
+				if(i<=50){
+					return salary(a+a*0.05,++i);
+				}
+				return a;
+			}
+			console.log(salary(10000,1));
+		*/
+			//var sum = 0;
+		/*	
+			function safari(a,i){
+				if(i<= 50){
+					return safari(a+a*0.05,++i);
+				}
+				return a;
+			}
+			console.log(safari(10000,1));  //114673.99785753674
+ 		*/
+ 			var sum = 0;
+ 			function wage(a,y,p){
+ 				for(i=0;i<y;i++){
+ 					sum += a;
+ 					a = a*(1+p);
+ 				}
+ 				return a;
+ 			}
+ 			console.log(wage(10000,50,0.05));
+ 			console.log(sum);  //sum是50年后的总额 2093479.9571507378
+		</script>
+	</body>
+</html>

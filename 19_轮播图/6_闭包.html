@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//闭包的写法
+			function aa(){
+				var a = 1;
+				//console.log(a);
+				function bb(){
+					console.log(a);
+				}
+				return bb;
+			}
+			//局部变量无法被外部直接访问
+			//console.log(a);  //无法直接访问a
+			//var cc = aa();
+			//cc();   //1  打印出a 说明a并没有释放
+			
+			function aa(){
+				var a = 1;
+				return function(){
+					a++;
+					console.log("a="+a);
+				}
+			}
+			//console.log(a);  //a无法被外部直接访问
+			var cc = aa();
+			cc();   //a=2
+			cc();	//a=3
+			cc();   //a=4
+		</script>
+	</body>
+</html>

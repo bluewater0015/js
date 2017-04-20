@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+			}
+			.red {
+				background: red;
+			}
+			.yellow {
+				background: yellow;
+			}
+		</style>
+		<script>
+			
+			//工厂模式: 实现拖拽
+			onload = function() {
+				
+				function createDragObj(id) {
+					
+					//dragObj: 拖拽功能的对象
+					var dragObj = {};
+					
+					//属性
+					dragObj.box = document.getElementById(id);
+					
+					//开始拖拽/开始移动
+					dragObj.startMove = function(x, y){
+						this.disX = x - dragObj.box.offsetLeft;
+						this.disY = y - dragObj.box.offsetTop;
+						
+						//onmousemove
+						document.onmousemove = function(evt){
+							var oEvent = evt || event;
+							dragObj.moving(oEvent.clientX, oEvent.clientY); //移动过程
+						}
+						//onmouseup
+						document.onmouseup = function() {
+							dragObj.stopMove(); //结束移动
+						}
+						
+					}
+					//拖拽过程中/移动过程中
+					dragObj.moving = function(x, y){
+						dragObj.box.style.left = x - this.disX + "px";
+						dragObj.box.style.top = y - this.disY + "px";
+					}
+					//结束拖拽/结束移动
+					dragObj.stopMove = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+					
+					//给box一个onmousedown事件
+					dragObj.box.onmousedown = function(evt){
+						var oEvent = evt || event;
+						
+						dragObj.startMove(oEvent.clientX, oEvent.clientY); //开始拖拽
+					}
+					
+					return dragObj; //返回dragObj
+				}
+				
+				createDragObj("box");
+				createDragObj("box1");
+				createDragObj("box2");
+				createDragObj("box3");
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" class="red"></div>
+		<div id="box1" class="yellow"></div>
+		<div id="box2" class="red"></div>
+		<div id="box3" class="yellow"></div>
+	</body>
+</html>

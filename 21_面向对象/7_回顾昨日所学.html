@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建对象
+			//1.用new运算符创建
+			var obj = new Object();
+			obj.name = "天下";
+			obj.age = 18;
+			obj.run = function(){
+				//console.log(this);	//Object{name:"天下"，age:18}
+				console.log("名字是："+this.name + "\n年龄是："+this.age);
+			}
+			//obj.run();
+			//2.字面量方式
+		/*	var person = {
+				name: "晓晓",
+				age: 22,
+				run: function(){
+					//console.log(this); //Object{name:"晓晓"，age:22}
+					console.log("名字是："+this.name + "\n年龄是："+ this.age);
+				}
+			}*/
+			//person.run();
+			//创建多个对象
+			/*var person1 = {
+				name: "小小",
+				age: 22,
+				run: function(){
+					console.log(this.name + "\n" + this.age);
+					console.log("一起征战天下");
+				}
+			}*/
+			//person1.run();
+			//如果利用这种字面量的方式 创建多个对象 相对很麻烦
+			//接下来就引出一种简便的模式-工厂模式
+			
+			function createObj(name,age){
+				//创建对象
+				var person = new Object();
+				person.name = name;
+				person.age = age;
+				person.run = function(){
+					console.log(this.name+"\n"+this.age);
+				}
+				return person;  //返回对象
+			}
+			var person1 = createObj("天下",18);
+			var person2 = createObj("晓晓",22);
+			person1.run();
+			person2.run();
+			
+			//工厂模式解决了创建多个对象的难题，但又产生了新的问题
+			//根本搞不清楚是那个对象的实例
+			console.log(typeof person1);
+			console.log(typeof person2);
+			//instanceof  判断一个实例是否属于某种类型
+			console.log(person1 instanceof Object); //true
+			console.log(person2 instanceof Object);	//true
+			//但无法判断是那个对象的实例
+		</script>
+	</body>
+</html>

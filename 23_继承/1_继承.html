@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//继承
+			//js实现继承的方式依靠原型链完成
+			function Person(){ 	//Person构造函数
+				this.name = "天下";
+			}
+			function Employee(){	//Employee 构造函数
+				this.age = 18;
+			}
+			Employee.prototype = new Person();//Employee继承了Person，通过原型形成了链条
+			var employee = new Employee();
+			console.log(employee.name);
+			console.log(employee.age);
+			
+			
+			
+		</script>
+	</body>
+</html>

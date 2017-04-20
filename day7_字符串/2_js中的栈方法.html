@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//push()方法可以接受任意数量的参数，把他们逐个添加到数组的末尾，
+			//并返回修改后的长度。
+			//pop()方法则从数组的末尾移除最后一项，减少数组的length值，
+			//然后返回移除的项。
+			var colors = new Array();
+			var count = colors.push("red","yellow");
+			console.log(count);  //2
+			count = colors.push("blue");
+			console.log(count);  //3
+			console.log(colors);  //["red", "yellow", "blue"]
+			var item = colors.pop();
+			console.log(item);  //blue
+			console.log(colors.length); //2
+			
+			console.log(colors);["red","yellow"]
+			
+			
+		</script>
+	</body>
+</html>

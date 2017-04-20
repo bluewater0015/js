@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">1</div>
+		<div id="box2">2</div>
+		<div id="box3">3</div>
+		<div id="box4">4</div>
+		<script src="move.js"></script>
+		<script>
+			//有4个红色的div，当鼠标移入时，让红色div以缓冲速度变宽
+			//当鼠标移开时,让红色div以缓冲的速度恢复到原来的宽度.
+			
+			var box1 = document.getElementById("box1");
+			var box2 = document.getElementById("box2");
+			var box3 = document.getElementById("box3");
+			var box4 = document.getElementById("box4");
+			
+			box1.onmouseover = function(){
+				move(box1,"width",400);
+			}
+			box1.onmouseout = function(){
+				move(box1,"width",100);
+			}
+			box2.onmouseover = function(){
+				move(box2,"width",500);
+			}
+			box2.onmouseout = function(){
+				move(box2,"width",100);
+			}
+			box3.onmouseover = function(){
+				move(box3,"width",200);
+			}
+			box3.onmouseout = function(){
+				move(box3,"width",100);
+			}
+			box4.onmouseover = function(){
+				move(box4,"width",600);
+			}
+			box4.onmouseout = function(){
+				move(box4,"width",100);
+			}
+			
+		</script>
+	</body>
+</html>

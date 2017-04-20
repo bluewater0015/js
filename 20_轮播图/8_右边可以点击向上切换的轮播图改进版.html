@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box{
+				width: 800px;
+				height: 300px;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			#list{
+				width: 600px;
+				height: 300px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#list img{
+				width: 600px;
+				height: 300px;
+				display: block;
+			}
+			#btn{
+				width: 200px;
+				height: 300px;
+				background: yellow;
+				position: absolute;
+				top: 0;
+				left: 600px;
+			}
+			#btn li{
+				width: 200px;
+				height: 100px;
+				line-height: 100px;
+				color: #fff;
+				font-size: 20px;
+				text-align: center;
+				
+			}
+			.active{
+				background: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+			</ul>
+			<ul id="btn">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<button>上一页</button>
+		<button>下一页</button>
+		<script src="move.js"></script>
+		<script>
+			var oList = document.getElementById("list");
+			var imgList = oList.getElementsByTagName("li");
+			var oBtn = document.getElementById("btn");
+			var btnList = oBtn.getElementsByTagName("li");
+			var preBtn = document.getElementsByTagName("button")[0];
+			var nextBtn = document.getElementsByTagName("button")[1];
+			var i = 0;  //记录图标的下标
+			var iHeight = imgList[0].offsetHeight;
+			oList.innerHTML += oList.innerHTML;
+			
+			var timer = setInterval(move,3000);
+			//封装move函数 用于运动
+			function move(){
+				i++;
+				//iTop 向上滚动的距离
+				var iTop = -i * iHeight;
+				startMove(oList,"top",iTop,next);
+				//next函数 动画完成之后调用
+				function next(){
+					if(i >= imgList.length/2){
+						oList.style.top = 0;
+						i = 0; //i重置为0
+					}
+				}
+				//图片切换的时候 对应到相应的按钮
+				for(var j=0;j<btnList.length;j++){
+					if(i == j){
+						btnList[j].className = "active";
+					}else{
+						btnList[j].className ="";
+					}
+					//console.log(imgList.length); //6
+					//如果 i == 3 的话 就是第四张图片
+					if(i == imgList.length/2 ){ //注意是 i等于什么 不是j
+						btnList[0].className = "active";	
+					}
+				}
+				//点击按钮切换相应的图片
+				for(var j=0;j<btnList.length;j++){
+					btnList[j].index = j;
+					btnList[j].onclick = function(){
+						i = this.index - 1; // -1 0 1
+						btnMove();
+					}
+				}
+				//点击之后 调用函数
+				function btnMove(){
+					move();
+					clearInterval(timer);  //要把之前的定时器清除掉
+					timer = setInterval(move,3000);
+				}
+				preBtn.onclick = function(){
+					if(i == 0){  //显示的是当前图片
+						i = imgList.length / 2 - 2;
+						//i = 1 i++之后变为2 也就是第三张图片
+					}else{
+						i = i - 2;
+						//如果为第二张图片 i为1 i=1-2 = -1 i++之后就变为0了 也就是第一张
+					}
+					btnMove();
+				}
+				nextBtn.onclick = function(){
+					next();
+					btnMove();
+				}
+			}
+		</script>
+	</body>
+</html>

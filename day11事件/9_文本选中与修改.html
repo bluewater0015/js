@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" value="我是初始化字符串"/>
+		<div id="box">
+			
+		</div>
+		<script>
+			//有一个文本框，默认字体为："我是初始化字符串"，当文字被选择时
+			//在红色区域显示"文本被选中",当文字被修改后,显示文本被修改
+			var input = document.getElementsByTagName("input")[0];
+			var box = document.getElementById("box");
+			input.onselect = function(){
+				box.innerHTML = "文本被选中";
+			}
+			input.onchange = function(){
+				box.innerHTML = "文本被修改";
+			}
+		</script>
+	</body>
+</html>

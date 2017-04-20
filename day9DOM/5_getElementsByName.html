@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function() {
+
+				//获取元素节点的第三种方式: 
+				//getElementsByName()
+				var aInput = document.getElementsByName("a");
+				console.log(aInput); //[object NodeList] 节点列表/数组
+
+				console.log(aInput.length); //3
+				console.log(aInput[1].value); //1
+
+				//第四种方式: class名称获取
+				//通过class属性
+				var arr = document.getElementsByClassName("pox");
+				console.log(arr.length); //2
+
+
+
+				//获取节点对象
+				//getElementsByTagName()和getElementsByName() 可以使用其他元素节点来调用
+				var aImg = document.getElementsByTagName("img");
+				console.log(aImg.length); //4
+				
+				//先获取div节点
+				var oBox = document.getElementById("box");
+				var aImg2 = oBox.getElementsByTagName("img");
+				console.log(aImg2.length); //3
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="text" name="a" class="pox" value="0" />
+		<input type="text" name="a" class="pox" value="1" />
+		<input type="text" name="a" value="2" />
+
+
+<br  />
+		<div id="box">
+			<img src="images/1.jpg">
+			<img src="images/2.jpg">
+			<img src="images/3.jpg">
+		</div>
+		<img id="showImg" src="images/4.jpg" />
+
+	</body>
+
+</html>

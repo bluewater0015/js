@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red; 
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<input type="text" value="请输入"/>
+		<script>
+			//时间的目标target
+			//target目标对象，存放绑定事件的元素节点对象
+			var box = document.getElementById("box");
+			var input = document.getElementsByTagName("input")[0];
+			document.onclick = function(evt){
+				var evt = evt || event;
+				//console.log("target:"+evt.target); //target:[object HTMLHtmlElement]
+			} 
+			box.onclick = function(evt){
+				var evt = evt || event;
+				console.log("target:"+evt.target);//target:[object HTMLDivElement]
+			}
+			input.onclick = function(evt){
+				var evt = evt || event;
+				console.log("target:"+evt.target);//target:[object HTMLInputElement]
+			}
+		</script>
+	</body>
+</html>

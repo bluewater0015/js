@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				width: 100%;
+				height: 30px;
+				background: #0000FF;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			//1.
+			//2.写出3个不同的this变量使用场景
+			
+			//(1)
+		/*	function Person(name,age){
+				//属性
+				this.name = name;
+				this.age = age;
+				this.run = function(){
+					console.log(this.name + "\n" + this.age);
+				}
+			}
+			var person = new Person("见鬼了",0);
+			person.run();
+			*/
+			//(2)面向对象中的拖拽
+			//这个代码很长 就不写了
+			
+			//(3)遍历 添加点击事件
+			var oList = document.getElementById("list");
+			var oLi = oList.getElementsByTagName("li");
+		/*	for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].onclick = function(){
+					var index = this.index;
+					console.log(index);
+				}
+			}
+			
+			//3.写出下面这段代码的执行结果
+			for(var i=0;i<3;i++){
+				//console.log(i);
+				setTimeout(function(){
+					console.log(i);   //3 3 3 
+				},0)
+			}
+				*/
+		for(var i=0;i<oLi.length;i++){
+			//oLi[i].index  = i;
+			(function(index){
+				oLi[i].onclick = function(){
+					//var index = this.index;
+					console.log(index);  //
+				}
+			})(i)
+		}
+		</script>
+	</body>
+</html>

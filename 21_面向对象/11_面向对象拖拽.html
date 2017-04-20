@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//利用面向对象实现拖拽
+			//拖拽开始 拖拽过程 拖拽结束
+			var dragObj = {
+				//属性：拖拽的元素节点
+				//方法： 拖拽开始 拖拽过程 拖拽结束
+			}
+			
+			//属性 获取拖拽的元素节点
+			dragObj.box = document.getElementById("box");
+			
+			//方法
+			//拖拽开始
+			dragObj.startMove = function(x,y){
+				this.disX = x - dragObj.box.offsetLeft;
+				this.disY = y - dragObj.box.offsetTop;
+				//mousemove
+				document.onmousemove = function(e){
+					var e = e || event;
+					dragObj.moving(e.clientX,e.clientY);
+					//mousemoveup
+					document.onmouseup = function(){
+						dragObj.endMove();
+					}
+				}
+			}
+			//拖拽过程
+			dragObj.moving = function(x,y){
+				dragObj.box.style.left = x - this.disX + "px";
+				dragObj.box.style.top = y - this.disY + "px";
+			}
+			//拖拽结束
+			dragObj.endMove = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+			//给box添加鼠标按压事件
+			dragObj.box.onmousedown = function(e){
+				var e = e || event;
+				dragObj.startMove(e.clientX,e.clientY);
+			}
+		</script>
+	</body>
+</html>

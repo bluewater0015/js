@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table><tbody>
+			<tr><td>1111</td><td><input type="button"  value="删除" onclick="del(this)" /></td></tr>
+			<tr><td>2222</td><td><input type="button"  value="删除" onclick="del(this)" /></td></tr>
+			<tr><td>3333</td><td><input type="button"  value="删除" onclick="del(this)" /></td></tr>
+		</tbody>
+		</table>
+		<script type="text/javascript">
+			function del(obj)
+			{
+			   var tr=obj.parentNode.parentNode;//得到按钮[obj]的父元素[td]的父元素[tr]
+			   tr.parentNode.removeChild(tr);//从tr的父元素[tbody]移除tr
+			}
+		</script>
+	</body>
+</html>

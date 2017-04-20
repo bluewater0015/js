@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//入职薪水10k,每年涨幅入职薪水的5%，50年后工资多少？
+		/*	
+			function salary(a,y,p){
+				for(var i=0;i<y;i++){
+					a = a*(1+p);
+				}
+				return a;
+			}
+			console.log(salary(10000,50,0.05));  //114673.997857537
+			*/
+			
+		/*	
+			function safari(a,i){
+				if(i<= 50){
+					return safari(a*(1+0.05),++i);
+				}
+				return a;
+			}
+			console.log(safari(10000,1));  //114673.99785753674
+			*/
+			
+		/*	
+			function sum(a,p){
+			   var sun=a;
+			   for(var i=0;i<50;i++){
+			     sun=sun*(1+p);   
+			   }
+			   return sun;
+			}
+			console.log(sum(10000,0.05));
+		*/
+			
+
+			//入职薪水10k,每年涨幅入职薪水的5%，50年后工资多少？
+			
+			function sala(a,i){
+				//for(var i=0;i<50;i++){
+				//	return sala(a*(1+0.05));
+				
+				if(i<=50){
+					return sala(a*(1+0.05),++i);
+				}
+				return a;
+			}
+			console.log(sala(10000,1));
+			
+		
+			//Uncaught RangeError: Maximum call stack size exceeded
+			//此错误是"栈溢出",出现这个错误的原因是进行了递归运算,
+			//但是忘记添加判断条件,导致一直循环下去（百度）
+			/*
+				function sala(a){
+					for(var i=0;i<50;i++){
+						a = sala(a*(1+0.05));
+					}
+					return a;
+				}
+				console.log(sala(10000));
+			*/
+				//入职薪水10k,每年涨幅入职薪水的5%，50年后工资多少？
+			/*	
+				function sala(a){
+					a= a*0.05*50+a;
+					return a;
+				}
+				console.log(sala(10000));
+			*/
+			
+			/*
+				function sala(a){
+					var b=0;
+					for(var i=0;i<50;i++){
+						b += a*0.05;
+					}
+					return a+b;
+				}
+				console.log(sala(10000));
+			*/
+			
+			
+			function sala(a){
+				for(var i=0;i<50;i++){
+					//return sala(a*(1+0.05));
+					//for循环中进行return 意味着结束循环
+					a = (a*(1+0.05));
+				}
+				return a;
+			}
+			console.log(sala(10000));
+		</script>
+	</body>
+</html>

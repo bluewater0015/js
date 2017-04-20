@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//event对象的获取
+			//event对象(事件对象)是触发事件时，浏览器会通过函数把事件对象
+			//作为函数传递过来，在事件触发执行函数时一般会得到一个隐藏的参数
+			//该参数也放在arguments数组中。
+			var box = document.getElementById("box");
+			function func(){
+				//console.log(arguments.length);//1
+			}
+			func("hello"); 
+			
+			box.onclick = function(evt){
+				//console.log(evt);//MouseEvent {isTrusted: true, screenX: 55, screenY: 145, clientX: 55, clientY: 79…}
+				//console.log(arguments.length);
+				//console.log(arguments[0]);
+				if(evt){
+					//console.log("evt:"+evt); //[object MouseEvent]
+				}else{
+					//console.log("window.event:"+window.event);
+				}
+			}
+			
+			box.onclick = function(evt){
+				var oEvent = evt || window.event;
+				console.log(oEvent);
+			}
+			
+		</script>
+	</body>
+</html>

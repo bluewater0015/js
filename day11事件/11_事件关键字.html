@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: #f99;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<input type="text" value="请输入用户名"/>
+		<input type="password" value="请输入用户密码"/>
+		<input type="submit" />
+		<script>
+			//this关键字
+			//在js事件中，this表示触发事件的元素节点对象
+			var box = document.getElementById("box");
+			var input = document.getElementsByTagName("input");
+			box.onclick = function(){
+				console.log(this.nodeName); //div this表示box对象
+			}
+			for(var i=0;i<input.length;i++){
+				input[i].onclick = function(){
+					console.log(this.value);
+				}
+			}
+		</script>
+	</body>
+</html>

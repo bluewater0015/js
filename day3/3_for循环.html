@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//for循环
+			//1.输出1-100可以被4整除的数。
+			
+			
+			for(var i=1;i<=100;i++){
+				if(i%4 ==0){
+					//console.log(i);
+				}
+			}
+			
+			//2.输出九九乘法表
+			
+			for(var i=9;i>0;i--){
+				for(var j=1;j<=9-i;j++){
+					document.write("*");
+				}
+				document.write("*<br/>");
+				//break;
+			}
+			document.write("<br />");
+		
+			
+			
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=9-i;j++){
+					document.write("*");
+				}
+				document.write("*<br/>");
+			}
+			
+			document.write("<br />");
+		
+			
+			
+			
+			//输出九九乘法表
+			
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					document.writeln(j+"*"+i+"="+i*j);
+				}
+				document.writeln("<br />");
+			}
+			//总结：
+			//1.在第二个for循环中,j<=i,才能保证要输出的结果.
+			//2.document.writeln(); 方法后面相当多几个空格
+			
+			
+			//3.输出一元钱的兑换方案
+			//一元钱有以下兑换方案
+			//	5角	2角	1角
+			//	2	0	0
+			//	1	2	1
+			//	1	1	3
+			//	1	0	5
+			//	0	5	0
+			//	0	4	2
+			//	0	3	4
+			//	0	2	6
+			//	0	1	8
+			//	0	0	10
+			
+			for(var i=0;i<=2;i++){
+				for(var j=0;j<=5;j++){
+					for(var w=0;w<=10;w++){
+						if(i*5+j*2+w*1==10){
+							document.write(i+"张五角"+j+"张二角"+w+"张一角"+"<br />");
+						}
+					}
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

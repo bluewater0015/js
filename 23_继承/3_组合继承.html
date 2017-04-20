@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//组合继承：原型链 + 借用构造函数（对象冒充）模式
+			//父类
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			Person.prototype.run = function(){
+				return this.name + this.age;
+			}
+			//子类
+			function Employee(name,age){
+				Person.call(this,name,age);
+			}
+			Employee.prototype = new Person();
+			var employee = new Employee("tianxia",18);
+			var employee1 = new Employee("xiao",19);
+			console.log(employee.name);
+			console.log(employee1.name);
+		</script>
+	</body>
+</html>

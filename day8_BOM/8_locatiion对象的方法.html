@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//assign()跳转到指定页面，与href等效
+			//reload()重载当前URL
+			//replace() 用新的URL替换当前页面
+			
+			location.assign("http://www.baidu.com");
+			location.reload(true); //强制加载，从服务器的源头重新加载
+		/*	setTimeout(function(){
+				location.reload("http://www.baidu.com");
+			},1000)
+		*/
+			location.replace("http://www.12306.com"); //可以避免产生历史纪录
+			
+		</script>
+	</body>
+</html>

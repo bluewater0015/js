@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul, li {
+				list-style: none;
+			}
+			
+			body {
+				background: black;
+			}
+			
+			#box {
+				width: 305px;
+				height: 245px;
+				background: white;
+				border-radius: 5px;
+				/*border-bottom-right-radius: 10px;*/
+				margin: 20px auto;
+			}
+			
+			#box li {
+				float: left;
+				width: 55px;
+				height: 55px;
+				margin-left: 5px;
+				margin-top: 5px;
+			}
+			
+			#box li img {
+				width: 55px;
+				height: 55px;
+			}
+			
+			#box .first {
+				width: 175px;
+				height: 175px;
+			}
+			#box .first img {
+				width: 175px;
+				height: 175px;
+			}
+			
+		</style>
+		<script>
+			
+			/*
+			 * 当鼠标滑过小图片时, 让大图片也显示该图
+			 */
+			onload = function() {
+				var oBox = document.getElementById("box");
+				var aImg = oBox.getElementsByTagName("img");
+				
+				for (var i=1; i<aImg.length; i++) {
+					
+					//给每张小图添加一个鼠标移入事件
+					aImg[i].onmouseover = function() {
+						
+						//"img/small_1.jpg" -> "img/big_1.jpg"
+					 	var src = this.src.replace("small", "big");
+						
+						//改变大图
+						aImg[0].src = src;
+					}
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li class="first"><img src="img/big_4.jpg" /> </li>
+				<li><img src="img/small_1.jpg"/> </li>
+				<li><img src="img/small_2.jpg"/> </li>
+				<li><img src="img/small_3.jpg"/> </li>
+				<li><img src="img/small_4.jpg"/> </li>
+				<li><img src="img/small_5.jpg"/> </li>
+				<li><img src="img/small_6.jpg"/> </li>
+				<li><img src="img/small_7.jpg"/> </li>
+				<li><img src="img/small_8.jpg"/> </li>
+				<li><img src="img/small_9.jpg"/> </li>
+				<li><img src="img/small_10.jpg"/> </li>
+				<li><img src="img/small_11.jpg"/> </li>
+			</ul>
+		</div>
+	</body>
+</html>

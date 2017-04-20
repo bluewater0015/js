@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<script>
+			//获得body元素节点
+			var body = document.getElementsByTagName("body")[0];
+			console.log(body);
+			
+			//得到子节点个数
+			console.log(body.childNodes.length);  //4
+			
+			//忽略nodes数组中的空白节点
+			function filterSpaceNode(nodes){
+				for(var i=0;i<nodes.length;i++){
+					if(nodes.nodeType==3&&/^\s+$/.test(node[i].nodeValue)){
+						//得到空白节点之后移到父节点，然后删除子节点
+						nodes[i].parentNode.removeChild(nodes[i]);
+					}
+				}
+				return nodes;
+			}
+		</script>
+	</body>
+</html>

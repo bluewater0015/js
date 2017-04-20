@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 1000px;
+				height: 600px;
+				border: 2px solid #ccc;
+				margin: 0 auto;
+			}
+			dl{
+				width: 300px;
+				height: 200px;
+				float: left;
+				padding: 10px;
+				margin-bottom: 50px;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+			#box1{
+				padding:10px;
+				width: 300px;
+				height: 200px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<dl>
+				<dt>
+					<img src="images/1.jpg" alt="" />
+				</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>
+					<img src="images/2.jpg" alt="" />
+				</dt>
+				<dd></dd>
+			</dl>
+			<dl>
+				<dt>
+					<img src="images/3.jpg" alt="" />
+				</dt>
+				<dd></dd>
+			</dl>
+			<div id="box1">
+				<img src="images/1.jpg" alt="" />
+			</div>
+		</div>
+		<script>
+			//点击表格中的三张图，切换下面的图
+			var box = document.getElementById("box");
+			var dl = document.getElementsByTagName("dl")[0];
+			console.log(dl);
+			var img = box.getElementsByTagName("img");
+			console.log(img[1]);
+			var box1 = document.getElementById("box1");
+			var img1 = box1.getElementsByTagName("img")[0];
+			img[0].onclick = function(){
+				img1.setAttribute("src","images/1.jpg");
+			}
+			img[1].onclick = function(){
+				img1.setAttribute("src","images/2.jpg");
+			}
+			img[2].onclick = function(){
+				img1.setAttribute("src","images/3.jpg");
+			}
+		</script>
+	</body>
+</html>

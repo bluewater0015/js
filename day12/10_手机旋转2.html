@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/images4/0.jpg" alt="" />
+		<script>
+			var img = document.getElementsByTagName("img")[0];
+			//最后的图标下标
+			var lastIndex = 0;
+			document.onmousedown = function(evt){
+				var evt = evt || event;
+				//记录鼠标单击时候x的值
+				var startX = evt.clientX;
+				var index = 0;
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					var disX = startX - evt.clientX;
+					var imgIndex = (77*6+parseInt(disX/10)+lastIndex)%77;
+					img.src = "img/images4/"+imgIndex +".jpg";
+					console.log(imgIndex);
+					index = imgIndex;
+				}
+				document.onmouseup = function(){
+					document.onmousemove  = null;
+					lastIndex = index;
+				}
+				return false;
+			}
+		</script>
+	</body>
+</html>

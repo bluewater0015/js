@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="请输入用户名"/>
+		<input type="text" value="请输入密码" />
+		<button id="btn">登录</button>
+		<script>
+			//在输入框输入用户名和密码，
+			//1.当鼠标失去焦点时：检测用户名长度至少6位，且只能位数字和字母
+			//检测密码长度至少8位
+			//2.给登录按钮添加点击事件：点击弹出用户名和密码
+			var input = document.getElementsByTagName("input");
+			var btn = document.getElementById("btn");
+			input[0].onfocus = function(){
+				this.value = "";				
+			}
+			input[1].onfocus = function(){
+				this.value = "";
+			}
+			input[0].onblur = function(){
+				if(this.value.length>=6&&(/^[0-9a-zA-Z]+$/gi).test(this.value)){
+					//alert("输入合法");
+				}else{
+					//alert("输入不合法");
+				}
+			}
+			input[1].onblur = function(){
+				if(this.value.length>=8){
+					//alert("密码合法");
+				}else{
+					//alert("密码不合法");
+				}
+			}
+			btn.onclick = function(){
+				alert("用户名："+input[0].value);
+				alert("密码:"+input[1].value);
+			}
+		</script>
+	</body>
+</html>

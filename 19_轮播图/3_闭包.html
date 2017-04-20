@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//闭包
+			function aa(){
+				console.log("aa");  //aa
+				function bb(){
+					console.log("bb"); //bb函数未定义
+				}
+			}
+			//aa();
+			//bb();  //无法直接访问到函数内部的函数
+			
+			function m3(){
+				var a = 1;
+			}
+			m3();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 400px;
+				height: 420px;
+				background: #f99;
+				border: 1px solid #ccc;
+			}
+			.box dl{
+				width: 190px;
+				height: 160px;
+				float: left;
+				padding: 3px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<dl>
+				<dt>
+					<img src="images/1.jpg" alt="" />
+				</dt>
+				<a href="spring.html">春</a>
+				<a id="pic" href="#">春天history.forward</a>
+			</dl>
+			<dl>
+				<dt>
+					<img src="images/2.jpg" alt="" />
+				</dt>
+				<a href="summer.html">夏</a>
+			</dl>
+			<dl>
+				<dt>
+					<img src="images/3.jpg" alt="" />
+				</dt>
+				<a href="autumn.html">秋</a>
+			</dl>
+			<dl>
+				<dt>
+					<img src="images/4.jpg" alt="" />
+				</dt>
+				<a href="winnter.html">冬</a>
+			</dl>
+			<a id="renovate" href="#">刷新页面</a>
+		</div>
+		<script>
+			var pic = document.getElementById("pic");
+			var renovate = document.getElementById("renovate");
+			pic.onclick = function(){
+				//history.forward();
+				history.go(1);
+			}
+			renovate.onclick = function(){
+				history.go(0);
+			}
+		</script>
+	</body>
+</html>

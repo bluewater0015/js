@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//if判断语句
+			//计算某一年是否是闰年 与或非的运用
+		/*	
+			function year(y){
+				if(y%4==0&&y%100!==0||y%400==0){
+					console.log(y+"是闰年");
+				}else{
+					console.log(y+"是平年");
+				}
+			}
+			year(2017);
+		*/
+			
+			//switch语句
+			//1.成绩判定
+			//2.显示星期几
+			//switch 语法
+			//switch case后面只能是整型或字符型的常量或常量表达式,不能是实型
+		/*	
+			switch(表达式){
+				case	常量表达式1; //常量表达式是由常量组成 2+2
+						语句1;
+					  	break;
+				case  	常量表达式2;
+					  	语句2;
+					  	break;
+				……
+				default:	语句n+1;
+							break;
+				
+				
+			}
+		*/
+		/*	
+			var grade = prompt("请输入你的成绩：");
+			switch(grade)
+ 
+			{ 
+			    case 'A':  //注意,这里是冒号:并不是分号;
+			       	alert("85-100\n");
+			    	break; //每一个case语句后都要跟一个break用来退出switch语句
+			    case 'B': //每一个case后的常量表达式必须是不同的值以保证分支的唯//一性
+			       	alert("70-84\n");
+			    	break;
+			    case 'C':
+			       	alert("60-69\n");
+			    	break;
+			    case 'D':
+			       	alert("<60\n");
+			    	break;
+			    default:
+			       alert("error!\n");
+			} 
+		*/
+		/*
+			function score(grade){
+				switch(grade){
+					case'A':console.log("90-100");
+						break;
+					case'B':console.log("优异");
+						break;
+					case'C':console.log("良好");
+						break;
+					case'D':console.log("不及格");
+					default:console.log("您输入的不在这个范围");
+				
+				}
+			}
+			score('A');
+		*/
+			
+			//2.显示星期几？
+			var today = new Date();
+			//getDay();可返回表示星期的某一天的数字
+			//返回的是0(周日)-6(周六)
+			var week = today.getDay();
+			switch(week){
+				case 1:alert("星期一");
+				break;
+				case 2:alert("星期二");
+				break;
+				case 3:alert("星期三");
+				break;
+				case 4:alert("星期四");
+				break;
+				case 5:alert("星期五");
+				break;
+				case 6:alert("星期六");
+				break;
+				case 0:alert("星期日");
+				break;
+				default:console.log("您输入的不在这个范围内");
+				break;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.一个人新入职，月工资为2000元的员工，每年涨当年工资的5%,
+			//20年后的月工资是多少？
+			
+			
+			function salary(y,i){
+				if(i<=20){
+					return salary(y*(1+0.05),++i);
+				}
+				return y;
+			}
+			//console.log(salary(24000,1)/12);  //5306.5954102888445
+			
+			function sala(y,p,i){
+				if(i<=20){
+					return salary(y*(1+p),p,++i);
+				}
+				return y;
+			}
+			//console.log(sala(24000,0.05,1)/12);  //5571.925180803287
+			//2.打印100-200之间所有能被3或者7整除的数
+			for(var i=100;i<=200;i++){
+				if(i%3==0||i%7==0){
+					//console.log(i);
+				}
+			}
+			//3.判断一个数是不是素数。
+			//所谓的素数是 除了1和它本身之外不在有其他因数的数称为质数。
+		/*	
+			var num = prompt("请输入一个数：");
+			for(var i=2;i<num;i++){
+				if(num%i==0){
+					alert(num+"不是素数");
+					break;   //跳出本次循环
+				}else{
+					alert(num+"是素数");
+					break;
+				}
+			}
+		*/
+			//循环语句有:
+		/*	
+			1.while循环
+			2.do while循环
+			3.for循环
+		*/
+			//break 	跳出当前循环
+			//continue 	跳出本次循环
+			
+			//break语句功能
+		/*	
+			1.在switch语句中使流程跳出switch结构
+			2.在循环语句中跳出当前循环
+		*/
+		
+		/*
+			强调:
+			如果执行break语句,就不会执行break之后的语句.
+			在多层循环中,一个break只向外跳一层.
+		*/
+		
+		
+		
+		/*	
+			var n = prompt("请输出一个数：");
+			var flag = 1;//标记 代表素数
+			for(var i=2;i<n;i++){
+				if(n%i==0){
+					flag = 0;
+					break;
+				}
+			}
+			
+			if(flag){
+				alert(n+"是素数");
+			}else{
+				alert(n+"不是素数");
+			}
+		*/
+			//计算1+3+5+……+99的和；
+			var sum = 0;
+			for(var i=1;i<100;i++){
+				if(i%2!=0){
+					sum += i;
+				}
+			}
+			//console.log(sum);
+			//4.输出两个数，求两个数的最大公约数
+			
+			/*var num1 = prompt("请输出一个数：");
+			var num2 = prompt("请输出另外一个数：");
+			var min = num2>num1? num1:num2;
+			for(var i=min;i>1;i--){
+				if(num1%i==0 && num2%i==0){
+					//console.log(i+"是它们的最大公约数");
+					break;  //找到了就跳出循环，不然会继续找
+				}
+			}*/
+			
+			//5.求s=a+aa+aaa+aaaa+……+aa……a的值，其中a是一个数字。
+			//例如:2+22+222+2222 输出: //2+22+222+2222+22222=24690
+			// a a*10+a a*100+a*10+a
+			
+			/*var a = 2;
+			var sum = 0;
+			for(var i=0;i<5;i++){
+				sum += a*Math.pow(10,i)+a;
+				console.log(sum);
+			}
+			console.log(sum);
+			*/
+		/*	
+			function s(a,sum){
+				for(var i=0;i<5;i++){
+					return s(a*Math.pow(10,i)+a,sum += a*Math.pow(10,i)+a);
+				}
+				return sum;
+			}
+			console.log(s(2,0));
+		*/
+			 var a = 2;
+			 var n = parseInt(prompt("请输入一个循环次数的数字："));
+			 var sum = 0;
+			 var tmp = 0;//中间量 2 22  222
+			 for(var i = 1; i <= n; i++) {
+			 	tmp = a + tmp*10;
+			 	if(i != n) {
+			 		document.write(tmp+"+");
+			 	} else {
+			 		document.write(tmp);
+			 	}
+			 	sum += tmp;
+			 }
+			 document.write("="+sum);
+			
+			
+			
+			//6.五位数中，对称的数称为回文数，找出所有的回文数。
+			//如12321
+			
+		</script>
+	</body>
+</html>

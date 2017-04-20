@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:100%;
+				height: 500px;
+				border: 1px solid #000;
+			}
+			#box1{
+				width:100%;
+				height: 50px;
+				background: #ccc;
+			}
+			span{
+				display:inline-block;
+				width: 100px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: #fff;
+			}
+			.span1{
+				background:#f99;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1">
+				<span class="span1">科技</span><span>探索</span>
+			</div>
+			<p id="text">科技科技科技科技科技科技科技科技科技科技科技科技科技科技</p>
+		</div>
+		<script>
+			//tab切换，点击科技显示左图，点击搜索显示右图。
+			var span = document.getElementsByTagName("span");
+			var box = document.getElementById("box");
+			var text = document.getElementById("text");
+			var nodeText1 = document.createTextNode("科技科技");
+			var nodeText2 = document.createTextNode("探索探索");
+			span[0].onclick = function(){
+				//console.log(box.lastChild);
+				box.replaceChild(nodeText1,text);
+			}
+			span[1].onclick = function(){
+				//console.log(box.lastChild);
+				this.style.background = "#f99";
+				box.replaceChild(nodeText2,text);
+				span[0].style.background = "";
+			}
+		</script>
+	</body>
+</html>

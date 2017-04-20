@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//字符串的常用函数(重要)
+			//1.substring(start,end) 截取字符串 范围是[start,end)
+			//如果只有一个参数，代表截取到最后
+			var str = "hello world";
+			var str1 = str.substring(3,5);
+			console.log(str1);  //lo
+			var str2 = str.substring(3);
+			console.log(str2); //lo world
+			
+			//2.split(separator,howmany)-根据分割符、拆分成数组
+			//sepatator(字符串或正则表达式)
+			//howmany(可以指定返回数组的最大长度,可以省略)
+			var str = "lets go go";
+			var str1 = str.split("");//空字符串 每个字符之间都会被分割
+			console.log(str1);//["l", "e", "t", "s", " ", "g", "o", " ", "g", "o"]
+			var str2 = str.split(" ",2);//根据空格分割，长度为2
+			console.log(str2);		//["lets", "go", "go"]
+			
+			//toLowerCase() 用于把字符串转化成小写
+			//toUpperCase() 用于把字符串转化成大写
+			
+			var str = "hello WORLD";
+			var str1 = str.toLowerCase();
+			console.log(str1); //hello world
+			var str2 = str.toUpperCase();
+			console.log(str2); // HELLO WORLD
+			
+			
+		</script>
+	</body>
+</html>

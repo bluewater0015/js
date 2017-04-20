@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input"); 
+				var oSave = aInput[3]; //保存按钮
+				
+				var  oTable = document.getElementById("tab"); //table
+				
+				//点击保存按钮
+				oSave.onclick = function(){
+					
+					//获取三个值
+					var Id = aInput[0].value; //Id
+					var name = aInput[1].value; //姓名
+					var tel = aInput[2].value; //电话
+				
+					//创建tr
+					var trNode = document.createElement("tr"); //<tr></tr>
+					
+					//创建4个td
+					var tdNode1 = document.createElement("td");//<td></td>
+					var tdTextNode = document.createTextNode(Id); //文本节点
+					tdNode1.appendChild(tdTextNode); //<td>30</td>
+					
+					var tdNode2 = document.createElement("td"); //<td></td>
+					tdNode2.innerHTML = name;  //<td>张三</td>
+					
+					var tdNode3 = document.createElement("td"); //<td></td>
+					tdNode3.innerHTML = tel;  //<td>13554354534</td>
+					
+					//tdNode4
+					var tdNode4 = document.createElement("td"); //<td></td>
+					//a节点
+					var aNode = document.createElement("a"); //<a></a>
+					aNode.innerHTML = "删除";
+					aNode.setAttribute("href", "#"); //添加属性href
+					aNode.name = "delete"; //添加属性name="delete"
+					//将a节点添加到tdNode4的子节点末尾
+					tdNode4.appendChild(aNode); 
+					/*
+					 <tr>
+						<td>30</td>
+						<td>张三</td>
+						<td>13554354534</td>
+						<td><a href="#">删除</a></td>
+					 </tr>
+					 */
+					
+					//将4个td节点添加到tr的子节点末尾
+					trNode.appendChild(tdNode1);
+					trNode.appendChild(tdNode2);
+					trNode.appendChild(tdNode3);
+					trNode.appendChild(tdNode4);
+					
+					oTable.lastChild.appendChild(trNode);
+					
+					//重新绑定删除按钮的点击事件
+					bindClick();
+				}
+				
+				var aDelete = document.getElementsByName("delete");
+				//添加一个方法:给删除按钮点击事件
+				bindClick();
+				function bindClick(){
+					
+					//遍历,给每个删除按钮添加点击事件
+					for (var i=0; i<aDelete.length; i++){
+						aDelete[i].onclick = function(){
+							//this.parentNode.parentNode : tr
+							//this.parentNode.parentNode.parentNode : tbody
+						//	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+							
+							//deleteRow() :table删除对应的tr下标的行
+							//rowIndex: tr所在table中的行下标
+							oTable.deleteRow(this.parentNode.parentNode.rowIndex);
+						}
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		ID <input type="text"/>
+		姓名<input type="text" />
+		电话<input type="text" />
+		<input type="button" value="保存" />
+		
+		<table border="1" id="tab">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td>张三</td>
+				<td>13554354534</td>
+				<td><a href="#" name="delete">删除</a></td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td>李四</td>
+				<td>1355443434</td>
+				<td><a href="#" name="delete">删除</a></td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"  value="文本框中的内容"/>
+		<script>
+			var input = document.getElementsByTagName("input")[0];
+			//HTML事件
+			//load: 当页面完全加载后触发
+		/*	
+			window.onload  = function(){
+				console.log("页面已经全部加载");
+			}
+		*/
+			//unload 当页面全部卸载时触发
+			//window.onunload = function(){
+				//console.log("页面已经全部卸载");
+			//}
+			//select当用户选择文本框(input或textarea)中的内容触发
+			input.onselect = function(){
+				console.log("已经选择了文本框中的内容");
+			}
+			//change当文本框中的内容改变且失去焦点后触发
+			input.onchange = function(){
+				console.log("文本框中的内容已经改变且失去焦点");
+			}
+			//focus当页面获得焦点时触发
+			input.onfocus = function(){
+				console.log("已经获得焦点");
+			}
+			//blur当页面失去焦点时触发
+			input.onblur = function(){
+				console.log("已经失去焦点");
+			}
+		</script>
+	</body>
+</html>

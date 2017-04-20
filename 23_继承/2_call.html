@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建子类的实例对象时，无法向父类的构造函数中传递参数
+			//为了解决这个问题，我们采用一种叫借用构造函数的技术
+			//或者称为对象冒充的技术来解决;
+			//对象冒充
+			//使用构造函数调用apply 或者call
+			//父类
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			//子类
+			function Employee(name,age){
+				Person.call(this,name,age);//对象冒充
+				//apply
+				//Person.apply(this,[name,age]);
+			}
+			var employee = new Employee("天下",20);
+			console.log(employee.age);  //20
+			console.log(employee.name); //天下
+		</script>
+	</body>
+</html>

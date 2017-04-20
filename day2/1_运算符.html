@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.逻辑运算符
+		/*	
+			&& 与
+			|| 或
+			!  非 优先级最高
+			算术运算符优先级 > 关系运算符 > 逻辑运算符
+			
+			算术运算符(+,-,*,%)
+			关系运算符(>,=,<)
+			逻辑运算符(&&,||,!)
+		*/
+			//2.ASCII码
+		/*	
+			a-z 97-122
+			A-Z 65-90
+		*/
+		
+			//例题1.判断一个变量是否是空格、数字、字母中的一种.
+			
+			//var str1 = /[a-z]/;
+			//var string = "abcdefd";
+			//var str2 = str1.test(string);
+			//console.log(str2);
+			
+			//使用正则表达式匹配字符串有两种方式：
+			//1.test() 返回true则符合，false则不符合
+			//2.exec() 返回数组则符合，null则不符合
+			
+			//  /^ 匹配开始，从头开始匹配
+			//  /$ 匹配结尾，从结尾开始匹配
+			
+			
+			//* 号元字符，配合其他字符使用，允许其他字符出现任意多次
+			//重复多次匹配，可以出现任意次
+			
+			//[] 表示字符可以出现的范围
+			
+			//\s 匹配空格
+		/*	
+			function judge(number){
+				if(/^[a-z]*$/.test(number)==true ){
+					console.log("此变量是字母的一种");
+				}else if(/^[0-9]*$/.test(number)==true ){
+					console.log("此变量是数字的一种");
+				}else if(/^[a-z0-9]*$/.test(number)==true){
+					console.log("此变量是数字和字母组合");
+				}else if(/^\s*$/.test(number)==true){
+					console.log("此变量是空格");
+				}else{
+					console.log("此变量是其他");
+				}
+			}
+			judge("abc123abc");
+		*/
+			
+			//例题2 判断year表示的某一年是否为闰年，用逻辑表达式表示。
+			//闰年的条件是符合下面二者之一
+			//1.能被4整除但不能被100整除
+			//2.能被400整除
+			
+			function year(y){
+				if(y%4==0 && y%1000!=0|| y%400==0){
+					console.log(y+"是闰年");	
+				}else{
+					console.log(y +"不是闰年");
+				}
+			}
+			year(2016);
+		</script>
+	</body>
+</html>

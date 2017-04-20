@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="box">0
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>5
+		</ul>
+		<script>
+			var box = document.getElementById("box");
+			//firstChild 和 lastChild 属性
+			//childNodes：子节点集合
+			//firstChild 用于获取当前元素的第一个子节点，相当于childNodes[0]
+			//lastChid 用于获取当前元素的最后一个子节点，
+			//相当于childNode[box.childNodes.length-1]
+			
+			//获取第一个子节点的文本内容
+			console.log(box.firstChild.nodeValue);  //
+			//获取最后一个节点的文本内容 
+			console.log(box.lastChild.nodeValue);  //5
+			
+			
+			
+		</script>
+	</body>
+</html>

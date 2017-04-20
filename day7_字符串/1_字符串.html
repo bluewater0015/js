@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>字符串</title>
+	</head>
+	<body>
+		<script>
+			//字符串
+			//1.字符串的概念和定义
+//				字符串就是一串字符,由双引号(或单引号)括起来.
+//				字符串是js的一种基本数据类型
+//				js基本类型还有:number boolean null undefined
+//				js引用类型有: function Array Object String(一个特殊的基本数据类型)
+				//var str = "亲";  //基本类型
+				
+				//var str = new String("亲，包邮哦！"); //引用类型
+				//console.log(str);
+				//上行代码运行结果：
+				//String {0: "亲", 1: "，", 2: "包", 3: "邮", 4: "哦", 5: "！", length: 6, [[PrimitiveValue]]: "亲，包邮哦！"}
+				//console.log(typeof str);  //object
+				//此刻str是object(对象)类型
+				
+				//对象只是一种特殊的数据类型
+				//对象拥有属性和方法
+				//用new产生的变量都是引用类型的变量，也叫对象
+				
+				//var str = new String("hello");
+				//基本类型:string number boolean undefined null
+				//引用类型/对象:Array String Object Date function
+				
+				
+				var a = 10;
+				var b = a;
+					b = 20;
+				console.log(a);//10
+				console.log(b);//20
+				
+				var aa = true;
+				var bb = aa;
+				var bb = false;
+				console.log(aa); //true
+				console.log(bb); //false
+				
+				var obj1 = new Object();
+				var obj2 = obj1;
+				obj2.name = "我有名字了";
+				console.log(obj1.name);  //我有名字了
+				//这两个引用数据类型变量指向同一个堆内存
+				//obj1赋值给obj2 实际上是把这个堆内存对象在栈地址中的引用地址复制了一份
+				
+				//js引用数据是保存在堆内存中的对象，与其他语言不同的是你不可以
+				//直接访问堆内存空间的位置和操作堆内存空间。只能通过操作对象的
+				//在栈内存的引用地址。
+				//所以引用类型的数据，在栈内存中保存的实际上是对象在堆内存中的引用地址，
+				//通过这个引用地址可以快速查找到保存在堆内存中的对象。
+				
+				//堆内存和栈内存有什么区别？
+				
+				//引用类型可以添加属性
+				//基本类型也可以添加属性，不会报错，但无法访问
+				var a = 12;
+				a.name = 'xiao';
+				console.log(a);  //12
+				console.log(a.name);  //undefined;
+				
+				
+				var stra = "这是一个字符串";
+				var	strb = stra;
+					stra = "这是另外一个字符串";
+				console.log(strb); //这是一个字符串
+					
+		</script>
+	</body>
+</html>

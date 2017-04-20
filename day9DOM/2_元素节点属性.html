@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			喜欢
+		</div>
+		<script>
+			//document.getElementById()接收一个参数，获取元素的id
+			//如果找到相应的元素则返回该元素的元素节点对象。
+			
+			//元素节点属性
+			//tagName 元素节点对象所指向的标签名称
+			//innerHTML 元素节点中的内容
+			
+			var box = document.getElementById("box");
+			console.log(box);
+			console.log(box.tagName); //DIV
+			console.log(box.innerHTML); //喜欢
+		</script>
+	</body>
+</html>

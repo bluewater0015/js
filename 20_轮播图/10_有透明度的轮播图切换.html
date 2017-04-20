@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box{
+				width: 400px;
+				height: 300px;
+				position: relative;
+				top: 0;
+				left: 0;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			#list{
+				width: 3000px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#list li{
+				float: left;
+			}
+			#list li img{
+				width: 400px;
+				height: 200px;
+			}
+			#btn{
+				width: 400px;
+				height: 200px;
+				position: absolute;
+				left: 0;
+				top: 200px;
+			}
+			#btn li{
+				float: left;
+			}
+			#btn li img{
+				width: 133px;
+				height:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+			</ul>
+			<ul id="btn">
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<script src="move1.js"></script>
+		<script>
+			var oList = document.getElementById("list");
+			var imgList = oList.getElementsByTagName("li");
+			var oBtn = document.getElementById("btn");
+			var btnList = oBtn.getElementsByTagName("li");
+			var i = 0; //记录图片下标
+			var iWidth = imgList[0].offsetWidth;
+			oList.innerHTML += oList.innerHTML;
+			var timer = setInterval(move,3000);
+			function move(){
+				i++;
+				var iLeft = -i * iWidth;
+				startMove(oList,"left",iLeft,next);
+				//切换轮播图时 相应的按钮也会切换
+				for(var j=0;j<btnList.length;j++){
+					if(i == j){
+						btnList[j].style.opacity = 0.5;
+					}else{
+						btnList[j].style.opacity = 1;
+					}
+					if(i == imgList.length/2){
+						btnList[0].style.opacity = 0.5;
+					}
+				}
+			}
+			function next(){
+				if(i >= imgList.length/2){
+					oList.style.left = 0;
+					i = 0;
+				}
+			}
+			//点击按钮时 切换相应的轮播图
+			for(var j=0;j<btnList.length;j++){
+				btnList[j].index = j;
+				btnList[j].onclick = function(){
+					i = this.index - 1;  // -1 0 1
+					btnMove();
+				}
+			}
+			//函数btnMove() 用来再次运动
+			function btnMove(){
+				move();
+				clearInterval(timer);
+				timer = setInterval(move,3000);
+			}
+			
+		</script>
+	</body>
+</html>

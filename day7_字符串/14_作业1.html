@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="user" type="text" placeholder="请输入用户名" />
+		<input id="pwd" type="password" placeholder="请输入密码" />
+		<button id="login">登录</button>
+		
+		<script>
+		/*
+			1, 注册页面的简单数据校验
+			先去掉两个输入框中的空格
+			用户名长度不低于6，不高于20
+			用户名不可以用数字开头
+			密码不能为空
+			输入框中要有默认提示  (placeholder )
+			点击登录按钮检查是否合法
+		*/
+		var user = document.getElementById("user");
+		var pwd = document.getElementById("pwd");
+		var login = document.getElementById("login");
+		
+		login.onclick = function(){
+			var username = user.replace(/ /g,"");
+			var password  = pwd.replace(/ /g,"");
+			
+			if(user.value.length>20||user.value.length<6){
+				alert("用户名不合法");
+			}
+		}
+		
+		</script>
+	</body>
+</html>

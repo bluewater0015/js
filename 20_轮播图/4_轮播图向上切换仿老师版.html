@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				border:0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#oBox{
+				width: 500px;
+				height: 200px;
+				background: #f99;
+				margin: 500px auto;
+				position: relative;
+				border: 10px solid red;
+			}
+			#list{
+				width: 500px;
+				height: 600px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#list li{
+				width:400px;
+				height: 200px;
+				padding-left: 100px;
+			}
+			#list li img{
+				display: block;
+				width: 400px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="oBox">
+			<ul id="list">
+				<li style="background:yellow;"><img src="img/1.jpg" alt="" /></li>
+				<li style="background:blue;"><img src="img/2.jpg" alt="" /></li>
+				<li style="background: #9ff;"><img src="img/3.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<script src="move1.js"></script>
+		<script>
+			//轮播图
+			var oBox = document.getElementById("box");
+			var oList = document.getElementById("list");
+			var oLi = document.getElementsByTagName("li");
+			
+			var timer = null;
+			//记录图片的个数
+			var i = 0;
+			//图片的高度
+			var iHeight = oLi[0].offsetHeight;
+			//console.log(iHeight);
+			oList.innerHTML += oList.innerHTML;
+			//定时器 3s一次自动向上切换
+			timer = setInterval(move,3000)
+			function move(){
+				i++;
+				//向上切换的高度
+				var iTop = -i * iHeight;
+				//console.log(iTop);
+				startMove(oList,"top",iTop,next);
+			}
+			function next(){
+				if(i>=oLi.length/2){
+					oList.style.top = 0;
+					i=0;
+				}
+			}
+		</script>
+	</body>
+</html>

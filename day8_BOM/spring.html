@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="images/spring.jpg" alt="" />
+		<a id="last" href="#">后退history.back</a>
+		<script>
+			var last = document.getElementById("last");
+			last.onclick = function(){
+				//history.back();
+				history.go(-1);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//全局变量
+			//a是全局变量
+			//在调用完函数m1时 不会释放
+			var a = 1;
+			function m1(){
+				a++;
+				console.log(a);
+			}
+			m1();  //2
+			m1();  //3
+			
+			//局部变量
+			function m2(){
+				var b = 1;
+				b++;
+				console.log(b);
+			}
+			m2(); //2 
+			m2(); //2
+		</script>
+	</body>
+</html>

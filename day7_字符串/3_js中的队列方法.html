@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//js中的队列方法
+			//shift() 方法移除数组中的第一项并返回该项，同时将数组的长度减1
+			
+			//var colors = ['red','yellow','black'];
+			//var count = colors.push("blue");
+			//console.log(count); //4
+			//var item = colors.shift();
+			//console.log(item); //red
+			//console.log(colors.length);  //3
+			//unshift()方法从数组的前端添加一个或者多个元素，并返回新数组的长度
+			
+			var color = ['red','green','yellow'];
+			var item  = color.unshift("white","black");
+			console.log(item);  //5
+			
+			var end = color.pop();
+			console.log(end); //yellow
+			console.log(color);//["white", "black", "red", "green"]
+			
+			
+		</script>
+	</body>
+</html>

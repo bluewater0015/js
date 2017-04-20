@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				color:#000000;
+				font-size: 22px;
+				text-align: center;
+				line-height: 100px;
+			}
+			body{
+				height: 2000px;
+				/*position:absolute;
+				left: 0;
+				top: 0;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>我已经回到顶部了</div>
+		<div id="box">
+			回到顶部
+		</div>
+		<script src="move.js"></script>
+		<script>
+			//回到顶部，在浏览器的右下角有回到顶部的按钮
+			//点击后让页面以缓冲的动画运动到顶部
+			var box = document.getElementById("box");
+			var body = document.getElementsByTagName("body")[0];
+		/*	
+			window.onsroll = function(){
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			}
+			box.onclick = function(){
+				document.documentElement.scrollTop = document.body.scrollTop = 0;
+				//move(body,"scrollTop",-800);
+			}
+		*/	
+			var timer = null;
+			box.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//1.获取当前值
+					var current = document.documentElement.scrollTop ||document.body.scrollTop;
+					//2.设置速度
+					var speed = (0 - current)/8;
+					speed = Math.floor(speed);
+					//3.判断临界值
+					if(current == 0 ){
+						clearInterval(timer);
+					}
+					//4.运动
+					document.body.scrollTop =document.body.scrollTop =  current + speed;
+				},100)
+			}
+		</script>
+	</body>
+</html>

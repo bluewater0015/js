@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img id="img" src="img/100.jpg" alt="" />
+		<script src="move.js"></script>
+		<script>
+			var img = document.getElementById("img");
+			img.onmouseover = function(){
+				move(img,"opacity",30);
+			}
+			img.onmouseout= function(){
+				move(img,"opacity",100);
+			}
+		</script>
+	</body>
+</html>

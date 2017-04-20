@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li name="Node">1</li>
+			<li name="Node">2</li>
+			<li name="Node">3</li>
+			<li name="Node">4</li>
+		</ul>
+		<script>
+			//getElementsByName()方法可以获取相同名称的元素
+			//返回一个数组HTMLCollection(Nodelist)
+			var node = document.getElementsByName("Node");
+			console.log(node);//NodeList[4]
+			
+			var node1 = document.getElementsByName("Node")[0];
+			console.log(node1);  //<li name="Node">1</li>
+			console.log(node1.innerHTML);  //1
+			
+		</script>
+	</body>
+</html>

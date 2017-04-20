@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 800px;
+				height: 500px;
+				margin: 220px auto;
+				position: relative;
+				top: 0;
+				left: 0;
+				background: #ccc;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 30px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>向上缓冲</button>
+			<button>向右缓冲</button>
+			<button>向下缓冲</button>
+			<button>向左缓冲</button>
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script>
+			//缓冲运动
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button");
+			var sport = document.getElementById("sport");
+			var timer = 0;
+			var sportLeft = 0;
+			var sportTop = 0;
+			var max = box.clientWidth - sport.clientWidth;//700px;
+			function move(target){
+				for(var i=0;i<btn.length;i++){
+					btn[i].index = i;
+					btn[i].onclick = function(){
+						var index = this.index;
+						timer = setInterval(function(){
+							if(target < 0){
+								target = -target;
+							}
+							//console.log(target);  //200
+							//刚开始sport.offetLeft 是30
+							//由30到-185
+							//console.log(Math.ceil(sport.offsetTop))
+							//console.log(sport.offsetTop);
+							var speed = (target-Math.ceil(sport.offsetLeft))/10;
+							var speed1 = (target-Math.ceil(sport.offsetTop))/10;
+							//console.log(speed1);  //17到38.5
+							//console.log(speed);   //17到0.1
+							//console.log(sport.offsetTop)
+							//Math.ceil()向上取整
+							//Math.floor() 向下取整
+							//speed = speed>0?Math.ceil(speed):Math.floor(speed);
+							if(speed > 0){
+								Math.ceil(speed);
+							}else{
+								speed = -speed;
+								Math.ceil(speed);
+							}
+							//speed1 = speed1>0?Math.ceil(speed1):Math.floor(speed1);
+							if(speed1 > 0){
+								Math.ceil(speed1);
+							}else{
+								speed1 = -speed1;
+								Math.ceil(speed1);
+							}
+							//console.log(index);
+							//向上运动
+							if(index == 0){
+								//如果向上运动 速度为负数 该怎么取？
+								//sportTop = 0;
+								sportTop = sportTop - speed1;
+								//console.log(sportTop);
+								sport.style.top = sportTop + "px";
+								if((-sportTop) >= target){
+									clearInterval(timer);
+								}
+								
+							//向右运动
+							}else if(index == 1){
+								//sportLeft = 0;
+								sportLeft = sportLeft + speed;
+								sport.style.left = sportLeft + "px";
+								if(sportLeft >= (target-1)){
+									clearInterval(timer);
+								}
+								
+							//向下运动
+							}else if(index == 2){
+								//sportTop = 0;
+								sportTop = sportTop + speed1;
+								//console.log(sport.offsetTop)
+								//console.log(sportTop);
+								//console.log(speed1);
+								sport.style.top = sportTop + "px";
+								if(sportTop >= (target-1)){
+									clearInterval(timer);
+								}
+								
+							//向左运动
+							}else if(index == 3){
+								//sportLeft = 0;
+								sportLeft = sportLeft - speed;
+								sport.style.left = sportLeft + "px";
+								if((-sportLeft) >= target){
+									clearInterval(timer);
+								}
+								
+							}
+							//
+						/*	
+							if(sportLeft>=max){ //sportLeft 和 parseInt(sport.style.left) 等价
+								speed = -speed;
+							}
+							if(sportLeft <= 0){
+								speed = 10;
+							}
+						*/
+						},100)
+					}
+				}
+			}
+			move(200);
+			
+		</script>
+	</body>
+</html>

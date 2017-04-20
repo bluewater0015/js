@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.判断一个整数，属于哪个范围：大于0 小于0 等于0
+			function number(num){
+				if(num>0){
+					console.log(num+"大于0");
+				}else if(num==0){
+					console.log(num+"等于0");
+				}else{
+					console.log(num+"小于0");
+				}
+			}
+			number(-2);
+			//4.开发一款软件，根据公式(身高-108)*2=体重，
+			//可以有10斤左右的浮动，来观察测试者体重是否合适。
+			function weight(w,h){
+				var a = (h-108)*2;
+				if(a-10>=w&&a+10<=w){
+					alert("体重相对合适");
+				}else{
+					alert("体重不合适");
+				}
+			}
+			weight(104,168);
+			
+			//已知圆的半径，求出圆的面积。
+			function area(r){
+				var s = 3.14*r*r;
+				alert(s);
+			}
+			area(5);
+		</script>
+	</body>
+</html>

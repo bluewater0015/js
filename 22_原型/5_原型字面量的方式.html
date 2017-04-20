@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//原型字面量的方式
+			function Box(){
+				
+			}
+			Box.prototype = {
+				name: "晓晓",
+				age : 18,
+				show: function(){
+					console.log("原型字面量的方式");
+				}
+			}
+			var box = new Box();
+			//字面量创建的方式使用constructor属性不会指向实例对象，而会指向Object
+			
+			//console.log(box.constructor);
+			//console.log( box.constructor == Box );		//false
+			//console.log( box.constructor == Object);   //true
+			
+			function Box1(){
+				
+			}
+			Box1.prototype = {
+				constructor: Box1 //直接强制指向即可
+			}
+			var box1 = new Box1();
+			//console.log( box1.constructor == Box1 );  //true
+			
+			//内置对象的原型
+			//console.log(Array.prototype.sort);  //sort 就是Array类型的原型方法
+			//console.log(String.prototype.substring);
+			
+			//使用原型可以给已有引用类型添加方法
+			//如何给String类型添加一个方法
+			String.prototype.addString = function(){
+				return this + '被添加了！'; //this代表调用的字符串
+			}
+			console.log('天下'.addString());
+		</script>
+	</body>
+</html>

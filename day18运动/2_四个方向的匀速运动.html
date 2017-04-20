@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 500px;
+				margin: 200px auto;
+				position: relative;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 30px;
+				top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="sport">
+				
+			</div>
+			<button>向上</button>
+			<button>向右</button>
+			<button>向下</button>
+			<button>向左</button>
+		</div>
+		<script>
+			//匀速运动：让物体进行匀速运动
+			//实现红色div块从左向右匀速运动
+			var sport = document.getElementById("sport");
+			var btn = document.getElementsByTagName("button");
+			var timer = 0;
+			var speed1 = -10;
+			var speed2 = 10;
+			var speed3 = 10;
+			var speed4 = -10;
+			var sportLeft = 0;
+			var sportTop = 0;
+			//向上
+			btn[0].onclick = function(){
+				function move(){
+					//走过的距离是累加的
+					sportTop = sportTop + speed1;
+					sport.style.top = sportTop + "px";
+				}
+				timer = setInterval(move,100);
+			}
+			//向右
+			btn[1].onclick = function(){
+				function move(){
+					sportLeft = sportLeft + speed2;
+					sport.style.left = sportLeft + "px";
+				}
+				timer = setInterval(move,100);
+			}
+			btn[2].onclick = function(){
+				function move(){
+					sportTop = sportTop + speed3;
+					sport.style.top = sportTop + "px";
+				}
+				timer = setInterval(move,100);
+			}
+			btn[3].onclick = function(){
+				function move(){
+					sportLeft = sportLeft + speed4;
+					sport.style.left = sportLeft + "px";
+				}
+				timer = setInterval(move,100);
+			}
+		</script>
+	</body>
+</html>

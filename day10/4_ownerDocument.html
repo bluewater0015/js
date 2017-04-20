@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//ownerDocument属性返回该节点的文档对象根节点，
+			//返回的对象相当于document.
+			var box = document.getElementById("box");
+			console.log(box.ownerDocument===document);  //true
+			
+		</script>
+	</body>
+</html>

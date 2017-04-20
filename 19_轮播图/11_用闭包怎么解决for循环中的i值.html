@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				display:  block;
+				width: 100%;
+				height: 30px;
+				background: #f99;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">4</a>
+		<script>
+			//闭包
+			function test(){
+				var a = document.querySelectorAll("a");
+				for(var i=0;i<a.length;i++){
+					(function(index){
+						a[index].onclick = function(){
+							console.log("爱我就点我哦"+index);
+						}
+					})(i)
+				}
+			}
+			test();
+		</script>
+	</body>
+</html>

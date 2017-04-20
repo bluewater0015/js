@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			BOM的模块
+			---BOM的概念
+			---window对象
+			---延时调用
+			---Location对象
+			---history对象
+			---onScroll事件
+			1.BOM的概念(Browser object module)简称浏览器对象模型
+			提供了独立于内容而与浏览器窗口进行交互的对象,用于访问浏览器的功能
+			2.window对象
+			window是BOM的核心,window对象表示浏览器窗口的一个实例,每个浏览器
+			窗口都有一个window对象与之对应.
+			window对象是BOM的顶层(核心)对象,所有对象都是它延伸出来的.
+			
+			window对象的子对象:
+			document(核心)文档对象,让我们可以在js脚本中直接访问页面元素
+			history(重要)历史对象,包含窗口的浏览历史,可以实现后退.
+			location(重要)包含浏览器当前的地址信息,可以用来刷新本页面或
+			跳转到新页面.
+			
+			frames 框架对象,可以获取页面框架内容
+			screen 表示客户端显示屏幕的信息
+			navigator 导航对象,包含所有有关访问者浏览器的信息
+			
+			window对象的部分方法
+			alert(text);弹出提示框(警告框)
+			confirm()创建一个用户确认的对话框
+			prompt(text,defaultInput) 创建一个对话框要求用户输入信息
+			
+			open(url,name,[options]):打开一个新窗口并返回新window对象
+			setInterval()设置定时器
+			clearInterval()清除定时器
+			setTimeOut() 设置延时器
+			clearTimeOut()移除延时器
+			close() 关闭窗口
+			print()调用打印对话框
+			
+			window对象的属性和方法调用
+			window对象的属性和方法的调用方式,可以使用window.属性
+			window.方法()或者一般可以直接使用 属性和方法()的方式调用
+		*/
+			//提示框:确定和取消 confirm("请确定或者取消：")
+		/*	
+			if(confirm("请确定或者取消")){	 //按确定confirm返回true
+				alert("您已经点确定");  
+			}else{
+				alert("您已经点取消");
+			}
+		*/
+			
+			//带输入的提示框：提示文字和输入框默认值
+		/*	
+			var num =  prompt("请输入一个数：","a");
+			alert(num);//点击确定 返回num 点击取消 返回null
+		*/
+			//window.open()方法 可以导航到一个特定的URL
+			//也可以打开一个新的浏览器窗口，一般可以接收三个参数：
+			
+			//1.要加载的URL
+			//2.窗口的名称 或者 窗口的目标
+			//3.一个特性的字符串
+			
+			//新建页面并打开百度
+			//open("http://www.baidu.com");
+			//open("http://www.baidu.com","baidu");
+			//open("http://www.baidu.com","_parent");//在本页窗口打开
+			
+			//总结:不命名每次都打开一个新窗口
+			//命名第一次打开新窗口,之后一直在此窗口加载
+			
+			//open() 新建窗口
+			//open("http://www.baidu.com","baidu","width=400,height=400,top=400,left=400");
+			
+			//总结：第3个参数 是width=200 是等号而不是冒号
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				left: 200px;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<button>向上</button>
+		<button>向右</button>
+		<button>向下</button>
+		<button>向左</button>
+		<div id="box">
+			
+		</div>
+		<script>
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button");
+			//思路：
+			//1.给每个按钮添加点击事件
+			//2.封装函数，获取属性值
+			//3.封装move函数，进行运动
+			
+			//给每个按钮添加点击事件
+			for(var i=0;i<btn.length;i++){
+				btn[i].index = i;
+				btn[i].onclick = function(){
+					//index 属性可以返回下拉列表中选项的索引位置
+					var index = this.index;
+					//向上
+					if(index == 0){
+						move(box,"top",20);
+					//向右
+					}else if(index == 1){
+						move(box,"left",400);
+					//向下
+					}else if(index == 2){
+						move(box,"top",400);
+					//向左
+					}else{
+						move(box,"left",20);
+					}
+					
+				}
+			}
+			//获取属性值的元素
+			/*
+			 * 	obj 获取属性值的元素
+			 * 	attr 获取属性值
+			 */
+			function getStyleAttr(obj,attr){
+				//非IE浏览器
+				if(window.getComputedStyle){
+					//因为传过来的是字符串，所以用attr
+					return getComputedStyle(obj,null)[attr];
+				}else{
+					return currentStyle[attr];
+				}
+			}
+			
+			//运动函数
+			/*
+			 * obj  元素
+			 * attr 属性值
+			 * target 目标值
+			 */
+			function move(obj,attr,target){
+				//清除之前的定时器
+				clearInterval(obj.timer);
+				//开启新的定时器
+				obj.timer = setInterval(function(){
+					//1.获取当前值
+					var current = parseInt(getStyleAttr(obj,attr));
+					//2.速度
+					var speed = (target - current)/8;
+					speed = speed >0 ? Math.ceil(speed):Math.floor(speed);
+					//3.判断临界值
+					//console.log(current);
+					if(current == target){
+						clearInterval(obj.timer);
+						return ;
+					}
+					console.log(speed);
+					//4.运动
+					obj.style[attr] = current + speed + "px";
+				},30)
+			}
+		</script>
+	</body>
+</html>

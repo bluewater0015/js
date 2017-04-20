@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			body{
+				background: #000;
+			}
+			#menu{
+				width: 100px;
+				height: 115px;
+				border: 1px solid #fff;
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#menu li{
+				border-bottom: 1px solid #fff;
+				color: #fff;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="menu">
+			<li>剪切</li>
+			<li>复制</li>
+			<li>粘贴</li>
+		</ul>
+		<script>
+			//阻止右键菜单操作
+			var menu = document.getElementById("menu");
+			var li = document.getElementsByTagName("li");
+			document.oncontextmenu = function(evt){
+				//alert("右键被按下");
+				//menu.style.left = menu.offsetLeft + "px";
+				//menu.style.top = menu.offsetTop + "px";
+				var evt = evt || event;
+				menu.style.left = evt.clientX + "px";
+				menu.style.top = evt.clientY + "px";
+				menu.style.display = "block";
+				
+				for(var i=0;i<li.length;i++){
+					li[i].index = i;
+					li[i].onmouseover = function(){
+						this.style.background = "#ccc";
+					}
+					li[i].onmouseout = function(){
+						this.style.background = "#000";
+					}
+				}
+			
+				
+				
+				return false;
+				
+			}
+		</script>
+	</body>
+</html>

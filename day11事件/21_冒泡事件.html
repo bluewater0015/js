@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 500px;
+				height: 500px;
+				padding: 10px 20px;
+				border: 1px solid #ccc;
+			}
+			ul{
+				width: 300px;
+				height: 300px;
+				padding: 10px 20px;
+				border: 1px solid #ccc;
+			}
+			li{
+				width: 200px;
+				height: 200px;
+				padding: 10px 20px;
+				
+				border: 1px solid #ccc;
+			}
+			a{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				padding: 10px 20px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div>冒泡1
+			<ul>冒泡2
+				<li>冒泡3
+					<a href="#">冒泡4</a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			//事件的冒泡
+			//是指在页面上层节点触发的事件会传给下层节点，这种传递的方式
+			//叫事件的冒泡传递
+			
+//			document.onclick = function(){
+//				console.log("我是document");
+//			}
+			var div =  document.getElementsByTagName("div")[0];
+			var ul = document.getElementsByTagName("ul")[0];
+			var li = document.getElementsByTagName("li")[0];
+			console.log(li);
+			var a = document.getElementsByTagName("a")[0];
+			
+			li.onclick = function(evt){
+				var evt = evt  || event;
+				//evt.stopPropagation();
+				//evt.cancelBubble = true;
+				//alert("我是li");
+				li.style.background = "yellow";
+				//evt.stopPropagation();
+				evt.cancelBubble = true;
+			}
+			
+			ul.onclick = function(evt){
+				var evt = evt  || event;
+				evt.stopPropagation();
+				evt.cancelBubble = true;
+				//alert("我是ul");
+				ul.style.background = "red";
+			}
+			div.onclick = function(){
+				div.style.background = "blue";
+				//alert("我是div");
+			}
+		</script>
+	</body>
+</html>

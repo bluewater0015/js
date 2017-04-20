@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul,li {
+				list-style: none;
+			}
+			
+			body {
+				background: #ccc;
+			}
+			
+			#box {
+				width: 150px;
+				height: 20px;
+				border: 1px solid white;
+				margin-left: 50px;
+			}
+			
+			#list {
+				width: 100px;
+				height: 150px;
+				background: black;
+				border: 1px solid white;
+				margin-left: 50px;
+				display: none;
+			}
+			
+			#list li {
+				width: 100px;
+				height: 29px;
+				color: white;
+				border-bottom: 1px dashed white;
+				text-align: center;
+				line-height: 30px;
+				cursor:  pointer;
+			}
+			
+		</style>
+		<script>
+			
+			/*
+			 制作下拉菜单: 
+       1, 最开始效果如左图1
+       2, 鼠标滑过”请选择游戏名称”区域时,效果如图2
+       3, 鼠标滑过下拉选项区域时, 让下拉选项可以继续显示,移开后隐藏
+       4, 鼠标在选项中滑过时, 显示效果图3
+       5, 选择某一项, 将顶部的名称改成你选择的游戏名称
+			*/
+			onload = function() {
+				var oBox = document.getElementById("box");
+				var oList = document.getElementById("list");
+				var aLi = oList.getElementsByTagName("li");
+				
+				//鼠标移入
+				oBox.onmouseover = oList.onmouseover = function() {
+					oList.style.display = "block"; //显示游戏菜单
+				}
+				//鼠标移出
+				oBox.onmouseout = oList.onmouseout = function() {
+					oList.style.display = "none"; //隐藏游戏菜单
+				}
+				
+				//遍历aLi
+				for (var i=0; i<aLi.length; i++) {
+					
+					//鼠标移入某个Li
+					aLi[i].onmouseover = function() {
+						this.style.background = "gray";
+					}
+					//鼠标移出某个Li
+					aLi[i].onmouseout = function() {
+						this.style.background = "black";
+					}
+					
+					//点击事件
+					aLi[i].onclick = function() {
+						oBox.innerHTML = this.innerHTML; //更改名称
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">请选择游戏名称..</div>
+		<ul id="list">
+			<li>英雄联盟</li>
+			<li>魔兽世界</li>
+			<li>大话西游</li>
+			<li>天龙八部</li>
+			<li>九阴真经</li>
+		</ul>
+	</body>
+</html>

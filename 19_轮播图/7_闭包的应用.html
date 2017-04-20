@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				width:100px;
+				height: 30px;
+				background: red;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			//闭包的应用
+			//在循环中直接找到元素的索引
+			var li = document.getElementsByTagName("li");
+			//console.log(li);
+			for(var i=0;i<li.length;i++){
+				(function(index){
+					li[index].onclick = function(){
+						console.log(index);
+					}
+				})(i)
+			}
+			
+		</script>
+	</body>
+</html>

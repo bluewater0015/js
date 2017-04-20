@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="hour">00</span>：<span id="minute">00</span>：<span id="second">00</span>
+		<button id="btn">开始计时</button>
+		<script>
+			//实现秒表功能，显示时分秒，点击按妞开始计时
+			//innerHTML 修改标签内的文本
+			var btn = document.getElementById("btn");
+			var hour = document.getElementById("hour");
+			var minute = document.getElementById("minute");
+			var second = document.getElementById("second");
+			var timer;
+			btn.onclick = function(){
+				timer = setInterval(function(){
+					second.innerHTML++;
+					if(second.innerHTML%60==0){
+						second.innerHTML = 00; 
+						second.innerHTML = second.innerHTML < 10 ? '0'+second.innerHTML:second.innerHTML; 
+						minute.innerHTML++;
+						if(minute.innerHTML%60==0){
+							minute.innerHTML = 00;
+							minute.innerHTML = minute.innerHTML < 10?'0'+second.innerHTML:second.innerHTML;
+							hour.innerHTML++;
+						}
+					}
+				},100)
+			}
+		</script>
+	</body>
+</html>

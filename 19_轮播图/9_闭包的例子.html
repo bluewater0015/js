@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				display: block;
+				width: 100%;
+				height:30px;
+				background: #f99;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">4</a>
+		<script>
+			//闭包
+			function example(){
+				var a = document.querySelectorAll("a");
+				//console.log(a);
+				for(var i=0;i<a.length;i++){
+					//a[i].index = i;
+					a[i].onclick = function(){
+						//var index = this.index;
+						//console.log("点击的是："+index+"个");// 0 1 2 3
+						console.log("点击的是："+i+"个");  //点击的是第四个
+					}
+				}
+			}
+			//example();  //点击的是第四个
+			//闭包函数的特点
+			//1.有全局变量不释放内存的特点
+			//2.有局部变量无法被外部变量访问的特点
+		/*	//3.避免全局变量的污染，和全局变量不同，闭包中的变量无法被外部使用
+			
+			function example1(){
+				var a = document.querySelectorAll("a");
+				for(var i=0;i<a.length;i++){
+					
+				}
+			}
+		*/
+		
+			function num(count){
+				return function(){
+					console.log("看看你点的是谁："+count);
+				}
+			}
+			
+			function test(){
+				var a = document.querySelectorAll("a");
+				//console.log(a);
+				for(var i=0;i<a.length;i++){
+					a[i].onclick = new num(i);
+				}
+			}
+			test();
+			
+			
+			
+		</script>
+	</body>
+</html>

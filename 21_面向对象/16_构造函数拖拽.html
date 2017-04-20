@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f99;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//用构造函数实现拖拽
+			function Drag(id){
+				//属性
+				this.box = document.getElementById(id);
+				//方法
+				//拖拽开始
+				var self = this; //保存this
+				//console.log(self);
+				this.startMove = function(x,y){
+					//console.log(this);
+					this.disX = x - this.box.offsetLeft;
+					this.disY = y - this.box.offsetTop;
+					document.onmousemove = function(e){
+						var e = e || event;
+						self.moving(e.clientX,e.clientY);
+					}
+					document.onmouseup = function(){
+						self.endMove();
+					}
+				}
+				//拖拽的过程
+				this.moving = function(x,y){
+					this.box.style.left = x - this.disX + "px";
+					this.box.style.top = y - this.disY + "px";
+				}
+				//拖拽结束
+				this.endMove = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+				//给拖拽元素添加一个按压事件
+				this.box.onmousedown = function(e){
+					var e = e || event;
+					self.startMove(e.clientX,e.clientY);
+				}
+			}
+			var objDrag = new Drag("box");
+		</script>
+	</body>
+</html>

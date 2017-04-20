@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//原型: prototype
+			//每个函数都存在一个对象: prototype
+			//作用: 可以让同一个构造函数所创建的不同对象都可以共享原型中的属性和方法
+			
+			
+			//构造函数Person
+			function Person(){
+			}
+			//在构造函数的原型对象添加了属性:name,age, 和方法:show
+			Person.prototype.name = "张三";
+			Person.prototype.age = 33;
+			Person.prototype.show = function(){
+				console.log("是原型中的方法show");
+			}
+			
+			//对象1
+			var person1 = new Person();
+			console.log(person1.name); //张三
+			console.log(person1.age); //33
+			person1.show(); //是原型中的方法show
+			
+			//对象2
+			var person2 = new Person();
+			console.log(person2.name);
+			console.log(person2.age);
+			person2.show();
+			
+			console.log(person1.show == person2.show);  //true
+			
+			
+			//constructor: 构造器, 原型对象的属性,值是构造函数本身 
+			//Person.prototype: Person的原型对象
+			console.log(Person.prototype.constructor == Person); //true
+			
+			//实例对象: person1, person2
+			//__proto__ : 是实例对象的属性, 获取该实例对象所在构造函数的原型对象
+			console.log(person1.__proto__ == Person.prototype); //true
+			
+			console.log(person1.__proto__.name); //张三
+			console.log(Person.prototype.name); //张三
+			console.log(person1.name);  //张三
+			
+			//isPrototypeOf(): 判断实例对象是否可以使用该原型对象
+			console.log(Person.prototype.isPrototypeOf(person1)); //true
+			
+			
+			//对象的属性或方法的查找方式:
+			//1, 首先去查找实例对象(构造函数中)是否拥有该属性或方法, 如果有则直接返回该属性的值
+			//2, 如果1中没有查找到, 则然后会去原型对象中查找是否存在该属性或方法,如果有则返回该原型对象中的属性值,否则返回undefined 
+			//这里的name查找方式: 先查找实例对象person1中是否有name属性, 发现有,所以直接返回该属性值:"李四";
+			
+			person1.name = "李四";
+			console.log(person1.name); //李四
+			console.log(person1.__proto__.name); //张三
+			
+			//这里的age查找方式: 先查找实例对象person1中是否存在age属性, 发现没有, 
+			//所以就去原型对象Person.prototype中查找,发现有,所以返回该属性值:33
+			console.log(person1.age); //33
+			
+			
+			//delete: 删除对象的属性
+			delete person1.name;
+			console.log(person1.name); //张三, 原型对象中的name值
+			
+			//hasOwnProperty() : 判断实例对象person1中是否存在某属性name
+			console.log(person1.hasOwnProperty("name")); //false
+			
+			//in : 判断某属性name是否存在某实例对象或者原型对象中
+			console.log("name" in person1); //true
+			
+			//判断某属性是否属于原型对象中
+			function isInPrototype(obj, attr) {
+				return (attr in obj) && !obj.hasOwnProperty(attr);				
+			}
+			console.log(isInPrototype(person1, "name")); //true
+			console.log(isInPrototype(person1, "age")); //true
+			
+			
+			*/
+			
+			//原型的字面量赋值方式
+			function Person(){	
+			}
+			//给原型对象赋一个值
+			Person.prototype = {
+				constructor: Person, //强制将constructor属性的值设置为Person
+				name:"张三",
+				age:33,
+				show:function(){
+					console.log("字面量赋值的原型对象中的方法show");
+				}
+			};
+			//实例对象
+			var person = new Person();
+			console.log(person.name); //张三
+			console.log(person.age); //33
+			person.show();
+			
+			console.log(Person.prototype.constructor == Person); //true
+			console.log(Person.prototype.constructor == Object); //false
+			
+			
+			//原型的作用: 可以给已有的内置函数扩展属性或方法
+			/*
+			function String(){
+			}
+			var str = new String()
+			
+			function Array(){
+			}
+			var arr = new Array()
+			*/
+			console.log(Array.prototype.sort); //function sort() { [native code] }
+			console.log(String.prototype.substring); //function substring() { [native code] }
+			
+			
+			
+			//给String扩展方法: addString
+			//在String的原型对象中添加方法addString, 表示使用字符串对象都可以调用(共享)该方法addString
+			String.prototype.addString = function(name) {
+				//console.log("addString");
+				console.log(this + " love " + name);
+			}
+			var str = new String("hello");
+			str.addString();
+			"张三".addString("李四"); //张三 love 李四
+			"王五".addString("赵六"); //王五 love 赵六
+			
+			
+			
+			//单独使用原型的问题:
+			//1, 无法初始化
+			//2, 共享的属性如果被其中一个对象改变, 则会影响其他对象对该属性的使用
+			function Person(){}
+			Person.prototype = {
+				constructor: Person,
+				name: "李四",
+				age: 44,
+				family: ["爸爸", "妈妈", "哥哥"],
+				show: function(){}
+			}
+			//小李
+			var xiaoLi = new Person();
+			console.log(xiaoLi.family); //[爸爸,妈妈,哥哥]
+			xiaoLi.family.push("妹妹");
+			console.log(xiaoLi.family); //[爸爸,妈妈,哥哥,妹妹]
+			
+			//小王
+			var xiaoWang = new Person();
+			console.log(xiaoWang.family); //[爸爸,妈妈,哥哥,妹妹]
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

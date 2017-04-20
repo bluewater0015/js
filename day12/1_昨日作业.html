@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			
+			ul, li {
+				list-style: none;
+			}
+			
+			li {
+				float: left;
+				border: 1px solid gray;
+				margin-left: 10px;
+			}
+			#bigImg {
+				border: 1px solid gray;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				display: none;
+			}
+			
+			
+		</style>
+		
+		<script>
+			
+			onload = function() {
+				var oList = document.getElementById("list");
+				var aImg = oList.getElementsByTagName("img");
+				
+				var oBigImg = document.getElementById("bigImg"); //大图
+				
+				for (var i=0; i<aImg.length; i++) {
+					
+					//鼠标移入
+					aImg[i].onmouseover = function(evt) {
+						var oEvent = evt || event;
+					
+						console.log("aImg[i].onmouseover");
+						
+						oBigImg.style.display = "block"; //显示大图
+						
+						oBigImg.style.left = oEvent.clientX + 20 + "px";
+						oBigImg.style.top = oEvent.clientY + 20 + "px";
+						
+						//更换图片
+						oBigImg.src = this.src.replace(".jpg", "_big.jpg"); 
+						
+						//把当前小图的边框变成红色
+						this.parentNode.style.border = "1px solid red";
+					}
+					
+					//鼠标移动
+					document.onmousemove = function(evt) {
+						var oEvent = evt || event;
+						oBigImg.style.left = oEvent.clientX + 20 + "px";
+						oBigImg.style.top = oEvent.clientY + 20 + "px";
+					}
+					
+					//鼠标移出
+					aImg[i].onmouseout = function(evt) {
+						console.log("aImg[i].onmouseout");
+					
+						oBigImg.style.display = "none"; //隐藏大图
+						
+						//把当前移出的小图边框改回灰色
+						this.parentNode.style.border = "1px solid gray"
+					}
+					
+				}
+				
+//				oBigImg.onmouseover = function(evt) {
+//					var oEvent = evt || event;
+//					console.log("oBigImg.onmouseover");
+//					
+//					//阻止冒泡
+//					oEvent.cancelBubble = true;
+//					oEvent.stopPropagation(); 
+//				}
+//				
+//				oBigImg.onmouseout = function(evt) {
+//					var oEvent = evt || event;
+//					console.log("oBigImg.onmouseout");
+//					
+//					//阻止冒泡
+//					oEvent.cancelBubble = true;
+//					oEvent.stopPropagation(); 
+//				}
+				
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<ul id="list">
+			<li><img src="img/shirt_1.jpg" /></li>
+			<li><img src="img/shirt_2.jpg" /></li>
+			<li><img src="img/shirt_3.jpg" /></li>
+			<li><img src="img/shirt_4.jpg" /></li>
+		</ul>
+		<img id="bigImg" src="img/shirt_1_big.jpg"/>
+	</body>
+</html>

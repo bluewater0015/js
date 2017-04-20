@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+		</ul>
+		<script>
+			//replaceChild(替换之后的元素，要被替换的元素)
+			//可以把节点替换成指定的节点
+			var ul = document.getElementById("ul");
+			var h2 = document.createElement("h2");
+			var li1 =ul.childNodes[1];
+			console.log(li1);
+			ul.replaceChild(h2,li1);
+			
+			
+		</script>
+	</body>
+</html>
+

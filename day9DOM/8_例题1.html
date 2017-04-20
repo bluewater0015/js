@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" style="width:200px;height:200px;background:#f99;">
+			一起
+		</div>
+		<button id="btn">改变颜色</button>
+		<script>
+			//有一个装有颜色的数组["red","blue","yellow","green","black","orange"];
+			//点击button启动定时器,每1s给它换一个颜色
+			var box = document.getElementById("box");
+			//console.log(box);
+			var btn = document.getElementById("btn");
+			//console.log(btn);
+			
+			btn.onclick =function(){
+				var i = 0;
+				function color(){
+					var colors = ["red","blue","yellow","green","black","orange"];
+					box.style.background = colors[i%colors.length];
+					i++;
+				}
+				setInterval(color,1000);
+			}
+		</script>
+	</body>
+</html>

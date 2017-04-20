@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//闭包
+			//匿名函数：就是没有函数名字的函数
+			//普通函数
+		/*	
+			function m1(){
+				console.log("aa");
+			}
+			m1();
+			
+			var bb = function(){
+				console.log("bb");
+			}
+			bb();  //调用匿名函数
+			
+			(function(){
+				console.log("我是匿名函数");
+			})()
+		*/
+			//函数中包含匿名函数
+			function bb(){
+				return function(){
+					console.log("cc");  //cc
+				}
+			}
+			//bb函数中的cc函数
+			//bb()();
+			
+			
+			//匿名函数的自运行
+			//声明函数的方式1：普通函数
+			function m2(){
+				console.log("我是普通函数");
+			}
+			//m2();  //需要主动调用
+			
+			//声明函数的方式2：匿名函数的自运行
+			//(匿名函数)()
+			//(function(){
+			//	console.log("我会自动运行的");
+			//})()
+			
+			//传参1
+			var m4 = (function(){
+				return function bb(name){ //返回一个函数
+					console.log(name); //wangxiao
+				}
+			})()
+			//m4("wangxiao");   //传一个参数进来
+			//传参2
+			var m5 = (function(a){
+				return function cc(b){
+					console.log(a+b);  //7
+				}
+			})(3)  //把3传给a
+			m5(4); //把4传给b
+			
+			
+		</script>
+	</body>
+</html>

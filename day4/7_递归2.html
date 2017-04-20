@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//输出一个n，打印n个hello world
+			function ss(){
+				document.write("hello world");
+			}
+			function star(s){
+				if(s<=1){
+					return 1;
+				}else{
+					return s+star(s-1);
+				}
+			}
+			console.log(star(10));
+		</script>
+	</body>
+</html>

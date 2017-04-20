@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box{
+				width: 500px;
+				height: 200px;
+				background: #f99;
+				margin: 10px auto;
+				position:relative;
+				overflow: hidden;
+			}
+			#list1{
+				width: 400px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				/*float: left;*/
+			}
+			#list2{
+				width: 100px;
+				height: 200px;
+				background: yellow;
+				/*float: right;*/
+				position: absolute;
+				top: 0;
+				left: 400px;
+			}
+			.back{
+				background: #f00;
+			}
+			#list2 li{
+				width: 100px;
+				height: 70px;
+				color: #fff;
+				font-size: 20px;
+				line-height: 70px;
+				text-align: center;
+				curor: pointer;
+			}
+			img{
+				display:block;
+				width: 400px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list1">
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+			</ul>
+			<ul id="list2">
+				<li class="back">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<button>上一页</button>
+		<button>下一页</button>
+		<script src="move1.js"></script>
+		<script>
+			//思路分析：
+		/*	
+			1.添加一个定时器 setInterval(move,3000)
+			2.封装函数 move,调用startMove(obj,attr,target,fn);
+			3.封装next函数
+		*/
+			var oBox = document.getElementById("box");
+			//图的ul
+			var oList1 = document.getElementById("list1");
+			//按钮的ul
+			var oList2 = document.getElementById("list2");
+			//图的列表li
+			var oLi1 = oList1.getElementsByTagName("li");
+			//按钮的列表li
+			var oLi2 = oList2.getElementsByTagName("li");
+			var btn = document.getElementsByTagName("button");
+			var i = 0;   //图片的下标
+			//var j = 0;
+			var iHeight = oLi1[0].offsetHeight;
+			//console.log(iHeight);  //203
+			oList1.innerHTML += oList1.innerHTML;
+			//console.log(oLi1.length);
+			var timer = setInterval(move,3000);
+			function move(){
+				i++;
+				var iTop = -i * iHeight;
+				//console.log(iTop);
+				startMove(oList1,"top",iTop,next);
+				
+				//改变按钮的颜色状态
+				for(var j=0;j<oLi2.length;j++){
+					if(i == j){
+						oLi2[j].className = "back";  //改成选择状态
+					}else{
+						oLi2[j].className = "";		//未选择状态
+					}
+				}
+				if(i == oLi1.length/2){
+					oLi2[0].className = "back"; //如果是第四张图片(下标为3的图片)
+												//则其实也是选中的第一张图片
+				}
+			}
+			/*
+			 * 	next()函数
+			 * 	作用：每次动画完成之后 瞬间到第一张图
+			 */
+			function next(){
+				//console.log("aa");
+				if(i >= oLi1.length/2){
+					oList1.style.top = 0;
+					i=0;
+				}
+			}
+			
+			// 给三个按钮添加点击事件 
+			for(var j=0;j<oLi2.length;j++){
+				oLi2[j].index = j;
+				oLi2[j].onclick = function(){
+					i = this.index - 1;//因为在move函数中i++了，所以要-1
+					//console.log(i); // -1 0 1  个人认为在move函数中一加 就变为 0 1 2
+					btnMove();  //点击之后移动的函数
+				}
+			}
+			/*
+			 * 	btnMove()函数
+			 * 	点击按钮之后移动
+			 */
+			function btnMove(){
+				move();   //立刻移动图片
+				clearInterval(timer);
+				timer = setInterval(move,3000);
+			}
+			//上一页
+			btn[0].onclick = function(){
+				if(i == 0){	//如果当前显示第一张图
+					//改变i的值为第四张图的前一张的前一张
+					i = (oLi1.length/2) - 2;   //i=6/2 -2 = 1
+					//瞬间移动到第四张图
+					//console.log(-oLi1.length/2); //-3
+					//console.log(iHeight);  //200
+					oList1.style.top = - oLi1.length/2 * iHeight + "px";
+					//console.log(parseInt(oList1.style.top));
+				}else{
+					i = i - 2; //如果为第二张 下标为1 i=-1
+					//如果是第三张 下标为2 i= 2-2 = 0
+				}
+				btnMove();
+			}
+			//下一页
+			btn[1].onclick = function(){
+				next();   //如果超出了第四张 立马到第一张
+				btnMove();
+			}
+		</script>
+	</body>
+</html>

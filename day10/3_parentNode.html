@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">0
+			<li id="li1">
+				1
+			</li>2
+			<li id="li2">
+				3
+			</li>4
+		</ul>
+		<script>
+			//parentNode previousSibling nextSibling
+			//parentNode 属性返回该节点的父节点
+			var ul = document.getElementById("ul");
+			var li1 = document.getElementById("li1");
+			//console.log(li1.parentNode);
+			//previousSibling  返回该节点的前一个同级节点
+			//console.log(li1.previousSibling);  //"0"
+			//nextSibling 返回该节点的后一个同级节点
+			//console.log(li1.nextSibling);  //"2"
+			
+			console.log(ul.lastChild.previousSibling);//<li id="li2">3</li>
+			
+			console.log(ul.firstChild.nextSibling);////<li id="li2">1</li>
+		</script>
+	</body>
+</html>

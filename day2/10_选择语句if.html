@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//选择结构if
+			//1.if:单分支选择结构
+			//输出任意三个数,由大到小输出
+			
+		
+			/*	var temp = 0;
+				var a = 5,b=1,c=2;
+				if(a<b){
+					temp = a;
+					a = b;
+					b = temp;
+				}
+				if(b<c){
+					temp = b;
+					b = c;
+					c = temp;
+				}
+				if(a<c){
+					temp = a;
+					a = c;
+					c = temp;
+				}
+				console.log(a+">"+b+">"+c);
+			*/
+		
+		/*	
+			function compare(a,b,c){
+			    if (a > b) {
+			        if (a > c) {
+			            return a;
+			        }
+			        return c;
+			    } else {
+			        if (b > c) {
+			            return b;
+			        }
+			        return c;
+			    }
+			    console.log(a+">"+b+">"+c);
+			    
+			}
+		*/
+			//compare(5,1,2);
+			
+			//var a=2,b=1,c=5;
+			//a>b 选择(a>c?a:c)
+			//a<c 选 c(最大的)
+			//a>b?(a>c?a:c):(b>c?b:c);
+			//var temp = 0;
+			
+			//console.log(c+">"+a+">"+b);	
+			//console.log(a+">"+b+">"+c);	
+		/*	
+			2.if else 双分支选择结构 
+			求两个数的最大值
+		*/
+		/*
+			function max(a,b){
+				if(a>b){
+					return a;
+				}else{
+					return b;
+				}
+			}
+			console.log(max(3,5));
+		*/
+			
+			//输入一个数,输出这个数的绝对值
+		/*	
+			function numabs(a){
+				if(a<0){
+					var b = Math.abs(a);
+				}
+				return b;
+			}
+			alert(numabs(-10));
+		*/
+		/*	
+			3.if else 多分支选择结构
+			设计一个具有+ - * / % 的简单计算器
+		*/
+		
+			var num1 = parseInt(prompt("请输入一个数：\n"));
+			var sign = prompt("请输入一个符号");
+			var num2 = parseInt(prompt("请输入一个数：\n"));
+			if(sign=="+"){
+				alert(num1 + num2);
+			}else if(sign=="-"){
+				alert(num1 - num2);
+			}else if(sign=="*"){
+				alert(num1 * num2);
+			}else if(sign=="/"){
+				if(num2 == 0){
+					alert("除数不能为0");
+				}else{
+					alert(num1/num2);
+				}
+			}else if(sign=="%"){
+				alert(num1 % num2);
+			}else{
+				alert("您输入有误！");
+			}
+		//总结： 1.sign=="%"  一定要是等号 而不是赋值
+			//	 2.需要判断(除数是不能为0)
+			//   3.一定要加parseInt 不然加法会拼接在一起
+		/*	
+			var one = Number(prompt("请输入一个数字"));
+			var fuHao = prompt("请输入一个运算符");
+			var two = Number(prompt("请输入一个数字"));
+	
+			if(fuHao == "+") {
+				alert(one+two);
+			} else if(fuHao == "-") {
+				alert(one-two);
+			} else if(fuHao == "*") {
+				alert(one*two);
+			} else if(fuHao == "/") {
+				if(two == 0) {
+					alert("除数不能为0");
+				} else {
+					alert(one/two);
+				}
+			} else if(fuHao == "%"){
+				alert(one%two);
+			} else {
+				alert("您输入的运算符不合法");
+			}
+		*/
+			
+		</script>
+	</body>
+</html>

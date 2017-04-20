@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//Date对象代表日期
+			//Date
+			//类型使用UTC
+			
+			//创建一个日期对象,使用new运算符和Date构造方法(构造函数)即可
+			//var d = new Date();
+			//console.log(d);//Mon Jan 23 2017 11:46:33 GMT+0800 (中国标准时间)
+			
+			//在调用Date构造方法而不传参数的情况下，新建的对象自动获取当前的
+			//时间和日期
+			
+			//创建日期对象并指定时间
+			//var d = new Date("2016,06,22");
+			//console.log(d);	//Wed Jun 22 2016 00:00:00 GMT+0800 (中国标准时间)
+			
+			//var d = new Date("2016-12-22");
+			//console.log(d);//Thu Dec 22 2016 08:00:00 GMT+0800 (中国标准时间)
+			
+			//var d = new Date('2002/02/02 02:02:02');
+			//console.log(d);//Sat Feb 02 2002 02:02:02 GMT+0800 (中国标准时间)
+			
+			//var d = new Date("2016/08/22");
+			//console.log(d);	//Mon Aug 22 2016 00:00:00 GMT+0800 (中国标准时间)
+			
+			var d = new Date('2016,06,22,14:22:22');
+			console.log(d);//Wed Jun 22 2016 14:22:22 GMT+0800 (中国标准时间)
+			
+			var d = new Date('2016,06,22 14:22:22');
+			console.log(d);//Wed Jun 22 2016 14:22:22 GMT+0800 (中国标准时间)
+			
+			var d = new Date('2016/12/2 14:22:22');
+			console.log(d);//Fri Dec 02 2016 14:22:22 GMT+0800 (中国标准时间)
+		</script>
+	</body>
+</html>

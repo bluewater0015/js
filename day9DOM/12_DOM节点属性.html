@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" title="美女" name="xiao">
+			一起
+		</div>
+		<script>
+			//DOM节点的属性
+			//DOM节点可以分为：元素节点 属性节点  文本节点
+			//这些节点有3个常用的属性
+			//分别为：nodeName nodeType nodeValue
+			
+			var box = document.getElementById("box");
+			console.log(box);  //节点元素  null
+			
+			var box1 = box.getAttribute("title");
+			console.log(box1);  //美女
+			
+			
+			
+			//getAttributeNode() 方法 从当前元素中通过名称获取属性节点
+			var box2 = box.getAttributeNode("name").nodeValue;
+			console.log(box2);//xiao
+			
+			
+		</script>
+	</body>
+</html>

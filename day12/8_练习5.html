@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function() {
+				//图片
+				var oImg = document.getElementsByTagName("img")[0];
+				
+				//每次拖拽最后的图片名称下标
+				var lastIndex = 0; //全局变量
+				
+				//拖拽
+				//1, onmousedown
+				document.onmousedown = function(evt) {
+					var oEvent = evt || event;
+					
+					//记录鼠标点击时候的x值
+					var startX = oEvent.clientX;
+					
+					var index = 0;
+					//2, onmousemove
+					document.onmousemove = function(evt) {
+						var oEvent = evt || event;
+						
+						//鼠标移动过程中的位置和最开始点击的位置的x方向的距离
+						//var disX = oEvent.clientX - startX;
+						var disX = startX - oEvent.clientX;
+						
+						//图片名称的下标
+						var imgIndex = (77*6 + parseInt(disX/10) + lastIndex) % 77;
+						
+						//改变图片名称
+						oImg.src = "images/images4/" + imgIndex + ".jpg";
+						
+						//保存每次拖拽最后的图片名称的下标
+						index = imgIndex;
+					}
+					
+					//3, onmouseup
+					document.onmouseup = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						lastIndex = index;
+					}
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<img src="images/images4/0.jpg" />
+	</body>
+</html>

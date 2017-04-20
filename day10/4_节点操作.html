@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				//write: 会在页面显示内容, 会覆盖之前的页面内容
+				//document.write("<p>我是个好人</p>");
+				
+				
+				//createElement(): 创建一个元素节点
+				var divNode = document.createElement("div");
+				console.log(divNode); //[object HTMLDivElement]	
+				// <div></div>
+				
+				//appendChild(): 将某个节点添加到子节点的末尾
+				//body节点
+				var oBody = document.getElementsByTagName("body")[0];
+				oBody.appendChild(divNode); //将divNode节点添加到oBody的子节点末尾
+				
+				//createTextNode() :创建文本节点
+				var textNode = document.createTextNode("我是个好人!");
+				
+				//把文本节点添加到元素节点中
+				divNode.appendChild(textNode);
+				
+				
+				//创建节点
+				function createMyElement(tagName, text) {
+					//创建一个元素节点
+					var elementNode = document.createElement(tagName); 
+					//创建一个文本节点
+					var textNode = document.createTextNode(text);
+					//把文本节点追加到元素节点的子节点末尾
+					elementNode.appendChild(textNode);
+					
+					return elementNode;
+				}
+				
+				//创建一个节点: <p>段落</p>
+				var pNode = createMyElement("p", "段落");
+				oBody.appendChild(pNode); //添加到oBody的子节点末尾
+				
+				
+				//insertBefore(): 插入到指定节点前面
+				//<p>段落2</p>
+				var pNode2 = createMyElement("p", "段落2");
+				oBody.insertBefore(pNode2, oBody.lastChild);
+				
+				//replaceChild(): 替换子节点
+				//<p>段落3</p>
+				var pNode3 = createMyElement("p", "段落3");
+				oBody.replaceChild(pNode3, oBody.lastChild);
+				
+				//cloneNode(): 复制节点
+				// 参数: 如果是true: <p>段落3</p>
+				//       如果是false: <p></p>
+				var cloneNode = oBody.lastChild.cloneNode(true); 
+				console.log(cloneNode.innerHTML); //段落3
+				
+				//removeChild(): 删除子节点
+				oBody.removeChild(oBody.firstChild.nextSibling);
+				//oBody.removeChild(oBody.firstChild);
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

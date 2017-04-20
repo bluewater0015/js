@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//封装一个函数，带两个参数(元素节点的名称，该节点的文本内容)
+			//返回一个带文本内容的元素节点
+			
+			//思路：
+			//1.function scan(nodeName,nodeText){}
+			//2.函数处理
+			//3.调用函数
+			var box = document.getElementById("box");
+			function nodeContent(nodeName,nodeText){
+				//创建一个元素节点
+				var nodeName = document.createElement(nodeName);
+				//创建一个文本节点
+				var nodeText = document.createTextNode(nodeText);
+				//把文本节点追加到元素节点中
+				nodeName.appendChild(nodeText);
+				//box.appendChild(nodeName);
+				return nodeName;
+			}
+			//nodeContent("h2","想念");
+			var node = nodeContent("h2","想念");
+			//把元素节点追加到div中
+			box.appendChild(node);
+		</script>
+	</body>
+</html>

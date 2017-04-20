@@ -1,0 +1,219 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			#div1 {
+				width: 200px;
+				height: 30px;
+				border: 1px dashed black;
+			}
+			#div2 {
+				width: 0;
+				height: 30px;
+				background: red;
+			}
+		</style>
+		<script>
+		
+			//1.有2个学生，每个学生有3门课的成绩，
+			//（包括学生号，姓名，3门课成绩,语文,数学,英语），
+			//计算出平均成绩.
+			var student1 = {
+				sid: 1,
+				name: "张三",
+				chinese: 68,
+				math: 98,
+				english: 77
+			};
+			var student2 = {
+				sid: 2,
+				name: "李四",
+				chinese: 70,
+				math: 100,
+				english: 75
+			};
+			
+			var avgChinese = (student1.chinese + student2.chinese)/2;
+			var avgMath = (student1.math + student2.math)/2;
+			var avgEnglish = (student1.english + student2.english)/2;
+			console.log(avgChinese + "," + avgMath + "," + avgEnglish);
+			
+			
+			//2.Mountain:从前有座山,山里有座庙;还有name,height(高度)
+			//  Temple:庙里有个老和尚,有个小和尚,还有name,area(面积)
+			//  Monk:和尚能挑水,讲故事,化缘;还有name,age,sex
+			//山
+			var mountain = {
+				name: "梧桐山",
+				height: 900
+			};
+			//山里有座庙temple
+			mountain.temple = {
+				name: "弘法寺",
+				area: 400
+			};
+			//山里的庙里面的老和尚
+			mountain.temple.oldMonk = {
+				name: "张三",
+				age: 55,
+				sex: "男",
+				tiaoShui: function(){
+					console.log("能挑水...");
+				},
+				sayStory: function(){
+					console.log("讲故事...");
+				},
+				huaYuan: function(){
+					console.log("化缘...");
+				}
+			};
+			//山里的庙里面的小和尚
+			mountain.temple.youngMonk = {
+				name: "李四",
+				age: 15,
+				sex: "男",
+				tiaoShui: function(){
+					console.log("能挑水...");
+				},
+				sayStory: function(){
+					console.log("讲故事...");
+				},
+				huaYuan: function(){
+					console.log("化缘...");
+				}
+			};			
+			console.log(mountain);
+		
+		    //3.定义一圆Circle对象,包含半径r和圆心,
+			//   圆心为“点”Point对象,point对象有x和y属性，
+			//   构造一圆，该圆可以计算周长和面积; 计算该原的周长和面积?
+			//圆
+			var circle = {
+				r: 5,
+				point: {x:5, y:6},
+				calculateP: function() { //计算周长
+					return 2 * 3.14 * this.r; //this代表cirlcle
+				},
+				calculateA: function() { //计算面积
+					return 3.14 * this.r * this.r;
+				}
+			}
+			console.log(circle.calculateP()); 
+			console.log(circle.calculateA());
+			
+			
+			
+			//获取当前时间并按括号内的格式打印（*年*月*日  星期*  *：*：*）
+			var d = new Date();
+			var year = d.getFullYear();
+			var month = d.getMonth()+1;
+			var day = d.getDate();
+			var week = d.getDay() == 0 ? "天" : d.getDay(); //(0-6)
+			var hour = d.getHours();
+			var min = d.getMinutes();
+			var sec = d.getSeconds();
+			console.log(year+"年"+month+"月"+day+"日 星期"+week+" "+hour+":"+min+":"+sec);
+			
+			
+			//实现秒表功能, 包含时,分,秒,毫秒，
+			//点击按钮1开始计时，点击按钮2结束计时。
+			var timer; 
+			function startClick(){
+				
+				var h = document.getElementById("hours");
+				var m = document.getElementById("minutes");
+				var s = document.getElementById("seconds");
+				var ms = document.getElementById("millSec");
+				
+				h.innerHTML = "00";
+				m.innerHTML = "00";
+				s.innerHTML = "00";
+				ms.innerHTML = "00";
+				
+				var i = 0; //记录毫秒
+			    timer = setInterval(function(){
+					i += 10;
+					h.innerHTML = parseInt(i/(1000*60*60)); //时
+					m.innerHTML = parseInt(i/(1000*60))%60; //分
+					s.innerHTML = parseInt(i/1000)%60; //秒
+					ms.innerHTML = i%1000; //毫秒
+					
+				}, 10);
+				
+				
+			}
+			function endClick() {
+				clearInterval(timer);
+			}
+
+			
+			//判断两个日期相差的天数
+			function timeInteral(date1, date2){
+				
+				var time1 = date1.getTime();  //时间戳
+				var time2 = date2.getTime(); 
+				
+				//两个时间的毫秒差
+				var timeDuration = time1>time2 ? time1-time2 : time2-time1;
+				
+				//两个时间相差的天数
+				var dayDuration = timeDuration/(1000 * 3600 * 24);
+				return dayDuration;
+			}
+			
+			var d1 = new Date("2016-5-15");
+			var d2 = new Date("2016-6-16");
+			var a = timeInteral(d1, d2);
+			console.log(a);
+			
+			
+			//使用定时器实现进度条.
+			//  PS:  获取标签对象, 改变style属性的width值
+			//  var proBar = document.getElementById("progressBar");
+			//  proBar.style.width = barW + "px"; 
+			
+			/*//onload: 会在页面加载完成后触发
+			window.onload = function(){
+				
+				var oDiv2 = document.getElementById("div2");
+				var oTxt = document.getElementById("txt");
+				
+				var i = 0; //div2的宽度
+				var timer = setInterval(function(){
+					i += 1;
+					oDiv2.style.width = i + "px";
+					oTxt.innerHTML = parseInt(i/200 * 100) + "%";
+					
+					if (i >= 200) {
+						clearInterval(timer);
+					}
+					
+				}, 20);
+			}			
+			*/
+			
+		</script>
+		
+	</head>
+	<body>		
+		<span id="hours">00</span>时<span id="minutes">00</span>分<span id="seconds">00</span>秒<span id="millSec">0</span>
+		<input type="button" value="点我开始计时" onclick="startClick()">
+		<input type="button" value="点我结束计时" onclick="endClick()">
+		
+		<h2>进度条</h2>
+		<div id="div1">
+			<div id="div2"> </div>
+		</div>
+		<span id="txt">0%</span>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+

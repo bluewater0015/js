@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul,li {
+				list-style: none;
+			}
+			
+			#box {
+				width: 800px;
+				height: 300px;
+				margin: 10px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#list {
+				width: 600px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#list li {
+				width: 600px;
+				height: 300px;
+			}
+			#list img {
+				width: 600px;
+				height: 300px;
+			}
+			
+			#list2 {
+				width: 200px;
+				height: 300px;
+				position: absolute;
+				left: 600px;
+				top: 0;
+			}
+			#list2 li {
+				width: 200px;
+				height: 100px;
+				background: yellow;
+				text-align: center;
+				line-height: 100px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+			
+			#list2 .active {
+				background: red;
+			}
+				
+		</style>
+		
+		<script src="move.js"></script>
+		<script>
+			onload = function() {
+				var oList = document.getElementById("list"); //需要移动的Ul
+				var aLi = oList.getElementsByTagName("li"); //三张图
+				
+				var oList2 = document.getElementById("list2"); //右边的三个按钮
+				var aLi2 = oList2.getElementsByTagName("li"); 
+				
+				//自动轮播
+				oList.innerHTML += oList.innerHTML; //赋值并添加这3张图
+				var iHeight = aLi[0].offsetHeight; //每张图的高度
+				var i = 0; //图片的下标
+				
+				//启动定时器, 每隔3秒调用一次move方法,每隔3秒切换一次图片
+				var timer = setInterval(move, 3000);
+				
+				//移动一次图片
+				function move(){
+					i++; //让图片下标加1, 表示移动到下一张图
+					var iTop = -i * iHeight; //计算得到的目标值
+					startMove(oList, "top", iTop, next); //开始动画移动
+					
+					//改变按钮的颜色状态
+					for (var j=0; j<aLi2.length; j++) {
+						if (i == j) { //是显示的图片
+							aLi2[j].className = "active"; //改成选择状态
+						}
+						else {
+							aLi2[j].className = ""; //未选中状态
+						}
+					}
+					//console.log(aLi.length);
+					if (i == aLi.length/2) {  //如果是第4张(下标为3)的图片, 则其实也是选中的第一张
+	
+						aLi2[0].className = "active";
+					}
+					
+				}
+				//每次动画移动完成时调用
+				function next() {
+					if (i >= aLi.length/2) {
+						//瞬间移动到第一张图(非动画移动)
+						oList.style.top = 0; 
+						i = 0;
+					}
+				}
+				
+				
+				//给按钮添加点击事件
+				for (var j=0; j<aLi2.length; j++) {
+					//按钮点击事件
+					aLi2[j].index = j;
+					aLi2[j].onclick = function() {
+						i = this.index - 1; //设置要移动到的图片下标, 这里要-1, 因为move函数里面i++了
+						btnMove(); //点击按钮之后移动
+					}
+				}
+				
+				//按钮点击之后的移动
+				function btnMove(){
+					move(); //立刻移动图片
+					
+					//为了让点击之后隔3秒后再继续移动
+					clearInterval(timer); 
+					timer = setInterval(move, 3000);
+				}
+				
+				
+				//翻页: 上一页/下一页
+				var preBtn = document.getElementsByTagName("a")[0]; //上一页的按钮
+				var nextBtn = document.getElementsByTagName("a")[1]; //下一页的按钮
+				
+				//上一页
+				preBtn.onclick = function() {
+					if (i == 0) { //如果当前是显示第一张图
+						//改变i的值为第4张图的前面一张的再前面一张的下标
+						//console.log(aLi.length/2);//3
+						i = aLi.length/2 - 2;
+						//瞬间移动到第4张图
+						oList.style.top = -aLi.length/2 * iHeight + "px"; 
+					}
+					else {
+						i = i-2; 
+					}
+					btnMove(); //移动
+				}
+				
+				//下一页
+				nextBtn.onclick = function() {
+					next(); //如果超出了第4张图, 则立刻变回第1张图
+					btnMove();
+				}
+				
+				
+			}
+		</script>
+		
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+			</ul>
+			<ul id="list2">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<a href="#">上一页</a>
+		<a href="#">下一页</a>
+	</body>
+</html>

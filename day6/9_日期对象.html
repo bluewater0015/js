@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//Date.parse("2015-08-25");
+			//转化默认格式支持2015-08-24或2015/08/24
+			//返回距离1970年1月1日0时的毫秒数		
+			console.log(Date.parse("2016-02-22"));//1456099200000
+			
+			
+			//toString() 把date对象转化为字符串
+			//var d = new Date();
+			//console.log(d);
+			//console.log(d.toString());//on Jan 23 2017 16:55:50 GMT+0800 (中国标准时间)
+			//UTC() 根据世界时返回1970年1月1日到指定日期的毫秒数
+			console.log(Date.UTC(2015,12,5));//1451952000000
+			//valueOf()//返回Date对象的原始值
+			//console.log(d.valueOf());  //1485161894434
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="box" style="width:100px;height:100px;background: #9ff;position:absolute;top:10px;left:10px;">
+			
+		</div>
+		<script>
+			//相对位置
+			var box = document.getElementById("box");
+			document.onmousedown = function(evt){
+				var evt = evt || event;
+				//clientX 鼠标相对于浏览器窗口左边的距离
+				//clientY 鼠标相对于浏览器窗口上边的距离
+				var x = evt.clientX;
+				var y = evt.clientY;
+				//始终是10 不变
+				//console.log(box.offsetLeft);  //10
+				//console.log(box.offsetTop);		//10
+				var left = x - box.offsetLeft;
+				var top = y - box.offsetTop;
+				//console.log(l+","+t);
+				//evt.offsetX evt.offsetY IE仅支持
+				//console.log(evt.offsetX);
+				//console.log(evt.offsetY);
+				box.style.left = x - left + "px";
+				box.style.top = y - top + "px";
+				//console.log("x:"+x+",y:"+y);
+			/*	
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					
+				}
+			*/
+			}
+		</script>
+	</body>
+</html>

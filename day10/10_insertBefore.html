@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+		</ul>
+		<script>
+			//insertBefore()可以把节点插入到指定节点的前面
+			//插到第二个li前面
+			var ul = document.getElementById("ul");
+			//console.log(ul);
+			//console.log(ul.childNodes.length); //5
+			//console.log(ul.childNodes[0]);
+			for(var i=0;i<ul.childNodes.length;i++){
+				console.log(ul.childNodes[i]);
+			}
+			//var li2 = ul.childNodes[2];
+			//console.log(li2);
+			//var h2 = document.createElement("h2");
+			//li2.parentNode.insertBefore(h2,li2);
+		</script>
+	</body>
+</html>

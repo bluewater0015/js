@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//计算1+2+……+10;
+			//为什么sum是全局变量？
+			var sum = 0;
+			for(var i=1;i<=10;i++){
+				//var sum = 0;  //如果sum置0，只能算最后一次的结果
+				sum += i;
+			}
+			//console.log(sum);
+			
+			
+			function add(sum){
+				for(var i=1;i<=10;i++){
+					sum += i;
+				}
+				return sum;  //记得把得到的值返回给函数，否则不会有结果的
+			}
+			alert(add(0));
+		</script>
+	</body>
+</html>

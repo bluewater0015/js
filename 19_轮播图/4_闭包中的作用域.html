@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//全局变量
+			//a是全局变量 调用完函数 m2 内存不会被释放
+			var a = 1;
+			function m2(){
+				a++;
+				console.log(a);  //2
+			}
+			//m2();  //2
+			//console.log(a); //2
+			//m2();  //3
+			
+			//局部变量
+			//b的作用域是m3，调用完函数m3之后就会被释放
+			function m3(){
+				var b = 1;
+				b++;
+				console.log(b);  //2
+			}
+			m3(); //2
+			m3(); //2
+			//console.log(b);
+		</script>
+	</body>
+</html>

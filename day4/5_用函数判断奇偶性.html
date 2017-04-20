@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="txt" type="text" value="请输入一个数" />
+		<input id="btn" type="button" value="按钮"  />
+		<script>
+			//在输入框输入数字,点击按钮调用函数来判断奇偶性
+			var txt = document.getElementById("txt");
+			var btn = document.getElementById("btn");
+			
+			btn.onclick = function(){
+				if(txt.value%2==0){
+					alert("此数是偶数");
+				}else{
+					alert("此数是奇数");
+				}
+			}
+		</script>
+	</body>
+</html>

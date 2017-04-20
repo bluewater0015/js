@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f99;
+				margin: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="向上"/>
+		<input type="button" value="向右"/>
+		<input type="button" value="向下" />
+		<input type="button" value="向左"/>
+		<div id="box" style="position:absolute;top:0;left:0;">
+			
+		</div>
+		<script>
+			//点击上下左右按钮，让div移动
+			var box = document.getElementById("box");
+			var input = document.getElementsByTagName("input");
+			var change = 5;
+			//向上
+			input[0].onclick = function(){
+				box.style.top = box.offsetTop - change + "px";
+				//box.style.top = parseInt(box.style.top) -change + "px";
+			}
+			//向右
+			input[1].onclick = function(){
+				box.style.left = box.offsetLeft + change + "px";
+				//box.style.left = parseInt(box.style.left)+change+"px";
+			}
+			//向下
+			input[2].onclick = function(){
+				box.style.top = box.offsetTop + change + "px";
+				//box.style.top = parseInt(box.style.top) + change + "px";
+			}
+			//向左
+			input[3].onclick = function(){
+				box.style.left = box.offsetLeft - change + "px";
+				//box.style.left = parseInt(box.style.left) - change + "px";
+			}
+		</script>
+	</body>
+</html>

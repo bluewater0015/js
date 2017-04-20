@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器练习</title>
+		<script>
+			//实现秒表功能：显示时分秒，点击按钮开始计时
+			
+			var timer;
+			butClick = function(){
+				//获取节点元素
+				//console.log(0);
+				var oHour = document.getElementById("hour");
+				var oMinute = document.getElementById("minute");
+				var oSecond = document.getElementById("second");
+				var aInput = document.getElementsByTagName("input");
+				//var num = 0;
+				
+			/*	oHour.innerHTML = "00";
+				oMinute.innerHTML = "00";
+				oSecond.innerHTML = "00";
+				*/
+				var i = 0;
+				timer = setInterval(function(){
+					//console.log(0);
+					//i%60 取模就是秒
+					i++;
+					var s = i%60;  //秒
+					var m = parseInt(i/60)%60 ; //分
+					var h = parseInt(i/3600);	//时
+					
+					oHour.innerHTML = h > 10 ? h : "0"+h;
+					oMinute.innerHTML = m > 10 ? m : "0" + m;
+					oSecond.innerHTML = s > 10 ? s : "0" + s;
+					
+				/*	oHour.innerHTML = h > 10 ? h : "0"+h;
+					oMinute.innerHTML = m > 10 ? m : "0" + m;
+					oSecond.innerHTML = s > 10 ? s : "0" + s;*/
+					
+				},100);
+			}
+			endClick = function(){
+				//console.log(0);
+				clearInterval(timer);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<span id="hour">00</span>时<span id="minute">00</span>分<span id="second">00</span>秒
+		<input type="button" value="点我开始计时" onclick=butClick() />
+		<input type="button" value="点我结束计时" onclick=endClick() />
+	</body>
+</html>

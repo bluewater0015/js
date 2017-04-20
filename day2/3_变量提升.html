@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//变量提升
+			var v = "hello";
+			function aa(){
+				var v;
+				//alert(v);
+				var v = "xiao";
+			}
+			aa();
+			
+			//var x = 1;
+			console.log(x); 
+			if(x){
+				var x = 2;
+				console.log(x); 
+			}
+			console.log(x);     
+			
+		/*	
+			function foo(){
+				var x = 1;
+				console.log(x);
+				if(x){
+					(function(){
+						var x = 2;
+						console.log(x);
+					}())
+				}
+				console.log(x);
+			}
+			foo();*/
+		</script>
+	</body>
+</html>

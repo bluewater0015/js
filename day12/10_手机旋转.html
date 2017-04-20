@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 600px;
+				height: 500px;
+				background: url(img/images4/33.jpg) no-repeat;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//360全景展示，在空白页面上左右拖动，让图片呈360旋转。
+			//思路：
+			//1.添加鼠标按压事件onmousedown
+			//2.添加鼠标移入事件onmosemove
+			//3.添加鼠标释放事件onmouseup
+			
+			var box = document.getElementById("box");
+			box.onmousedown = function(evt){
+				var evt = evt || event;
+				var disX = evt.clientX - box.offsetLeft;
+				var disY = evt.clientY - box.offsetTop;
+				document.onmousemove =function(evt){
+					var evt = evt || event;
+					box.style.left = evt.clientX - disX + "px";
+					box.style.top = evt.clientY - disY + "px";
+					
+				}
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

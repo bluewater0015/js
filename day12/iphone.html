@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>iphone解锁</title>
+		<style>
+			#iphone{
+					width:1000px;
+					height:1000px;
+					background:url(images/iphone.jpg) no-repeat;
+					margin:0 auto;
+					position:relative;
+			}
+			
+			#box{
+				width:365px;
+				height:62px;
+				
+				position:absolute;
+				top:545px;
+				left:30px;
+			}
+			#lock{
+				width:93px;
+				height:62px;
+				background:url(images/lock.jpg) no-repeat;
+				position:absolute;
+				left:0;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var oIphone = document.getElementById("iphone");
+				var oBox = document.getElementById("box");
+				var oLock = document.getElementById("lock");
+				//console.log(0);
+				//鼠标按下事件
+				oLock.onmousedown = function(evt){
+					var oEvent = evt || event;
+					//1.鼠标移动事件
+					var disX = oEvent.offsetX;
+					document.onmousemove = function(evt){
+						//console.log(0);
+						var oEvent = evt || event;
+						//鼠标距左边的距离
+						
+						//var disX = oEvent.clientX - parseInt(oIphone.style.left) -  parseInt(oBox.style.left)-  parseInt(oLock.style.left);
+						
+						//oLock.style.left = oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - disX + "px";
+						//上行代码 等价于下一行代码
+						
+						var x = oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - disX;
+						//判断是否超出左边界
+						if(x<=0){
+							x=0;
+						}
+						oLock.style.left = x + "px";
+						//判断是否超出右边界
+						
+						if(x>=oBox.offsetWidth-oLock.offsetWidth){
+							x=oBox.offsetWidth-oLock.offsetWidth;
+						}
+						oLock.style.left = x + "px";
+					}
+					//3.鼠标松开事件
+					document.onmouseup = function(evt){
+						var  oEvent = evt || event;
+						document.onmousemove = null;
+						document.onmouseup = null;
+						var left =oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - disX; 
+						if(left>(oBox.offsetWidth-oLock.offsetWidth)/2){
+							
+							oLock.style.left=oBox.offsetWidth-oLock.offsetWidth +"px";
+						}else{
+							oLock.style.left=0;
+						}
+						
+					}
+					
+				}
+			
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "iphone">
+			<div id= "box">
+				<div id = "lock"></div>
+			</div>
+		</div>
+	</body>
+</html>

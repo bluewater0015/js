@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+				background: url(img/girl.gif) no-repeat center;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+		</style>
+		<script>
+			
+			/*
+			 1, 鼠标点击某处, 让精灵移动到该处 (如下图)
+			 2, 鼠标移动时, 让精灵跟随鼠标移动
+			*/
+			
+			onload = function(){
+				var oBox = document.getElementById("box");
+				
+				// 1, 鼠标点击某处, 让精灵移动到该处
+				document.onclick = function(evt) {
+					var oEvent = evt || event; //获取事件对象
+					
+					//鼠标在可视区的的坐标位置
+					var x = oEvent.clientX; 
+					var y = oEvent.clientY;
+					
+					//移动精灵到鼠标位置
+					oBox.style.left = x-50 + "px";
+					oBox.style.top = y-50 + "px";
+				}
+				
+				//2, 鼠标移动时, 让精灵跟随鼠标移动
+				document.onmousemove = function(evt) {
+					var oEvent = evt || event;  //获取事件对象
+					
+					//鼠标在可视区的坐标位置
+					var x = oEvent.clientX;
+					var y = oEvent.clientY;
+					console.log(x + "," + y);
+					
+					//移动精灵到鼠标位置
+					oBox.style.left = x-50 + "px";
+					oBox.style.top = y-50 + "px";
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					//document.onmouseup = null;
+				}
+				return false;
+				
+			}
+			
+		</script>		
+	</head>
+	<body style="background: black;">
+		<div id="box"></div>
+	</body>
+</html>

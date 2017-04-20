@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:100%;
+				height: 500px;
+				border: 1px solid #000;
+			}
+			#box1{
+				width:100%;
+				height: 50px;
+				background: #ccc;
+			}
+			span{
+				display:inline-block;
+				width: 100px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: #fff;
+			}
+			.span1{
+				background:#f99;
+			}
+			.back{
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1">
+				<span class="span1">科技</span><span>探索</span>
+			</div>
+			<p id="text">科技科技科技科技科技科技科技科技科技科技科技科技科技科技</p>
+		</div>
+		<script>
+			//tab切换，点击科技显示左图，点击搜索显示右图。
+			var box1 = document.getElementById("box1");
+			var span = document.getElementsByTagName("span");
+			var text = document.getElementById("text");
+			span[0].onclick = function(){
+				//this.style.background = "#f99";
+				text.innerHTML = "科技科技";
+				span[1].setAttribute("class","back");
+				span[0].setAttribute("class","span1");
+			}
+			span[1].onclick = function(){
+				//this.style.background = "#f99";
+				text.innerHTML = "探索探索";
+				//span[0].style.className = "back";
+				span[0].setAttribute("class","back");
+				span[1].setAttribute("class","span1");
+			}
+		</script>
+	</body>
+</html>

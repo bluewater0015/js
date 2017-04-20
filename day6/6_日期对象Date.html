@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//日期对象Date(格式化方法)
+			//1.toDateString() 以特定的格式显示星期几 月 日 年
+			//var d = new Date();
+			//console.log(d);//"Mon Jan 23 2017 14:25:46 GMT+0800
+			//var time = d.toDateString();
+			//console.log(time);//Mon Jan 23 2017
+			
+			//2.以特定的格式显示时分秒和时区
+			var d = new Date();
+			var time = d.toTimeString();
+			console.log(time); //14:30:00 GTM+0800
+			//14:30:10 GMT+0800 (中国标准时间)
+			
+			//3.toLocaleDateString() 以特定的格式显示年月日
+			var d = new Date();
+			var time = d.toLocaleDateString();
+			console.log(time);//2017/1/23
+			
+			//4.toLocaleTimeString() 以特定的格式显示时分秒
+			var d = new Date();
+			var time = d.toLocaleTimeString();
+			console.log(time); //下午 2:40:47
+			
+			//5.UTCString() 以特定的格式完整的显示UTC日期 
+			//星期几 日 月 年 时 分 秒
+			var time = d.toUTCString();
+			console.log(time);//Mon, 23 Jan 2017 06:44:21 GMT
+		</script>
+	</body>
+</html>

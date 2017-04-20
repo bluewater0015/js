@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				border-collapse:collapse;
+			}
+			td{
+				width:100px;
+			}
+		</style>
+	</head>
+	<body>
+		ID <input type="text" id="ID"/>
+		姓名	 <input type="text" id="name1"/>
+		电话 <input type="text" id="cel"/>
+		<button id="btn">保存</button>
+		<br />
+		<br />
+		<table border="1" cellpadding="10" width="400">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+		</table>
+		<script>
+			//动态表格的创建，在输入框输入内容后，点击保存则在表格
+			//末尾添加一条记录，点击删除则会删除对应行的记录。
+			//deleteRow(rowIndex)table删除对应的行
+			//rowIndex表中对应的行下标
+			//oTable.deleteRow(tr标签.rowIndex);
+			//思路:
+			//1.首先获取按钮btn
+			//2.点击事件发生之后添加一条记录,即添加一个tr
+			//3.点击删除,则会删除对应行的记录
+			var ID = document.getElementById("ID");
+			var name1 = document.getElementById("name1");
+			var cel = document.getElementById("cel");
+			var btn = document.getElementById("btn");
+			var table = document.getElementsByTagName("table")[0];
+			btn.onclick = function(){
+				//创建一个tr
+				var tr = document.createElement("tr");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var td3 = document.createElement("td");
+				var td4 = document.createElement("td");
+				td1.innerHTML = ID.value;
+				td2.innerHTML = name1.value;
+				td3.innerHTML = cel.value;
+				
+				//td4.innerHTML ="<a href='#' id='aa' class='del' onclick='del(this)'name='delete'>删除</a>";
+				var aNode = document.createElement("a");
+				//setAttrbute() 设置指定的属性及其值
+				aNode.setAttribute("href","#");
+				//aNode.className = "del";
+				aNode.name = "del";
+				aNode.innerHTML = "删除";
+				td4.appendChild(aNode);
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				tr.appendChild(td3);
+				tr.appendChild(td4);
+				//tr追加到table中
+				table.appendChild(tr);
+				
+				//var aDel = document.getElementsByTagName("del");
+				//console.log(aDel);
+				//var delete = document.getElementsByName("delete");
+				//var aDel = document.getElementsByName("del");
+				//console.log(delete);
+				//var aa = document.getElementById("aa");
+			/*	
+				aa.onclick = function(){
+					var tr = aa.parentNode.rrrr5parentNode;
+					tr.parentNode.removeChild(tr);
+				}
+			*/
+		/*	
+			function del(obj){
+				var tr = obj.parentNode.parentNode;
+				tr.parentNode.removeChild(tr);
+			}
+		*/	
+			del();
+			}
+			var aDel = document.getElementsByName("del");
+			function del(){
+				for(var i=0;i<aDel.length;i++){
+					aDel[i].onclick = function(){
+						//this代表a标签
+						//this.parentNode是td
+						//console.log(this.parentNode);  //td
+						//console.log(this.parentNode.parentNode); //tr
+						//oTable.deleteRow(tr标签.rowIndex);
+						//deleteRow(rowIndex) table删除对应的行
+						//rowIndex 表中对应的下标
+						table.deleteRow(this.parentNode.parentNode.rowIndex);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f99;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" bbb="xiao" class="boxClass">
+			
+		</div>
+		<script>
+			//getAttribute() 方法将获取元素中某个属性的值
+			//它和直接使用点语法(.属性)获取属性值的方法有一定的区别
+			var box = document.getElementById("box").getAttribute("id");
+			console.log(box);  //box
+			
+			//点语法获取id
+			var box1 = document.getElementById("box").id;
+			console.log(box1);
+			
+			//获取元素的自定义属性值
+			var box2 = document. getElementById("box").getAttribute("bbb");
+			console.log(box2);  //xiao
+			
+			//通过.语法获取自定义属性的属性值
+			var box3 = document.getElementById("box").bbb;
+			console.log(box3);//undefined  通过点语法无法获取自定义的属性值
+			
+			//获取元素的class值
+			var box4 = document.getElementById("box").getAttribute("class");
+			console.log(box4);  //boxClass
+			
+			//通过点语法获取元素的class值
+			var box5 = document.getElementById("box").className;
+			console.log(box5);  //boxClass
+			
+			
+		</script>
+	</body>
+</html>

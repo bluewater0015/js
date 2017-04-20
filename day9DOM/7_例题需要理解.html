@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<div id="box" style="width:200px;height:200px;background:red">
+			
+		</div>
+		<button id="btn">改变颜色</button>
+		<script>
+			//有一个装有颜色的数组["red","blue","yellow","green","black","orange"];
+			//点击button启动定时器,每1s给它换一个颜色
+			var box = document.getElementById("box");
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				//var i = 0;
+				function color(){
+					var colors = ["red","blue","yellow","green","black","orange"];
+					for(var i=0;i<colors.length;i++){
+						console.log(i);  //执行速度很快 所以 没有效果
+						box.style.background = colors[i%colors.length];
+					}
+				}
+				setInterval(color,1000);
+			}
+		</script>
+	</body>
+</html>

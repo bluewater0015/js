@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//工厂模式 : 一种设计模式, (单例模式, 代理模式, 装饰模式, 适配器模式...)
+			//用工厂(函数)来生产(创建)对象
+			function createObject(_name, _age){
+				var obj = new Object();
+				obj.name = _name; //name属性
+				obj.age = _age; //age属性
+				obj.show = function(){}; //show方法
+				return obj; //返回这个对象
+			}
+			var person1 = createObject("王五", 55);
+			var person2 = createObject("赵六", 66);
+			var person3 = createObject("钱七", 77);
+		</script>
+	</body>
+</html>

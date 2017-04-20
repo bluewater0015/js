@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#sport{
+				width: 500px;
+				height: 500px;
+				background: #ccc;
+				position: relative;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="sport">
+			<button>向上缓冲</button>
+			<button>向右缓冲</button>
+			<button>向下缓冲</button>
+			<button>向左缓冲</button>
+			<div id="box">
+				
+			</div>
+		</div>
+		<!--<script src="js/move.js"></script>-->
+		<script>
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button");
+		/*	
+			btn[0].onclick = function(){
+				move(box,"top",20);
+			}
+			btn[1].onclick = function(){
+				move(box,"left",400);
+			}
+			btn[2].onclick = function(){
+				move(box,"top",400);
+			}
+			btn[3].onclick = function(){
+				move(box,"left",20);
+			}
+		*/
+			for(var i=0;i<btn.length;i++){
+				btn[i].index = i;
+				btn[i].onclick = function(){
+					var index = this.index;
+					//向上
+					if(index == 0){
+						move(box,"top",20);
+					//向右
+					}else if(index == 1){
+						move(box,"left",400);
+					//向下
+					}else if(index == 2){
+						move(box,"top",400);
+					//向左
+					}else{
+						move(box,"left",20);
+					}
+				}
+			}
+			//获取某元素的某属性
+			/*
+			 *	obj 需要获取属性值的元素节点
+			 * 	attr 需要获取的属性值
+			 */
+			function getStyleAttr(obj,attr){
+				
+				if(window.getComputedStyle){
+					//由于传过来的是字符串，所以用[]
+					return getComputedStyle(obj,null)[attr];
+				}
+				return obj.currentStyle[attr];
+			}
+			/*
+			 * 缓冲运动的函数
+			 * obj 需要移动的元素节点
+			 * attr 需要改变的元素属性
+			 * target 需要移动的目标位置(终点位置)
+			 * 
+			 */
+			
+			function move(obj,attr,target){
+				//先关闭原来的定时器
+				clearInterval(obj.timer);
+				//再开启新的定时器
+				obj.timer = setInterval(function(){
+					//1.获取当前值
+					var current = parseInt(getStyleAttr(obj,attr));
+					//console.log(current); //当前值从200变为20
+					//var speed = (target-obj.offsetLeft)/10;
+					//2.速度
+					//如果向上运动，当前current = 200；
+					//target = 20 
+					//因此速度为负数
+					//20-200
+					var speed = (target - current)/8;
+					speed = speed>0?Math.ceil(speed):Math.floor(speed);
+					//console.log(speed);  //速度由23变为0
+					//3.判断临界值
+					if(current == target){  //注意是相等 不是赋值
+						clearInterval(obj.timer);
+						return;
+					}
+					//4.运动
+					//速度为负数
+					obj.style[attr] = current + speed + "px";
+					
+				},30)
+			}
+		</script>
+	</body>
+</html>

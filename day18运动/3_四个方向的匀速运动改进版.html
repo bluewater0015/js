@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 500px;
+				margin: 300px auto;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 30px;
+				left: 30px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>向上</button>
+			<button>向右</button>
+			<button>向下</button>
+			<button>向左</button>
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script>
+			//点击按钮时，div盒子向四个方向运动。
+			//思路分析：
+			//1.首先循环遍历按钮,给它添加点击事件
+			//2.设置速度,进行判断
+			//3.添加定时器
+			var btn = document.getElementsByTagName("button");
+			var sport = document.getElementById("sport");
+			//设置速度
+			var speed1 = -10;
+			var speed2 = 10;
+			var speed3 = 10;
+			var speed4 = -10;
+			//设置开始的距离
+			var sportLeft = 0;
+			var sportTop = 0;
+			var timer = 0;
+			
+			function move(){
+				for(var i=0;i<btn.length;i++){
+					btn[i].index = i;
+					btn[i].onclick = function(){
+						var index = this.index;
+						console.log(index);
+						timer = setInterval(function(){
+							//console.log(index);
+							//向上
+							if(index == 0){
+								sportTop = sportTop + speed1;
+								sport.style.top = sportTop + "px";
+							//向右
+							}else if(index == 1){
+								sportLeft =sportLeft + speed2;
+								sport.style.left = sportLeft + "px";
+							//向下
+							}else if(index == 2){
+								sportTop = sportTop + speed3;
+								sport.style.top = sportTop + "px";
+							//向左
+							}else if(index == 3){
+								sportLeft =sportLeft + speed4;
+								sport.style.left = sportLeft + "px";
+							}
+						},100);
+						//console.log(index);
+						//向上
+//						if(index == 0){
+//							sportTop = sportTop + speed1;
+//							sport.style.top = sportTop + "px";
+//						//向右
+//						}else if(index == 1){
+//							sportLeft =sportLeft + speed2;
+//							sport.style.left = sportLeft + "px";
+//						//向下
+//						}else if(index == 2){
+//							sportTop = sportTop + speed3;
+//							sport.style.top = sportTop + "px";
+//						//向左
+//						}else if(index == 3){
+//							sportLeft =sportLeft + speed4;
+//							sport.style.left = sportLeft + "px";
+//						}
+					}	
+				}
+			}
+			move();
+			//timer = setInterval(move,100);
+		</script>
+	</body>
+</html>

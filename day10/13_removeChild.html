@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			//removeChild()方法可以删除指定节点
+			//通过父节点调用，来删除指定子节点
+			var ul = document.getElementById("ul");
+			var li1 = ul.childNodes[1];
+			var li3 = ul.childNodes[3];
+			li1.parentNode.removeChild(li3);
+		</script>
+	</body>
+</html>

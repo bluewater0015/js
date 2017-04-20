@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:500px;
+				height: 500px;
+				background: #ccc;
+				margin: 0 auto;
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+			#box1{
+				width: 30px;
+				height: 30px;
+				border-radius: 30px;
+				background: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			/*#box2{
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				background: blue;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1">
+				
+			</div>
+			<div id="box2">
+				
+			</div>
+		</div>
+		<script>
+			//碰撞，两个块在指定的范围内运动，碰壁后会反弹
+			var box = document.getElementById("box");
+			var box1 = document.getElementById("box1");
+			//console.log(box1);
+			var box2 = document.getElementById("box2");
+			var timer = 0;
+			var speed1 = 5;
+			var speed2 = 3;
+			//距离左边的距离
+			//距离上边的距离
+			var left1 = 0;
+			var top1 = 0;
+			//边界值
+			var maxLeft = box.clientWidth - box1.clientWidth;
+			var maxTop = box.clientHeight - box1.clientHeight;
+			function move(){
+				//left1 = speed1; //如果这样的话 始终是一个定值
+				left1 =left1 + speed1;
+				console.log(left1);
+				top1 = top1 + speed2;
+				console.log(top1);
+				box1.style.left = left1 + "px";
+				box1.style.top = top1 + "px";
+				if(left1>=maxLeft){   //临界值 碰到右边反弹
+					speed1 = -speed1; 
+				}
+				if(left1<=0){		//临界值 碰到左边反弹
+					speed1 = 5;
+				}
+				if(top1>=maxTop){	//临界值 碰到下面反弹
+					speed2 = - speed2;
+				}
+				if(top1<=0){			//临界值 碰到下面反弹
+					speed2 = 3;
+				}
+			}
+			timer = setInterval(move,10);
+		</script>
+	</body>
+</html>

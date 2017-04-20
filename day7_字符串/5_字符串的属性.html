@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//字符串的属性
+			//1.length 表示字符串的长度
+			var str = "hello world";
+			console.log(str.length); //11
+			console.log(str[0]);//h
+			
+			ECMAScript中的字符串是不可改变的.
+			//字符串一旦创建就不能改变
+			str[0] = "love";
+			console.log(str);  //hello world
+			
+			//要改变某个变量保存的字符串，首先要销毁原来的字符串
+			//然后再用另一个包含新值的字符串填充该变量.
+			
+			var str = "hello";
+			str =  str + "world";
+			console.log(str);
+			
+			var str = "hello";
+			var str2 = str.concat("xiao");
+			console.log(str2); //helloxiao
+		</script>
+	</body>
+</html>

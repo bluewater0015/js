@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Box(){
+				
+			}
+			Box.prototype = {
+				name:"天下",
+				age: 18,
+				family:["奶奶","爷爷","妹妹"],
+				run: function(){
+					console.log(this.family);
+				}
+			}
+			var box1 = new Box();
+			box1.family.push = "哥哥";
+			box1.run();
+			var box2 = new Box();
+			box2.run();//共享带来的麻烦
+		</script>
+	</body>
+</html>

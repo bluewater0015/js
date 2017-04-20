@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//面向过程: 侧重做一件事情的过程
+			//面向对象: 侧重做一件事情当中的对象
+			
+			//对象和类
+			//对象: 类的具体, 包含属性和方法, 引用类型
+			//类: 对象的抽象
+			//类可以创建任意多个具有相同属性和方法的对象
+			
+			// 类     ,  对象
+			//空调, 那台白色的空调
+			//电脑, 我的电脑
+			//人, 我自己
+			
+			//类
+			/*
+			class Person {
+				name; 属性
+				age; 属性
+				run; 方法
+			}
+			//对象
+			var xiaoLi = new Person() //对象 有姓名name,年龄age, 可以跑步run
+			var xiaoWang = new Person() //对象 有姓名name,年龄age, 可以跑步run
+			....
+			*/
+			
+			/*
+			 例子：小狗吃食（闻一闻smell、舔一舔lick、咬一咬bite）
+          		分别采用面向过程和面向对象来分析
+         	 */
+         	//面向过程
+         	function smell(){
+         		//小狗闻一闻食物
+         		console.log("闻一闻");
+         	}
+         	function lick() {
+         		//小狗舔一舔食物
+         		console.log("舔一舔"); 
+         	}
+         	function bite() {
+         		//小狗咬一咬食物
+         		console.log("咬一咬");
+         	}
+         	smell();
+         	lick();
+         	bite();
+         	
+         	//面向对象
+         	var dog = {};
+         	dog.smell = function(){ 
+         		//闻一闻
+         		console.log("闻一闻2");
+         	}
+         	dog.lick = function() {
+         		//舔一舔
+         		console.log("舔一舔2");
+         	}
+         	dog.bite = function() {
+         		//咬一咬
+         		console.log("咬一咬2");
+         	}
+         	dog.smell(); //让狗去闻
+         	dog.lick(); //让狗去舔
+         	dog.bite(); //让狗去咬
+         	
+         	
+         	//面向对象的三大特征: 封装, 继承, 多态
+         	//1, 封装: 把属性和方法(数据和功能)放在一起
+         	//2, 继承: 子类把父类的属性和方法继承过来
+         	//3, 多态: 父类可以指向不同的子类, 在调用子类相同的方法时可以有不同的执行效果
+         	
+         	//继承:
+         	//动物Animal
+         	/* 
+         	Animal {
+         		cell; //细胞: 属性
+         		move; //可以动: 方法
+         	}
+         	*/
+         	//狗Dog
+         	//Dog 继承了 Animal, 拥有Animal的属性和方法
+         	/*
+         	Dog : Animal{
+         		leg; //腿:狗自己的属性
+         		wang://汪汪的叫: 狗自己的方法
+         	}
+         	Cat : Animal{
+         		leg; //腿:猫自己的属性
+         		miao://喵喵的叫: 猫自己的方法
+         	}
+         	*/
+         	
+         	
+         	
+         	//对象
+         	//属性: 变量,静态的, 比如:身高,体重
+         	//方法: 函数,动态的, 比如:可以跑步, 可以打人
+         	
+         	//创建对象
+         	//使用new的方式
+         	var person = new Object();
+         	person.name = "张三"; //属性
+         	person.age = 33; //属性
+         	person.show = function(){ //方法
+         		console.log(person.name + person.age);
+         	}
+         	person.show(); //张三33
+         	
+         	//字面量的方式
+         	var person = {
+         		name: "李四",
+         		age: 44,
+         		show: function(){
+         			console.log(this.name + this.age);
+         		}
+         	}
+       		person.show(); //李四44
+         	
+         	//创建三个人
+         	var person1 = {
+         		name: "王五",
+         		age: 55,
+         		show: function(){}
+         	}
+         	var person2 = {
+         		name: "赵六",
+         		age: 66,
+         		show: function(){}
+         	}
+         	var person3 = {
+         		name: "钱七",
+         		age: 77,
+         		show: function(){}
+         	}
+			
+			
+			//工厂模式 : 一种设计模式, (单例模式, 代理模式, 装饰模式, 适配器模式...)
+			//用工厂(函数)来生产(创建)对象
+			function createObject(_name, _age){
+				var obj = new Object();
+				obj.name = _name; //name属性
+				obj.age = _age; //age属性
+				obj.show = function(){}; //show方法
+				return obj; //返回这个对象
+			}
+			var person1 = createObject("王五", 55);
+			var person2 = createObject("赵六", 66);
+			var person3 = createObject("钱七", 77);
+			
+			
+			//创建动物animal
+			function createAnimal(_name, _age){
+				var obj = new Object();
+				obj.name = _name;
+				obj.age = _age;
+				obj.show = function(){};
+				return obj;
+			}
+			
+			//创建人person
+			function createPerson(_name, _age) {
+				var obj = new Object();
+				obj.name = _name;
+				obj.age = _age;
+				obj.show = function(){};
+				return obj;
+			}
+			
+			var xiaoli = createPerson("小李", 22); //人
+			var xiaohuang = createAnimal("小黄", 2); //动物
+			console.log(typeof xiaoli); //object
+			console.log(xiaoli instanceof Object); //true
+			console.log(xiaohuang instanceof Object); //true
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

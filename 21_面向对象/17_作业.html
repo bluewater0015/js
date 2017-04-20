@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#element{
+				width: 1000px;
+				height: 546px;
+				margin: 50px auto;
+				background: url(img/back.jpg) no-repeat;
+				position: relative;
+			}
+			img{
+				width: 30px;
+				height: 30px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="element">
+			
+		</div>
+		<!--<script src="js/moveAll.js"></script>-->
+		<script>
+		/*
+			创建一个萤火虫Fireworm类，
+			其中包括一个节点属性ele和飞的方法fly()
+			每隔一秒创建一个萤火虫对象,显示在屏幕随机位置
+			然后自动随机飞到其他位置,飞完后再继续飞
+		*/
+			function getStyle(obj, attr) {
+				if (obj.currentStyle) {
+					return obj.currentStyle[attr];
+				} else {
+					return getComputedStyle(obj, false)[attr];
+				}
+			}
+			//封装startMove函数		
+			function move(obj, json, fn) {
+	
+				clearInterval(obj.timer)
+				obj.timer = setInterval(function() {
+					var bTag = true;
+					for (var attr in json) {
+						if (attr == "opacity") {
+							var iCur = getStyle(obj, attr) * 100;
+						} else {
+							var iCur = parseInt(getStyle(obj, attr));
+						}
+						var iSpeed = (json[attr] - iCur) / 8;
+						iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed);
+						if (attr == "opacity") {
+							obj.style.opacity = (iCur + iSpeed) / 100;
+							obj.style.filter = "alpha(opacity=" + (iCur + iSpeed) + ")";
+						} else {
+							obj.style[attr] = iCur + iSpeed + "px";
+						}
+						if (iCur != json[attr]) {
+							bTag = false
+						}
+					}
+					if (bTag == true) {
+						clearInterval(obj.timer);
+						if (fn) {
+							fn();
+						}
+					}
+	
+				}, 30);
+			}
+			
+			
+			
+			var oBox = document.getElementById("element");
+			function Fireworm(){
+				//属性
+				this.ele =  document.createElement("img");
+				this.ele.src = "img/fire.gif";
+				
+				this.disX = parseInt(Math.random()*800);
+				this.disY = parseInt(Math.random()*500);
+				//console.log(this.disX);
+				this.ele.style.left = this.disX + "px";
+				this.ele.style.top = this.disY + "px";
+				
+				oBox.appendChild(this.ele);
+				//方法
+				//飞的方法
+				this.fly = function(){
+					var self = this;
+					move(this.ele,{
+						"left":this.disX,
+						"top":this.disY
+					},function(){
+						self.fly();
+					});
+				}
+			}
+			//创建fire
+			for(var i=0;i<50;i++){
+				var fire = new Fireworm();
+				fire.fly();
+			}
+		</script>
+	</body>
+</html>

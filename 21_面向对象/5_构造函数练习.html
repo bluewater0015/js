@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//构造函数练习
+			//Cat 猫
+			//属性 fur
+			//方法 eat miaow
+			
+			function Animal(name,like){
+				this.name = name;
+				this.like = like;
+				this.miaow = function(){
+					console.log("名字是："+this.name);
+				}
+				this.eat = function(){
+					console.log("\n喜欢吃什么："+this.like);
+				}
+				this.eat();
+				this.miaow();
+			}
+			var cat = new Animal("猫猫","老鼠");
+			//构造函数
+		</script>
+	</body>
+</html>

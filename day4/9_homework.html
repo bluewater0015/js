@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.写个函数计算所有传入参数相乘的结果
+			
+			
+			function multiply(a,b,c){
+				return a*b*c;
+			}
+			//console.log(multiply(2,3,4));
+			
+			//2.写个函数实现加减乘除运算
+			var num1 = parseInt(prompt("请输入一个数："));
+			var sign = prompt("请输入符号：");
+			var num2 = parseInt(prompt("请输入另一个数："));
+			function mix(a,b){
+				if(sign=="+"){
+					return a+b;
+				}else if(sign=="-"){
+					return a-b;
+				}else if(sign=="*"){
+					return a*b;
+				}else if(sign=="/"){
+					return a/b;
+				}
+			}
+			alert(mix(num1,num2));
+			//3.写个函数实现n的阶乘。
+		</script>
+	</body>
+</html>

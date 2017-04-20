@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.去掉字符串123@zh@qq.com中的@
+			//var str = "123@zh@qq.com";
+			//var str1 = str.replace(/@/,""); //这里只能执行一次，不能执行全局匹配
+			//console.log(str1);
+			//var str2 = str.replace(/@/g,"");//进行全局匹配
+			//console.log(str2);
+			
+			//2.任意给定一个字符串，统计字符串里面的大写字母和小写字母的个数。
+			//str.charCodeAt(i) //获取下标为i的ASCII码 
+			var str = "Hellooo WORLD";
+			var count1 = 0;
+			var count2 = 0;
+			for(var i=0;i<str.length;i++){
+				if(str.charCodeAt(i)>=65&&str.charCodeAt(i)<=90){
+					count1++;
+				}
+				if(str.charCodeAt(i)>=97&&str.charCodeAt()<=122){
+					count2++;
+				}
+			}
+			
+			//console.log("大写字母的个数："+count1); //6
+			//console.log("小写字母的个数："+count2); //6
+			
+			//3. https://www.baidu.com/s?name=avery&age=20&sex=male, 
+			//出name, age和sex的值
+			
+			var str ="https://www.baidu.com/s?name=avery&age=20&sex=male";
+			var str1 = str.indexOf("?");
+			//console.log(str1);  //23
+			var str2 = str.substring(str1+1);
+			//console.log(str2);  //name=avery&age=20&sex=male
+			var str3 = str2.split("&");
+			console.log(str3);	//["name=avery", "age=20", "sex=male"]
+			for(var i=0;i<str3.length;i++){
+				var str4 = str3[i].split("=");
+				console.log(str4);//["name", "avery"] ["age", "20"] ["sex", "male"]
+				//for(var j=0;j<str4.length;j++){
+					if(str4[0]=="name"){
+						console.log("name:"+str4[1]);
+					}
+					if(str4[0]=="age"){
+						console.log("age:"+str4[1]);
+					}
+					if(str4[0]=="sex"){
+						console.log("sex:"+str4[1]);
+					}
+				//}
+				
+			}
+			
+			//总结：
+			//1.找到？问号所在的地方 用str.indexOf()方法
+			//2.截取 用str.substring(i+1);一个参数代表一直到结束
+			//3.分割 用str.split("&")方法 
+			//4.用for进行遍历 再进行分割 str.split("=");
+			//5.找对应的值
+		</script>
+	</body>
+</html>

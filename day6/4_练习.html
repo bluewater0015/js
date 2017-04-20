@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.创建一个人的对象，添加属性：姓名 年龄 爱好 薪资期望
+			//并有一个打印自身信息的方法,可以输出自身信息
+			
+			var person = {
+				name:'xiaoxiao',
+				age: 18,
+				hobby: 'mz',
+				salary: '10k',
+				print:function(){
+					return person.name+","+person.age+","+person.hobby+","+person.salary;
+				}
+			}
+			//console.log(person.print());//xiaoxiao,18,mz,10k
+			
+			//2.创建一个锤子对象hammer，有属性：宽、高、重；
+			//方法：可以锤钉子
+			
+			var hammer = {
+				width: '10cm',
+				height: '30cm',
+				weight: '5kg',
+				run: function(){
+					return '可以锤钉子';
+				}
+			}
+			//console.log(hammer.run());  //可以锤钉子
+			
+			
+			//3.有一辆50km/h车，跑在一条1000km路上，问多少小时跑完
+			//对象:
+			/*
+			车Car属性:速度 speed 50km/h
+				 功能:跑在路上runOnRoad(Road)
+				 路Road属性:长度length 1000km
+			*/	 
+			var Car = {
+				speed: '50',
+				runOnRoad: function(){
+					return Road.length/Car.speed;
+				}
+			}
+			var Road = {
+				length:'1000'
+			}
+			console.log(Car.runOnRoad());   //20
+			
+			
+			var Car = {
+				speed: '50',
+				runOnRoad: function(r){
+					return r.length/Car.speed;
+				}
+			}
+			var Road = {
+				length:'1000'
+			}
+			console.log(Car.runOnRoad(Road));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			
+			#iphone {
+				background: url(images/images1/iphone.jpg);
+				width: 426px;
+				height: 640px;
+				margin: 10px auto;
+				position: relative;
+			}
+			
+			#box {
+				width: 360px;
+				height: 62px;
+				position: absolute;
+				left: 33px;
+				top: 546px;
+			}
+			
+			#lock {
+				width: 93px;
+				height: 62px;
+				background: url(images/images1/unlock_btn.jpg);
+				position: absolute;
+				cursor: pointer;
+				left: 0px;
+			}
+			
+		</style>
+		<script>
+			
+			/*
+			    offsetLeft: 相对参照物的左边的距离
+			    offsetTop: 相对参照物的上边的距离
+			    
+			    offsetWidth: 元素节点的宽度
+			    offsetHeight: 元素节点的高度
+			    
+			    offsetX: 事件对象的属性, 鼠标的位置距离鼠标所在元素节点的左边界的距离
+			    offsetY: 事件对象的属性, 鼠标的位置距离鼠标所在元素节点的上边界的距离
+			 */
+			
+			onload = function() {
+				var oIphone = document.getElementById("iphone"); //iphone图
+				var oBox = document.getElementById("box"); //滑块的区域
+				var oLock = document.getElementById("lock"); //滑块
+				
+				//拖拽
+				//1, onmousedown
+				oLock.onmousedown = function(evt) {
+					var oEvent = evt || event;
+					
+					//得到鼠标距离滑块左边界的距离
+					//var disX = oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - oLock.offsetLeft;
+					var disX = oEvent.offsetX;
+					//console.log(disX + "," + disX2);
+					
+					//2, onmousemove
+					document.onmousemove = function(evt) {
+						var oEvent = evt || event;
+						
+						//x:最新的left值
+						var x = oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - disX;
+						
+						//判断是否超出左边界
+						if (x <= 0) {
+							x = 0;
+						}
+						
+						//判断是否超出右边界
+						if (x >= oBox.offsetWidth - oLock.offsetWidth) {
+							x = oBox.offsetWidth - oLock.offsetWidth;
+						}
+						
+						//更新滑块的位置
+						oLock.style.left = x + "px";
+						
+					}
+					
+					//3, onmouseup
+					document.onmouseup = function(evt) {
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						var oEvent = evt || event;
+						//得到当前滑块的left值
+						var left = oEvent.clientX - oIphone.offsetLeft - oBox.offsetLeft - disX;
+						
+						//滑块在中间靠右的位置
+						if (left > (oBox.offsetWidth - oLock.offsetWidth)/2) {
+							oLock.style.left = oBox.offsetWidth - oLock.offsetWidth + "px";
+						}
+						//滑块在中间靠左的位置
+						else {
+							oLock.style.left = 0;
+						}
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="iphone">
+			<div id="box">
+				<div id="lock"></div>
+			</div>
+		</div>
+	</body>
+</html>

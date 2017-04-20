@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//event对象的属性
+			//可视区坐标以及屏幕坐标
+			//事件对象提供了两组来获取浏览器坐标的属性
+			//一组是页面可视区坐标
+			//另一组是屏幕区坐标
+			//clientX 可视区x坐标 距离左边框的位置
+			//clientY 可视区y坐标 距离上边框的位置
+			//screenX 屏幕区x坐标 距离左屏幕的位置
+			//screenY 屏幕区y坐标 距离上屏幕的位置
+			
+			document.onclick = function(evt){
+				var evt = evt || event;
+				console.log("clientX:"+evt.clientX+",clientY"+evt.clientY);
+				console.log("screenX:"+evt.screenX+",screenY:"+evt.screenY);
+			}
+			
+		</script>
+	</body>
+</html>

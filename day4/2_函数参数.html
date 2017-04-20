@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			function add(a,b){
+				//console.log(arguments.length);
+				for(var i=0;i<arguments.length;i++){
+					console.log("第"+(i+1)+"个参数："+arguments[i]);
+					
+				}
+				return a+b;	
+				
+			}
+			console.log(add(66,2,3,45));
+		*/
+			
+			function add(){
+				var str ='总共传了'+arguments.length+'个参数\n';
+				//console.log(arguments.length);
+				for(var i=0;i<arguments.length;i++){
+					//str += 起到拼接作用
+					str += "第"+(i+1)+"个参数："+arguments[i]+'\n';	
+				}
+				alert(str);
+				
+			}
+			add(66,2,3,45);
+			
+			function arg(){
+			    var str = '总共传了'+arguments.length+'个参数\n';
+			    for(var i=0;i<arguments.length;i++){    
+			        str += '第'+(i+1)+'个参数值：'+arguments[i]+'\n'; 
+			    }
+			    alert(str);
+			}
+			//arg('琼台博客','PHP博客','WEB技术博客');
+			
+		</script>
+	</body>
+</html>

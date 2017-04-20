@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			location对象是window属性
+			也是document对象的属性
+			所以window.location 等价于 documnet.location
+		*/
+		/*
+			alert(window.location); //获取当前的URL
+			alert(location);       //window 可以省略
+			location对象的属性
+			属性
+			hash 如果该部分存在,表示锚点部分(从#开始的部分)
+			host 主机名 端口名
+			hostname 主机名
+			href 整个URL
+			
+			pathname  路径名
+			port 端口号
+			protocol 协议部分
+			search 查询字符串
+		*/
+			console.log(location.hash);
+			location.hash = "#xiao";  //设置#后的字符串，并跳转
+			console.log(location.hash);  //#xiao 获取#后的字符串
+			
+			console.log(location.port);//获取当前端口号  8020
+			console.log(location.hostname);//127.0.0.1 获取主机名
+			console.log(location.host);   //127.0.0.1:8020
+			console.log(location.href);//http://127.0.0.1:8020/day8_BOM/7_location.html
+			console.log(location.protocol); //http:
+			console.log(location.search);  //获取？后面的字符串
+			
+			
+			location.href="http://www.baidu.com";
+			
+			
+			
+		</script>	
+	</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//闭包: 函数嵌套函数, 在内部函数可以使用外部函数的变量或参数, 这些变量或参数就不会被垃圾回收机制收回
+			//1, 函数嵌套函数
+			//2, 垃圾回收机制(内存的释放机制)
+			//3, 作用域(全局变量,局部变量)
+			
+			//1, 函数嵌套函数
+			function m1() {
+				function m2() {
+					
+				}
+			}
+			
+			//2, 垃圾回收机制(内存自动释放机制)
+			//垃圾: 占用但不使用的那部分内存
+			
+			//在函数内的局部变量a,当超出了函数fn1后, 其内存会在某个时刻被释放掉
+			function fn1() {
+				var a = 1;
+				console.log(a);
+			}
+			//fn1();
+			//console.log(a);
+			
+			
+			//3, 作用域
+			//全局变量: 
+			//1, 不会被垃圾回收机制收回, 内存不会释放
+			//2, 可以在其他地方使用该变量
+			var a1 = 10;
+			function fn2() {
+				a1++;
+				console.log(a1);
+			}
+			//fn2(); //a1=11
+			//fn2(); //a1=12
+			
+			//局部变量:
+			//1, 局部变量会被垃圾回收机制收回, 内存在某一时刻会被释放
+			//2, 局部变量不可以在超出该函数的其他地方使用
+			function fn3() {
+				var b1 = 10;
+				b1++;
+				console.log(b1);
+			}
+			//fn3(); //b1=11
+			//fn3(); //b1=11
+			//console.log(b1); //这里不能调用b1
+			
+			
+			//闭包: 函数嵌套函数, 在内部函数可以使用外部函数的变量或参数, 这些变量或参数就不会被垃圾回收机制收回
+			function mm() {
+				var m = 10;
+				
+				function nn(){
+					console.log(m++);
+				}
+				return nn;
+			}
+			var fmm = mm(); //调用函数mm, 然后返回值是nn, fmm=nn
+			//fmm(); //相当于调用nn(); m=10
+			///fmm(); //m=11
+			//fmm(); //m=12
+			
+			//说明执行完函数mm后,外部函数的局部变量m并没有被释放掉
+			
+			//闭包
+			function fn4() {
+				var n = 10;
+				return function(){
+					//console.log(n++);
+				}
+			}
+			//var fn = fn4();
+			//fn(); //n=10
+			//fn(); //n=11
+			//fn(); //n=12
+			//console.log(n); //在超出函数fn4的其他地方不可以使用n
+			
+			//闭包的特点:
+			//1, 拥有全局变量的 内存不会被释放的特点
+			//2, 拥有局部变量的 不能在超出函数外的其他地方使用
+			
+			
+			//闭包的应用, 循环中找索引
+			onload = function(){
+				
+				var oList = document.getElementById("list");
+				var aLi = oList.getElementsByTagName("li");
+				
+				for (var i=0; i<aLi.length; i++) {
+					/*
+					aLi[i].index = i;
+					aLi[i].onclick = function() {
+						console.log(this.index);
+					}
+					*/
+					
+					//形成闭包, 使用函数嵌套函数
+					/*
+					(function(index){
+						
+						aLi[i].onclick = function(){
+							console.log(index);
+						}
+						
+					})(i);
+					*/
+					
+					aLi[i].onclick = (function(index) {
+						
+						return function(){
+							console.log(index);
+						}
+						
+					})(i);
+					
+				}
+				
+				/*
+				循环的 第1次执行
+				 aLi[0].onclick = (function(index) {
+						
+						return function(){
+							console.log(index);
+						}
+						
+					})(0);
+					
+				循环的 第2次执行
+				aLi[1].onclick = (function(index) {
+						
+						return function(){
+							console.log(index);
+						}
+						
+					})(1);
+				
+				循环的 第3次执行
+				aLi[2].onclick = (function(index) {
+						
+						return function(){
+							console.log(index);
+						}
+						
+					})(2);
+				 */
+				
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>11111111111111</li>
+			<li>22222222222222</li>
+			<li>33333333333333</li>
+		</ul>
+	</body>
+</html>

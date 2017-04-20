@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				4.有一个从小到大排好序的数组。现输入一个数，
+				要求按原来的规律将它插入数组中,      
+				如:[2,3,4,56,67,98]    //63
+				//[2,3,4,56,63,67,98]
+			*/
+			var arr =[2,3,4,56,67,98];
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]>99){
+					//arr[i].unshift(63);//不能这样写代码
+					//splice()第二个参数如果为0的话 代表插入
+					arr.splice(i,0,63);
+					break;
+				}
+			/*	
+				if(i==arr.length){
+					arr.push(99);
+				}
+			*/
+			}
+			//如果要插入的数比所有的数都要大，直接用push添加到数组末尾
+			if(i==arr.length){
+				arr.push(99);
+			}
+			console.log(arr);
+		
+		/*	
+			function func1(n){ //63, 100
+				var arr = [2,3,4,56,67,98]; //原数组
+				//遍历数组
+				for (var i=0; i<arr.length; i++) { 
+					if (n < arr[i]){ 
+						//找到了要插入的位置下标
+						arr.splice(i, 0, n); //执行插入操作
+						break;
+					}
+				}
+				//如果n比数组中所有的数都要大,则添加该数n到数组末尾
+				if (i == arr.length) {
+					arr.push(n);
+				}
+				console.log(arr);
+			}
+			func1(99); //[2,3,4,56,63,67,98]
+		*/
+		</script>
+	</body>
+</html>

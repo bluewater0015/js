@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.获取当前时间(年月日星期时分秒)并按括号内的格式打印
+			var d = new Date();
+			var year = d.getFullYear();
+			var month = d.getMonth()+1;  //0-11
+			var day = d.getDate();
+			var week = d.getDay();
+			var hour = d.getHours();
+			var minute = d.getMinutes();
+			var second = d.getSeconds();
+			
+			//document.write(year+"年"+month+"月"+day+"日"+"星期"+week+" "+hour+"时"+minute+"分"+second+"秒");
+			
+			//2.判断两个日期相差的天数(可先求毫秒数差，在转化成天)
+//			var date1 = Date.parse("2016/04/11");
+//			var date2 = Date.parse("2017/04/11");
+//			var ms = date2 - date1;
+//			var day = parseInt(ms/(1000*3600*24));
+//			console.log(day);  //365
+			
+			
+			function differDay(d1,d2){
+				var time1 = Date.parse(d1);
+				var time2 = Date.parse(d2);
+				
+				var differ = time1>time2?time1-time2:time2-time1;
+				var time = parseInt(differ/(1000*3600*24));
+				return time;
+			}
+			var date1 = new Date("2016/04/11");
+			var date2 = new Date("2017/04/11");
+			console.log(differDay(date1,date2));  //365
+			
+			
+		</script>
+	</body>
+</html>

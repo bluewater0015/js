@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			一.递归
+			1.概念:函数调用函数自身,称为递归调用
+		*/
+		
+	/*	function age(a,sum){
+			for(var i=1;i<5;i++){
+				sum = a+i*2;
+			}
+			return sum;
+		}
+		alert(age(10,0));
+	*/
+	
+		function age(a,i){
+			if(i<4){
+				return age(a+2,++i);
+			}
+			return a;
+		}
+		//console.log(age(10,0));
+	/*	
+		函数的递归调用:
+		方法:
+		1.首先去找临界值,即无需计算,获得的值
+		2.找这一次和上一次的关系(一般从后向前找)
+		3.假设当前函数已经可以使用,调用自身计算上一次的运行结果,
+		再写出这次的运行结果.
+	*/
+		//计算1+2+……+100 的和.
+		
+		/*function sum(a,i,s){
+			if(i<=100){
+				return sum(a+1,++i);
+			}
+			return a;
+		}
+		console.log(sum(1,1,0));
+		*/
+		
+		function sum(num){
+			if(num<=1){
+				return 1;
+			}else{
+				return num+sum(num-1);
+			}
+		}
+		console.log(sum(10));
+	/*	
+		function add(a,sum){
+			for(var i=0;i<100;i++){
+				sum += a+i;
+			}
+			return sum;
+		}
+		console.log(add(1,0));//5050
+		*/
+		
+	/*	
+		function add(a,sum){
+			for(var i=1;i<=100;i++){
+				sum += a+i-1; //不减1的话 就不会有第一项
+			}
+			return sum;
+		}
+		console.log(add(1,0));//5050
+		*/
+		</script>
+	</body>
+</html>

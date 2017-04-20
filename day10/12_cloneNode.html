@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div id="box">
+			
+		</div>
+		<script>
+			//cloneNode()方法 可以把子节点复制出来
+			
+			var ul = document.getElementById("ul");
+			var box = document.getElementById("box");
+			var li1 = ul.childNodes[1];
+			var li2 = ul.childNodes[3];
+			//console.log(li1);
+			//true 表示复制标签和内容
+			//false 只表示复制标签
+			var clone = ul.childNodes[1].cloneNode(true);
+			console.log(ul.childNodes[0]); //#text
+			ul.appendChild(clone);
+			
+			
+		</script>
+	</body>
+</html>

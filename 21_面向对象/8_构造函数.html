@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+		
+			
+			//构造函数: 也是一个函数, 我们可以认为这个函数就是类 
+			//构造: 构建一个包含属性和方法的类
+			
+			//普通函数:
+			/*
+			function func() {
+				//js代码
+			}
+			func(); 
+			*/
+			
+			//构造函数:Person (这里我们认为是Person类)
+			//Person类
+			function Person() {
+				//这里的this就是使用new关键字创建的对象,这里的this=person
+				this.name = "张三";  //name属性
+				this.age = 33; //age属性
+				this.show = function(){  //show方法
+					console.log(this.name + this.age);
+				}
+			}
+			//person对象, 使用Person类,结合new关键字来创建person对象
+			var person = new Person(); 
+			console.log(person); //[object Object]
+			console.log(typeof person); //object
+			console.log(person.name); //张三
+			console.log(person.age); //33
+			person.show(); //张三33
+			
+			//构造函数的注意事项:
+			//1, 构造函数名的首字母大写, 可以和普通函数做一个区分
+			//2, 构造函数必须使用new关键字来创建对象, 如果不使用new则只是一个普通函数
+			//3, 构造函数中使用this来表示当前使用new关键字创建的对象
+			
+			//构造函数和工厂模式的区别:
+			//1, 不需要显示创建对象, 但是内部隐式创建了对象,内部其实自动添加了var obj = new Object(); this=obj;
+			//2, 在构造函数中需要使用this来表示本对象
+			//3, 构造函数隐式返回了本对象, 内部其实自动会在函数结束前return obj;
+			
+			
+			/*
+			//工厂模式,创建人person
+			function createPerson(_name, _age) {
+				var obj = new Object();
+				obj.name = _name;
+				obj.age = _age;
+				obj.show = function(){};
+				return obj;
+			}
+			*/
+			
+			//js中一切皆对象
+			/*
+			var obj = new String();
+			obj = "张三"
+			"张三".length
+			"张三".split();
+			*/
+			
+			//动物类:Animal (构造函数)
+			function Animal(_name, _age){
+				this.name = _name;
+				this.age = _age;
+				this.show = function(){
+					console.log(this.name + this.age);
+				}
+			}
+			//人类:Person (构造函数)
+			function Person1(_name, _age) {
+				this.name = _name;
+				this.age = _age;
+				this.show = function(){
+					console.log("person");
+				}
+			}
+			
+			//创建一个狗dog
+			var dog = new Animal();
+			console.log(dog instanceof Object); //true, 说明是对象类型
+			console.log(dog instanceof Animal); //true, 说明是动物
+			
+			//创建一个人xiaoWang
+			var xiaoWang = new Person1(); 
+			console.log(xiaoWang instanceof Object); //true, 说明是对象类型
+			console.log(xiaoWang instanceof Person1); //true, 说明是人
+			console.log(xiaoWang instanceof Animal); //false, 说明不是Animal类型
+			
+			
+			var xiaoMing = new Person1("小明", 18); //创建一个Person1类型的对象xiaoMing
+			var xiaoHong = new Person1("小红", 18); //创建一个Person1类型的对象xiaoHong
+			console.log(xiaoMing.name == xiaoHong.name); //false,名字不相等
+			console.log(xiaoMing.age == xiaoHong.age); //true, 年龄相等
+			console.log(xiaoMing.show == xiaoHong.show); //false, 说明show方法是一个引用类型, 比较的内存地址,说明内存地址是不一样的
+			//xiaoMing和xiaoHong是两个不同的对象, 他们所占的内存区域是不一样的
+			
+			var xiaoMing2 = xiaoMing;
+			console.log(xiaoMing2.show == xiaoMing.show); //true, 说明xiaoMing2和xiaoMing他们的内存地址一样
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

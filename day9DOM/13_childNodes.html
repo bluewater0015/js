@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			//childNodes:某一个元素节点的所有子节点，这些节点
+			//包括元素子节点和文本子节点
+			
+			var ul = document.getElementById("ul");
+			console.log(ul);
+			var ul1 = ul.childNodes.length; //7
+			console.log(ul1);
+			
+			var ul2 = ul.childNodes[1].nodeValue; 
+			console.log(ul2);  
+		</script>
+	</body>
+</html>

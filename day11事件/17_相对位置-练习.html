@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		/*	#box{
+				width:100px;
+				height:100px;
+				background: #9ff;
+				position:absolute;
+				top:10px;
+				left:10px;
+			}*/
+		</style>
+		
+	</head>
+	<body>
+		<!--<div id="box" >
+			
+		</div>
+		-->
+		<div id="box" style="width:100px;height:100px;background: #9ff;position:absolute;top:10px;left:10px;">
+			
+		</div>
+		<script>
+			//相对位置
+			var box = document.getElementById("box");
+			box.onmousedown = function(evt){
+				var evt = evt || event;
+				//clientX 鼠标相对于浏览器窗口左边的距离
+				//clientY 鼠标相对于浏览器窗口上边的距离
+				var x = evt.clientX;
+				var y = evt.clientY;
+				var left = x - box.offsetLeft;
+				var top = y - box.offsetTop;
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					var x = evt.clientX;
+					var y = evt.clientY;
+					box.style.left = x - left + "px";
+					box.style.top = y - top+ "px";
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			
+			}
+		</script>
+		<!--<script>
+			var box = document.getElementById("box");
+			var x = 0 , y = 0;
+			document.onmousedown = function(event){
+				var event = event || window.event;
+				x = event.clientX - box.offsetLeft;
+				y = event.clientY - box.offsetTop;
+				document.onmousemove = function(event){
+					var event = event || window.event;
+					box.style.left = event.clientX - x + "px";
+					box.style.top = event.clientY - y + "px";
+					
+				}
+			}
+			document.onmouseup = function(event){
+				document.onmousemove = null;
+			}
+			
+		</script>
+		-->
+	</body>
+</html>

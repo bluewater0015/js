@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>秒表</title>
+	</head>
+	<body>
+		<span id="hour">00</span>时<span id="minute">00</span>分<span id="second">00</span>秒<span id="millSec">0</span>毫秒
+		<button id="btn">开始计时</button>
+		<script>
+			var h =  document.getElementById("hour");
+			var m = document.getElementById("minute");
+			var s = document.getElementById("second");
+			var ms = document.getElementById("millSec");
+			
+			h.innerHTML ="00";
+			m.innerHTML = "00";
+			s.innerHTML = "00";
+			ms.innerHTML = "00";
+			var timer;
+			var i = 0;//记录毫秒
+			btn.onclick = function(){
+				timer = setInterval(function(){
+					i+=10;
+					h.innerHTML = parseInt(i/(1000*60*60))>10?h.innerHTML:'0'+h.innerHTML;
+					m.innerHTML = parseInt(i/(1000*60))%60>10?m.innerHTML:'0'+m.innerHTML;
+					s.innerHTML = (parseInt(i/1000)%60)>10?s.innerHTML:'0'+s.innerHTML;
+					ms.innerHTML =  i%1000;
+				},10)
+			}
+			
+		</script>
+	</body>
+</html>

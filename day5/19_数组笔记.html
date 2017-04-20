@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			一.数组
+			1.ECMAScript中的数组的每一项可以保存任何类型的数据
+			2.ECMAScript数组的大小是可以动态调整的,即可以随着数据的
+			添加自动增长以容纳新数据.
+			3.创建数组的基本方式有两种:
+			(1)使用Array构造函数
+				var color = new Array();
+			(2)使用数组字面量表示法
+				var color = ["blue","red","yellow"];
+			4.数组的length属性很有特点-它不是只读的.因此,通过设置
+			这个属性,可以从数组的末尾移除项或向数组中添加新项
+		*/
+//			var color = ['blue','red','yellow'];
+//			color.length = 2;
+//			console.log(color[2]);  //undefined
+//			
+//				color.length = 4;
+//			console.log(color[3]);  //undefined
+			
+			var colors = ['yellow','red','green'];
+			colors[colors.length]="blue";
+			console.log(colors);//["yellow", "red", "green", "blue"]
+			console.log(colors.length);  //4
+			colors[colors.length]="black";
+			console.log(colors);//["yellow", "red", "green", "blue", "black"]
+			console.log(colors.length);//5
+			
+			colors[99] ="white";
+			console.log(colors.length);  //100
+			console.log(colors[90]);  //undefined
+			
+		 
+			
+		</script>
+	</body>
+</html>

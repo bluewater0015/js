@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="hours">00</span>时<span id="minutes">00</span>分<span id="seconds">00</span>秒<span id="millSec">0</span>
+		<input type="button" value="点我开始计时" onclick="startClick()">
+		<input type="button" value="点我结束计时" onclick="endClick()">
+		<script>
+			//实现秒表功能, 包含时,分,秒,毫秒，
+			//点击按钮1开始计时，点击按钮2结束计时。
+			var timer; 
+			function startClick(){
+				
+				var h = document.getElementById("hours");
+				var m = document.getElementById("minutes");
+				var s = document.getElementById("seconds");
+				var ms = document.getElementById("millSec");
+				
+				h.innerHTML = "00";
+				m.innerHTML = "00";
+				s.innerHTML = "00";
+				ms.innerHTML = "00";
+				
+				var i = 0; //记录毫秒
+			    timer = setInterval(function(){
+					i += 10;
+					h.innerHTML = parseInt(i/(1000*60*60)); //时
+					m.innerHTML = parseInt(i/(1000*60))%60; //分
+					s.innerHTML = parseInt(i/1000)%60; //秒
+					ms.innerHTML = i%1000; //毫秒
+					
+				}, 10);
+				
+				
+			}
+		</script>
+	</body>
+</html>

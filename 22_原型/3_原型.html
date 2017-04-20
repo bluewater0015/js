@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//构造函数
+			function Person(){
+				
+			}
+			Person.prototype.name = "天下";
+			Person.prototype.age = 18;
+			Person.prototype.run = function(){
+				console.log("aa");
+			}
+			var person1 = new Person();
+			var person2 = new Person();
+			//console.log(person1.__proto__ == Person.prototype);
+			
+			//isPrototypeOf判断一个对象是否指向了该构造函数的原型对象
+			//console.log(Person.prototype.isPrototypeOf(person1));  //true
+			
+			//原型模式的执行流程
+			//1.先查找实例对象中的属性和方法，如果有立即返回。
+			//2.如果实例对象没有，则去它的原型对象中找，如果有就返回
+			
+			function Box(){
+				
+			}
+			Box.prototype.name = "天下";
+			Box.prototype.age = 18;
+			
+			var box1 = new Box();
+			box1.name = "小小"; //找到实例对象的值
+			console.log(box1.name);
+			console.log(box1["name"]);
+			console.log(box1.__proto__.name);  //天下
+			
+			//删除实例对象中的属性
+			//delete box1.name;
+			//console.log(box1.name);  //天下
+			
+		/*
+			function Box1(){
+				var a = 1;
+				console.log(a);
+			}
+			var box = Box1();
+			console.log(box.a);
+		*/
+		
+		
+		//hasOwnProperty() 判断实例对象中是否存在该属性
+		console.log(box1.hasOwnProperty("name"));
+		//in操作符：判断属性是否存在于该实例对象或者该对象的原型中
+		console.log("name" in box1);  //true
+		//如果要判断某属性是否要存在原型中，可以根据in操作符和hasOwnProperty()来判断
+		
+		function isInPrototype(obj,name){
+			return (name in box) && (!obj.hasOwnProperty(name));
+		}
+		var box = new Box();
+		console.log(isInPrototype(box,"name"));  //true
+		
+		</script>
+	</body>
+</html>

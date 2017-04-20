@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//操作数组的方法
+			//concat(): 追加数据,创建一个新数组,不改变原数组
+			var arr = ['xiao','xiaoli',1,2];
+			//console.log(arr);
+			var arr1 = arr.concat('yuan','hua');
+			//console.log(arr1);
+			
+			//总结： concat方法是不会改变原数组的
+			//slice() 不改变原数组，将原数组指定区域数据提取出来
+			
+			var arr = ['xiao','xiaoli',1,2,4,5];
+			var arr1 = arr.slice(3,5);  //取出来的下标是[3,5)
+			console.log(arr1);
+			//总结:取出来的下标是[3,5)左闭右开区间
+			
+			//splice()截取原数组中指定的数据，会改变原数组
+			var arr = [2,3,7,8,"x"];
+			var str = arr.splice(1,3);//第一个参数是截取数组的下标，
+			//第二个参数是长度  只有两个参数则表示删除
+			console.log(str);//[3,7,8]
+			//console.log(arr); //[2, "x"]会改变原数组的长度
+			
+			//插入：如果有3个或3个以上的参数，且第2个参数(长度)为0，
+			//则表示插入
+			var arr = [2,3,8,5,4,1];
+			var str = arr.splice(1,0,"xiao","hua");
+			console.log(arr); //[2, "xiao", "hua", 3, 8, 5, 4, 1]
+			
+			//替换：如果有3个或3个以上的参数，且第二个参数(长度)不为0
+			//则表示替换
+			var arr = [1,2,4,5,"小明","冰心","小小"];
+			var str = arr.splice(1,1,"xiao","hua");
+			console.log(arr);	[2, "xiao", "hua", 3, 8, 5, 4, 1]
+			
+			//删除:如果只有两个参数，则表示删除指定区域的数据
+			var arr = [2,3,4,5,7,8,9];
+			var str = arr.splice(2,4);
+			console.log(str);  //[4, 5, 7, 8]
+			
+		</script>
+	</body>
+</html>

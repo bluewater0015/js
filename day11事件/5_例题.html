@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 300px;
+				height: 300px;
+				background: #9ff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			//有一块空白区域，
+			//当鼠标移动到区域内,显示亲爱的,我爱你,
+			//当鼠标移开的时候,显示对不起,开玩笑
+			//当我鼠标不停的在区域内移动时,变换颜色
+			
+			var box = document.getElementById("box");
+			box.onmouseover = function(){
+				box.innerHTML = "亲爱的,我爱你";
+			}
+			box.onmouseout = function(){
+				box.innerHTML = "对不起,开玩笑";
+			}
+			var i=0;
+			box.onmousemove = function(){
+				var colors = ["blue","green","yellow"];
+			/*	
+				for(var i=0;i<colors.length;i++){
+					//console.log(colors[i]);
+					box.style.background = colors[i];
+				}
+			*/
+				//box.style.background = colors[i%colors.length];
+				//i++;
+				
+				var red = parseInt(Math.random()*256);
+				var green = parseInt(Math.random()*256);
+				var blue = parseInt(Math.random()*256);
+				box.style.background = "rgb("+red+","+green+","+blue+")"
+			}
+			
+		</script>
+	</body>
+</html>

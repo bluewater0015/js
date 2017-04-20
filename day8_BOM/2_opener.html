@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script>
+			
+			//document:文档对象(页面)
+			//给整个页面添加了一个点击事件
+			document.onclick = function(){
+				//opener: 代表父窗口对象
+				opener.document.write("是子窗口打开我的");
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		这是子窗口
+	</body>
+</html>

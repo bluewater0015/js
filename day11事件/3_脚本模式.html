@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f99;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			var box = document.getElementById("box");
+			//脚本模式
+			//添加事件方式1:通过匿名函数
+			//box.onclick = function(){
+			//	alert("hello");
+			//}
+			
+			//添加事件方式2：通过指定的函数名赋值方式
+			box.onclick = func;
+			function func(){
+				alert("好想你");
+			}
+			
+			//js可以处理的事件有3中
+			//1.鼠标事件
+			//2.键盘事件
+			//3.HTML事件
+		</script>
+	</body>
+</html>

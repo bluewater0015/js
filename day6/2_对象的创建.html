@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//Object类型
+			//创建Object类型有两种。
+			//一种是使用new运算符
+			//令一种是字面量表示法
+			//1.使用new运算符创建Object
+			
+			var object = new Object();  //new方式
+			box.name = '张三';		//创建属性字段
+			box.age = '18';			//创建属性字段
+			
+			//new关键字可以省略
+			var object  = Object();
+			
+			//2.使用字面量方式创建对象
+			var obj = {   //字面量方式
+				name: 'tianxia',	//创建属性字段，最后加逗号
+				age : 18,
+				job : "eng"
+			}
+			
+			//3.属性字段也可以使用字符串形式
+			var obj =(){
+				'name':'tianxia',
+				'age': 18
+			}
+			//4.使用字面量及传统赋值方式
+			var obj={};
+			obj.name = '小小';
+			obj.age = 18;
+			
+			//5.两种属性输出方式
+			alert(obj.name);		//点表示输出
+			alert(obj['name']);		//中括号表示输出，注意引号
+			
+			
+		</script>
+	</body>
+</html>

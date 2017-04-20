@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">点我有惊喜哦</button>
+		<div id="box">
+			
+		</div>
+		<script src="move.js"></script>
+		<script>
+			//下拉菜单
+			//当一个运动完成之后,在执行另一个运动,我们称之为链式运动
+			
+			//将一个红色的div高度变为400，再把它的宽度变为400
+			
+			var btn = document.getElementById("btn");
+			var box = document.getElementById("box");
+			
+			btn.onclick = function(){
+				move(box,"width",400,function(){
+					move(box,"height",400);
+				});
+			}
+		</script>
+	</body>
+</html>

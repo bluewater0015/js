@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 800px;
+				height: 500px;
+				margin: 0 auto;
+				position: relative;
+				background: #ccc;
+			}
+			#ball{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 30px;
+				left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>向右的缓冲</button>
+			<div id="ball">
+				
+			</div>
+		</div>
+		<script>
+			//缓冲运动
+			//速度是变化之中的
+			var box = document.getElementById("box");
+			var btn = document.getElementsByTagName("button")[0];
+			var ball = document.getElementById("ball");
+			var speed1 = 0;
+			var speed2 = 10;
+			var timer = 10;
+			var ballLeft = 0;
+			var ballTop = 0;
+			var max = box.clientWidth - ball.clientWidth;
+			//console.log(max);
+			btn.onclick = function(){
+				timer = setInterval(function(){
+					speed1 = Math.random()*50;
+					//console.log(speed1);
+					ballLeft = ballLeft + speed1;
+					//console.log(ballLeft);
+					ball.style.left = ballLeft + "px";
+					//ballTop = ballTop + speed2;
+					//console.log(parseInt(ball.style.left));
+				/*	
+					if(parseInt(ball.style.left) >= max){
+						//speed1 = -speed1;
+						speed1 = -Math.random()*50;
+					}
+				*/
+					if(ballLeft >= max){
+						speed1 = - speed1;
+					}
+					if(ballLeft <= 0){
+						speed1 = Math.random()*50;
+					}
+				},100)
+			}
+		</script>
+	</body>
+</html>

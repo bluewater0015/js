@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#outer{
+			width: 600px;
+			height: 500px;
+			margin:0 auto;
+			background: blue;
+			opacity: 0.6;
+			position: relative;
+		}
+		#inner{
+			width: 35px;
+			height: 35px;
+			background: orange;
+			border-radius: 50%;
+			position: absolute;
+			left:0px;
+			top:0px;
+		}
+	</style>
+	</head>
+	<body>
+	<div id="outer">
+		<div id="inner"></div>
+	</div>
+		<script>
+			var ball = document.getElementById('inner');
+			var windows = document.getElementById('outer');
+			var speed = 10;  //定义小球的速度
+			var speed1 = 10;
+			var ballL = 0; //距左边的距离
+			var ballH = 0;//距上边的距离
+			var maxL = windows.clientWidth-ball.clientWidth;  //临界值
+			var maxH = windows.clientHeight - ball.clientHeight;  //临界值
+			var time = null;
+			function move(){
+				ballL = ballL + speed;
+				ballH = ballH + speed1;
+				ball.style.left = ballL +"px";
+				ball.style.top = ballH +"px";
+				if(ballL>=maxL){   //临界值 碰到右边
+					speed = -speed;
+				}
+				if(ballL<=0){    //碰到左边
+					speed = 10;
+				}
+				if(ballH>=maxH){
+					speed1 = -speed1;  //碰到下边
+				}
+				if(ballH<=0){
+					speed1 = 10; //碰到上边
+				}
+			}
+			time = setInterval(move,50)
+		</script>
+	</body>
+</html>

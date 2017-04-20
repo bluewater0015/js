@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//5.给定一个三位数，分别显示它的百位、十位、个位
+			var number = prompt("请输入一个三位数");
+			//123
+			var h = parseInt(number/100);
+			//123/10 = 12.3 取整 12 再取模 2
+			var d = parseInt(number / 10)%10;
+			var s = number %10;
+			
+			alert("百位:"+h+"\n十位："+d+"\n"+"个位"+s);
+		</script>
+	</body>
+</html>

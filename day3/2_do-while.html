@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//do……while循环
+			
+			/*语法格式:
+			do{
+				语句;
+			}while(表达式)
+			*/
+			//注意:循环体中应该有结束循环的条件,否则会造成死循环.
+			//例:1+2+3+……+100;
+			var sum = 0;
+			var i = 1;
+			do{
+				sum += i;
+				i++;
+			}while(i<=100)
+			//console.log(sum);
+			
+			//while和do…while的区别
+			
+			/*1.如果第一次都为真的话 没什么区别
+			2.如果第一次为假 while一次都不会执行 do…while则执行一次
+			3.while 是先判断后执行,而do…while 是先执行后判断
+			*/
+			
+			//for循环
+			/*
+			for(表达式1;表达式2;表达式3){
+				语句;
+			}
+			*/
+			//执行过程
+			/*
+			1.先求解表达式1(只求一次)
+			2.求解表达式2,若其值为真(非0)
+				则执行for语句中指定内嵌语句.
+				再执行表达式3,再判断表达式2,
+				若为假,则结束循环,执行for循环外的语句.
+				*/
+			//例:1+2+3+……+100;
+			var sum = 0;
+			for(var i=1;i<=100;i++){
+				sum += i;
+			}
+			//console.log(sum);
+		</script>
+	</body>
+</html>

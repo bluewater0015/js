@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:20px;
+				height: 20px;
+				background: red;
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				border-radius: 10px;
+			}
+			.yellow{
+				width: 20px;
+				height: 20px;
+				background: yellow;
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				border-radius: 10px;
+			}
+			.blue{
+				width: 20px;
+				height: 20px;
+				background: blue;
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div><div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="yellow">
+			
+		</div>
+		<div class="blue">
+			
+		</div>
+		<div class="blue">
+			
+		</div>
+		<div class="blue">
+			
+		</div>
+		<script>
+			//鼠标跟随一串效果：在鼠标移动过程中，在其后面跟随一串效果。
+			//当鼠标移动的时候，后一个跟前一个盒子移动。
+			var box = document.getElementById("box");
+			var div = document.getElementsByTagName("div");
+			document.onmousemove = function(evt){
+				var evt = evt || event;
+				//var disX = evt.clientX - box.offsetLeft;
+				//var disY = evt.clientY - box.offsetTop;
+				//console.log(box.offsetLeft); //获取是一个定值 20
+				//因为盒子根本没有移动，所以获取的是一个定值
+				//console.log(box.offsetTop);
+				//获取不到实际的box.offsetLeft
+				//box.style.left = evt.clientX - disX + "px";
+				//box.style.top = evt.clientY - disY + "px";
+				for(var i=div.length-1;i>0;i--){
+					//console.log(div[i]);//都是一些空的div
+					//把div从尾部逐渐移动到前一个div
+					div[i].style.top = div[i-1].style.top;
+					div[i].style.left = div[i-1].style.left;
+				}
+				div[0].style.left = evt.clientX - 10 + "px";
+				div[0].style.top = evt.clientY - 10 + "px";
+			}
+		</script>
+	</body>
+</html>

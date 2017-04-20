@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#element{
+				width: 800px;
+				height: 546px;
+				background: url(img/back.jpg) no-repeat;
+				position: relative;
+				margin: 50px auto;
+			}
+			img{
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="element">
+			
+		</div>
+		<script src="js/moveAll.js"></script>
+		<script>
+		/*
+			创建一个萤火虫Fireworm类，
+			其中包括一个节点属性ele和飞的方法fly()
+			每隔一秒创建一个萤火虫对象,显示在屏幕随机位置
+			然后自动随机飞到其他位置,飞完后再继续飞
+		*/
+			//var timer = null;
+			var oBox = document.getElementById("element");
+			function Fireworm(){
+				//属性
+				this.ele =  document.createElement("img");
+				this.ele.src = "img/fire.gif";
+			}
+			//方法
+			Fireworm.prototype.show = function(){
+				this.ele.style.left = this.disX + "px";
+				this.ele.style.top = this.disY + "px";
+				oBox.appendChild(this.ele);
+			}
+			//oBox.appendChild(this.ele);
+			Fireworm.prototype.point = function(){
+				this.disX = parseInt(Math.random()*800);
+				this.disY = parseInt(Math.random()*500);
+			}
+			//飞的方法
+			Fireworm.prototype.fly = function(){
+				//this.newEle = this.cloneNode(true);
+				var self = this;
+				//console.log(self);
+				move(this.ele,{
+					"left":this.disX,
+					"top":this.disY
+				},function(){
+					self.point();
+					self.fly();
+				});
+			}
+			//创建fire
+			for(var i=0;i<30;i++){
+				var fire = new Fireworm();
+				fire.point();
+				fire.show();
+				//fire.point();
+				fire.fly();
+			}
+		</script>
+	</body>
+</html>

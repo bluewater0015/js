@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//字符串的函数(方法)--字符的获取方法
+			//str.charAt(3) //获取下标为3的字符
+			
+			var str = "hello world";
+			var str1 = str.charAt(3);
+			console.log(str1);  //l
+			//str.charCodeAt(3); //获取下标为3的字符编码
+			var str2 = str.charCodeAt(3);
+			console.log(str2);	//108
+			
+			//String.fromCharCode(94)  //ASCII编码转化成字符串
+			//该方法是String的静态方法，所以用String调用
+			
+			console.log(String.fromCharCode(65,90)); //AZ 
+			//String.fromCharCode(); 可以传多个参数
+			//ASCII美国标准信息交换代码
+			
+			//字符串的方法
+			//1.str.concat() 连接字符串
+			var str = "xiao";
+			var str1 = str.concat("huang");
+			console.log(str1); //xiaohuang
+			
+			//2.字符串的查找方法
+			//str.indexOf("xiao"); //查找字符串第一次出现的位置
+			var str = "ai ni xiao huang xiao xiao";
+			var str1 = "xiao";
+			var str2 = str.indexOf("xiao");
+			console.log(str2);  //6
+			
+			//3.str.lastIndexOf()//查找字符串最后一次出现的位置
+			var str = "xiao welcom xiao sss";
+			var str1 = "xiao";
+			var str2 = str.lastIndexOf(str1);
+			console.log(str2); //12
+			
+			//4.str.search()正则匹配(返回第一次出现的位置)
+			var str = "CAbcabcbbbcccaaabc";
+			var str1 = str.search(/abc/gi);
+			console.log(str1);  //1
+			//g 表示进行全局匹配 i表示匹配的时候忽略大小写
+			
+			//5.str.replace() 替换字符串
+			var str = "a beautiful girl xihuan";
+			var str2 = str.replace(/xihuan/gi,"like");
+			var str3 = str.replace("xihuan","like");
+			console.log(str2);
+			console.log(str3);
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

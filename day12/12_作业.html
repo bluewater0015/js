@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 1000px;
+				height: 170px;
+			}
+			img{
+				border: 1px solid #ccc;
+			}
+			#bigBox{
+				width: 400px;
+				height: 400px;
+				display: none;
+				position: absolute;
+				top: 200px;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/shirt_1.jpg" alt="" />
+			<img src="img/shirt_2.jpg" alt="" />
+			<img src="img/shirt_3.jpg" alt="" />
+			<img src="img/shirt_4.jpg" alt="" />
+		</div>
+		<img id="bigBox" src="img/shirt_1_big.jpg" alt="" />
+		<script>
+			//放大镜，移动鼠标，在小图上移动显示大图，并跟随鼠标移动，
+			//当不在小图上时，隐藏大图，效果如下图
+			var box = document.getElementById("box");
+			var img = box.getElementsByTagName("img");
+			for(var i=0;i<img.length;i++){
+				img[i].index = i;
+				img[i].onmousedown = function(evt){
+					var evt = evt || event;
+					var index = this.index;
+					//console.log(index);
+					document.onmousemove = function(evt){
+						var evt = evt || event;
+						bigBox.style.left = evt.clientX - 200 + "px";
+						bigBox.style.top = evt.clientY - 200 + "px";
+						bigBox.style.display = "block";
+						bigBox.src = "img/shirt_"+(index+1)+"_big.jpg";
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						//bigBox.style.display = "none";
+					}
+					return false;
+				}
+			}
+		</script>
+	</body>
+</html>

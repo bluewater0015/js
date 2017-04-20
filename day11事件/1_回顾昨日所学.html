@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			xiao
+			<div id="box1">
+				
+			</div>
+		</div>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			//replaceChild(新的节点，旧的节点) 将某个子节点替换为另一个
+			//将旧的节点替换为新的节点
+			//代替必须是它的子元素哦！
+			var box = document.getElementById("box");
+			var box1 = document.getElementById("box1");
+			var ul = document.getElementById("ul");
+			var li = document.getElementsByTagName("li");
+			console.log(li);
+			//attributes 属性返回指定节点属性的集合
+			console.log(ul.attributes); //NamedNodeMap {0: id, length: 1}
+			
+			//var p = document.createElement("p");
+			//box.replaceChild(p,box1);
+			
+			//cloneNode()复制一个节点
+			//如果传递的参数是true 复制它的本身和所有后代元素
+			var clone = box.cloneNode(true);
+			//console.log(clone);
+			box1.appendChild(clone);
+			
+			
+		</script>
+	</body>
+</html>

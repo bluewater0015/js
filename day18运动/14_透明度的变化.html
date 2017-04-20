@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				/*opacity: 0.1;*/ 
+			}
+		</style>
+	</head>
+	<body>
+		<button>从有透明度变为无透明度</button>
+		<div id="box" style="opacity:1;">
+			
+		</div>
+		<script>
+			//透明度的变化
+			//实现红色div有透明逐渐变为不透明
+			//思路分析：
+		/*	
+			1.获取元素节点,并添加点击事件
+			2.封装函数,设置定时器
+			(1)获取当前opacity的值
+			(2)设置变化的速度
+			(3)判断临界值
+			(4)运动
+		*/
+			var btn = document.getElementsByTagName("button")[0];
+			var box = document.getElementById("box");
+			var boxopacity = 1;
+			var timer = 0;
+			btn.onclick = function(){
+				change(0);
+			}
+			//2.move函数
+			//console.log(box.style.opacity); //0.1
+			function change(target){
+				//清除定时器
+				//开启定时器
+				timer = setInterval(function(){
+					//1.设置速度 target = 0 
+					//console.log(box.style.opacity);  //1
+					var speed = (target - boxopacity)/10;
+					console.log(speed); 
+					//speed = speed >0?Math.ceil(speed):Math.floor(speed);
+					//2.获取当前值
+					boxopacity = boxopacity + speed;
+					//3.判断临界值
+					if(boxopacity<=target){
+						clearInterval(timer);
+					}
+					//4.透明度
+					box.style.opacity = boxopacity;
+					//console.log(speed);
+				},30)
+			}
+		</script>
+	</body>
+</html>

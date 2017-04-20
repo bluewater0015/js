@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#iphone {
+				width:426px;
+				height: 660px;
+				margin:0 auto;
+				position:relative;
+				top: 0;
+				left: 0;
+				background: url(img/iphone.jpg) no-repeat;
+			}
+			#move{
+				width: 360px;
+				height: 63px;
+				position: absolute;
+				top: 545px;
+				left: 33px;
+			}
+			#lock{
+				width: 93px;
+				height: 62px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url(img/unlock_btn.jpg) no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="iphone">
+			<div id="move">
+				<div id="lock">
+					
+				</div>
+			</div>
+		</div>
+		<script>
+			//iphone解锁
+			//offsetWidth(border+paddind+content)
+			//clientWidth(padding+content)
+			//evt.offsetX 就是disX
+			var iphone = document.getElementById("iphone");
+			var move = document.getElementById("move");
+			var lock = document.getElementById("lock");
+			lock.onmousedown = function(evt){
+				var evt = evt || event;
+				//获取鼠标到lock左边界的距离
+				var disX = evt.clientX - iphone.offsetLeft - move.offsetLeft - lock.offsetLeft;
+				//var disX = evt.offsetX;
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					//x
+					var x = evt.clientX - iphone.offsetLeft - move.offsetLeft - disX;
+					if(x<=0){
+						x = 0;
+					}
+					//判断是否超出边界
+					if(x>=move.clientWidth-lock.clientWidth){
+						x = move.clientWidth - lock.clientWidth;
+					}
+					lock.style.left = x + "px";
+				}
+				document.onmouseup = function(evt){
+					var evt = evt || event;
+					document.onmousemove = null;
+					//获取lock到左边的距离
+					var left = evt.clientX - iphone.offsetLeft - move.offsetLeft - disX;
+					//max是中间位置
+					var max = (move.clientWidth - lock.clientWidth)/2;
+					if(left>max){
+						//如果大于中间位置 向右滑动
+						lock.style.left = move.clientWidth - lock.clientWidth + "px";
+					}else{
+						//如果小于中间位置 停留在0位置
+						lock.style.left = 0;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

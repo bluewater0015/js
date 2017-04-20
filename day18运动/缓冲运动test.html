@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title> js 单一对象缓冲运动框架</title>
+
+<style type="text/css">
+
+#box{position:fixed;width:400px;height:200px;background:#000;}
+
+#obj{position:absolute;top:90px;width:80px;height:20px;background:#FF0;text-align:center;cursor:pointer}
+
+</style>
+
+<script type="text/javascript">
+
+/*
+
+单一对象缓冲运动框架 v1.0
+
+obj: 运动的对象
+
+attrs： 对象属性和对象属性的目标值的json集合，例如：{'left':'100px', 'opacity':0.3}
+
+endfn: 运动结束后的回调函数
+
+*/
+
+function move(obj, attrs, endfn){
+
+var speed = 40; //运动速率
+
+function getAttr(obj, attr){ //获取计算后的样式
+
+var result = getComputedStyle ? getComputedStyle(obj,false)[attr] : obj.currentStyle[attr];
+
+return parseFloat(result) || 0;
+
+}
+
+obj.moveTimer && clearInterval(obj.moveTimer);
+
+obj.moveTimer = setInterval(function(){
+
+obj.isAllFinished = true; //假设已经全部完成了
+
+for (var attr in attrs){
+
+var isOpacity = (attr==='opacity'),
+
+curVal = isOpacity ? parseFloat(getAttr(obj, attr)) : parseInt(getAttr(obj, attr)),
+
+reqVal = isOpacity ? parseFloat(attrs[attr]) : parseInt(attrs[attr]);
+
+if (curVal!=reqVal){
+
+obj.isAllFinished = false; //没有完成
+
+if (isOpacity) {
+
+var val = (reqVal-curVal) * speed,
+
+val = val>0 ? Math.ceil(val) : Math.floor(val),
+
+val = val ? (curVal*100+val) : (reqVal*100); //如果经过取整后值等于0，那么直接到达目的地
+
+obj.style.opacity = Math.abs(val/100);
+
+obj.style.filter = "alpha(opacity="+ val +")";
+
+} else {
+
+var val = ((reqVal-curVal) * speed)/100,
+
+val = val>0 ? Math.ceil(val) : Math.floor(val);
+
+obj.style[attr] = val ? (curVal+val+'px') : (reqVal+'px');
+
+}
+
+}
+
+}
+
+if (obj.isAllFinished){
+
+clearInterval(obj.moveTimer);
+
+endfn && endfn(); //运动结束后调用传入的函数
+
+}
+
+}, 30);
+
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+window.onload = function(){
+
+var obj = document.getElementById('obj')
+
+obj.onclick = function(){
+
+move(obj, {'left':320, 'opacity':0.1}, function(){ //链式运动
+
+move(obj, {'left':0, 'opacity':1});
+
+});
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="box">
+
+<div id="obj">Click me !</div>
+
+</div>
+
+</body>
+
+</html>

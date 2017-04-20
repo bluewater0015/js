@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//根据getDate()和setDate()封装一个函数，
+			//afterDate(date),得到日期date的n天后的日期.
+			
+			function afterDate(n){
+				//
+				var date = new Date();
+				date.setDate(date.getDate()+n); 
+				console.log(date);//Mon Jan 30 2017 20:36:49 GMT+0800 (中国标准时间)
+			}
+			afterDate(7);
+		</script>
+	</body>
+</html>

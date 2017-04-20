@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul, li {
+				list-style: none;
+			}
+			#box {
+			 	width: 600px;
+			 	height: 300px;
+			 	margin: 100px auto;
+			 	position: relative;
+			 	overflow: hidden;
+			 	border: 10px solid blue;
+			}
+			
+			#list1 {
+				width: 5000px;
+				height: 300px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#list1 li, #list1 img {
+				width: 600px;
+				height: 300px;
+			}
+			#list1 li {
+				float: left;
+			}
+			
+			#list2 {
+				width: 100px;
+				height: 20px;
+				position: absolute;
+				right: 30px;
+				bottom: 30px;
+			}
+			#list2 li {
+				width: 18px;
+				height: 18px;
+				border: 1px solid black;
+				background: yellow;
+				float: left;
+				margin-left: 5px;
+				line-height: 18px;
+				text-align: center;
+				cursor: pointer;
+			}
+			
+			#list2 .active {
+				background: green;
+			}
+			
+			#left, #right {
+				width: 60px;
+				height: 20px;
+				background: orange;
+				position: absolute;
+				top: 45%;
+				cursor: pointer;
+			}
+			#left {
+				left: 10px;
+			}
+			#right {
+				right: 10px;
+			}	
+		</style>
+		
+		<script src="js/jquery-3.0.0.js"></script>
+		<script>
+			$(function(){
+				var _ul1 = $("#list1");
+				var _ul2 = $("#list2");
+				var _li1 = $("#list1 li");
+				var _li2 = $("#list2 li");
+				
+				//复制第一张图到最后
+				_li1.first().clone().appendTo(_ul1);
+				
+				//图片总数量
+				var size = $("#list1 li").length;
+				console.log(size); //5
+				
+				//自动轮播
+				var i = 0; //记录图片下标
+				var timer = setInterval(function(){
+					i++;
+					move(); 
+				}, 2000);
+				
+				//移动的函数
+				function move(){
+					
+					//如果i小于0(左边界)
+					if (i <= -1) {
+						i = size-2; //即将移动到第4张图
+						_ul1.css("left", -(size-1)*600); //瞬间移动到第5张图
+					}
+					
+					//如果i超出了图片总数量
+					if (i == size) {
+						i = 1; //即将移动到2张图
+						_ul1.css("left", 0); //瞬间移动到第1张图   
+					}
+					
+					//移动到第i张图
+					_ul1.stop().animate({left: -i*600}, 500);
+					
+					//改变ul2的按钮状态
+					_li2.eq(i).removeClass().addClass("active").siblings().removeClass("active"); 
+					if (i == size-1) {
+						_li2.eq(0).removeClass().addClass("active").siblings().removeClass("active");
+					}
+				}
+				
+				
+				//上一页
+				$("#left").click(function(){
+					i--;
+					move();
+				});
+				
+				//下一页
+				$("#right").click(function(){
+					i++;
+					move();
+				});
+				
+				
+				//li2上面的按钮
+				_li2.hover(function(){
+					var index = $(this).index();
+					//console.log(index);
+					i = index;
+					move();
+				})
+				
+				//移入box, 移出box
+				$("#box").hover(function(){
+					//移入, 关闭定时器
+					clearInterval(timer);
+				}, 
+				function(){
+					//移出, 重新开启定时器
+					timer = setInterval(function(){
+						i++;
+						move();
+					}, 2000);
+				})
+				
+				
+			})
+		</script>
+		
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list1">
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+			</ul>
+			<ul id="list2">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+			<div id="left">上一页</div>
+			<div id="right">下一页</div>
+		</div>
+		
+	</body>
+</html>

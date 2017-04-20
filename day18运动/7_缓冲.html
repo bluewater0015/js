@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 500px;
+				margin: 300px auto;
+				background: #ccc;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+				position: absolute;
+				top: 30px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>向上</button>
+			<button>向右</button>
+			<button>向下</button>
+			<button>向左</button>
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script>
+			//缓冲
+			var box = document.getElementById("box");
+			var sport = document.getElementById("sport");
+			var btn = document.getElementsByTagName("button");
+			//var speed = 0;
+			var timer = 0;
+			btn[1].onclick = function(){
+				move(200);
+			}
+			
+			function move(target){
+				//sport.offseLeft 这个值越来越大 速度就会越来越小
+				var speed = (target - sport.offsetLeft)/8;
+				var speed1 = (target - sport.offsetTop)/8;
+				speed = speed>0?Math.ceil(speed):Math.floor(speed);
+				speed1 = speed1>0?Math.ceil(speed1):Math.ceil(speed1); 
+				timer = setInterval(function(){
+					//向右
+					console.log(sport.offsetLeft);
+					if(sport.offsetLeft >= target){
+						clearInterval(timer);
+					}else{
+						sport.style.left = sport.offsetLeft + speed +"px";
+					}
+					
+				},100)
+			}
+		</script>
+	</body>
+</html>

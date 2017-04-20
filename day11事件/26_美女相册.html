@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #000;
+			}
+			ul,li{
+				list-style:none;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+			#picture{
+				width: 260px;
+				height: 220px;
+				margin: 10px auto;
+				border: 1px solid #ccc;
+				background: #fff;
+				padding: 2px;
+			}
+			#picList li{
+				float: left;
+				padding: 1px;
+			}
+			.first{
+				width:145px;
+				height: 145px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="picture">
+			<ul id="picList">
+				<li class="first"><img id="first" src="img/big_4.jpg" alt="" /></li>
+				<li><img src="img/small_1.jpg" alt="" /></li>
+				<li><img src="img/small_2.jpg" alt="" /></li>
+				<li><img src="img/small_3.jpg" alt="" /></li>
+				<li><img src="img/small_4.jpg" alt="" /></li>
+				<li><img src="img/small_5.jpg" alt="" /></li>
+				<li><img src="img/small_6.jpg" alt="" /></li>
+				<li><img src="img/small_7.jpg" alt="" /></li>
+				<li><img src="img/small_8.jpg" alt="" /></li>
+				<li><img src="img/small_9.jpg" alt="" /></li>
+				<li><img src="img/small_10.jpg" alt="" /></li>
+				<li><img src="img/small_11.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<script>
+		
+			var picture = document.getElementById("picture");
+			var picList = document.getElementById("picList");
+			var img = document.getElementsByTagName("img");
+			//var first = document.getElementById("first");
+			for(var i=1;i<img.length;i++){
+				img[i].index = i;
+				img[i].onmouseover = function(){
+					var index = this.index;  //index就是i的值 但如何会保存
+					//console.log(this);
+					//console.log(i);
+					//console.log(index);
+					img[0].src="img/big_"+index+".jpg";
+				}
+			}
+		
+			
+			//var oBox = document.getElementById("box");
+		/*	var img = document.getElementsByTagName("img");
+				
+			for (var i=1; i<img.length; i++) {
+				
+				//给每张小图添加一个鼠标移入事件
+				img[i].onmouseover = function() {
+					
+					//"img/small_1.jpg" -> "img/big_1.jpg"
+				 	var src = this.src.replace("small", "big");
+					
+					//改变大图
+					img[0].src = src;
+				}
+			}
+		*/
+		</script>
+	</body>
+</html>

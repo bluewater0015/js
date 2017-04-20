@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 1000px;
+				height: 200px;
+			}
+			#bigImg{
+				width: 400px;
+				height: 400px;
+				margin-top: 100px;
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;	
+			}
+			img{
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/shirt_1.jpg" alt="" />
+			<img src="img/shirt_2.jpg" alt="" />
+			<img src="img/shirt_3.jpg" alt="" />
+			<img src="img/shirt_4.jpg" alt="" />
+		</div>
+		<img id="bigImg" src="img/shirt_1_big.jpg" alt="" />
+		<script>
+			//放大镜
+			//放大镜，移动鼠标，在小图上移动显示大图，并跟随鼠标移动，
+			//当不在小图上时，隐藏大图，效果如下图
+			var box = document.getElementById("box");
+			var img = box.getElementsByTagName("img");
+			var bigImg = document.getElementById("bigImg");
+			
+			for(var i=0;i<img.length;i++){
+				img[i].index = i;
+				img[i].onmouseover = function(){
+					var index = this.index;
+					this.style.border = "1px solid red";
+					bigImg.src = "img/shirt_"+(index+1)+"_big.jpg";
+					bigImg.style.display = "block";
+				}
+				document.onmousemove = function(evt){
+					var evt = evt || event;
+					bigImg.style.left = evt.clientX  + "px";
+					bigImg.style.top = evt.clientY + "px";
+				}
+				img[i].onmouseout = function(){
+					bigImg.style.display = "none";
+					this.style.border = "";
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">3</a>
+		<script>
+			//闭包案例
+			var a = document.querySelectorAll("a");
+			//console.log(a);
+			function test(){
+				for(var i=0;i<a.length;i++){
+					a[i].onclick = function(){
+						console.log(i);
+					}
+				}
+			}
+			//test();
+			
+			function myTest(){
+				for(var i=0;i<a.length;i++){
+					(function(index){
+						a[index].onclick = function(){
+							console.log(index);
+						}
+					})(i)
+				}
+			}
+			myTest();
+		</script>
+	</body>
+</html>

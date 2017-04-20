@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="box" class="ul_box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<script>
+			//attributes属性：返回该元素节点的属性节点的集合。
+			var box = document.getElementById("box");
+			var attr = box.attributes;
+			console.log(attr);//NamedNodeMap {0: id, 1: class, length: 2}
+			//返回属性节点的个数
+			console.log(box.attributes.length);  //2
+			//返回第一个属性节点
+			console.log(box.attributes[0]);  id="box"
+			//节点类型
+			console.log(box.nodeType);  //1
+			//属性名称
+			console.log(box.nodeName);  //ul
+			//属性值
+			console.log(box.nodeValue);  //null
+			//返回属性名称为id的节点(属于属性节点)
+			console.log(box.attributes['id']);  //id="box"
+			console.log(box.attributes.getNamedItem("id")); //id="box"
+			
+		</script>
+	</body>
+</html>

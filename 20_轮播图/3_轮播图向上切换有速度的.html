@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #f99;
+			}
+			#box{
+				width:400px;
+				height: 800px;
+				background: #f99;
+				margin:500px auto;
+				position: relative;
+			}
+			img{
+				display: block;
+				width: 400px;
+				height: 200px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" style="left:0;top:0;">
+			<img src="img/1.jpg" style="left:0;top:0;" alt="" />
+			<img src="img/2.jpg" style="left:0;top:200px;" alt="" />
+			<img src="img/3.jpg" style="left:0;top:400px;" alt="" />
+			<!--<img src="img/1.jpg" style="left:0;top:600px;" alt="" />-->
+		</div>
+		<script>
+			//轮播图 3s一次向上切换
+			//思路分析
+			//1.要实现轮播图向上切换
+			//改变top值,给一个速度,加定时器,每次向上运动
+			
+			var box = document.getElementById("box");
+			var img = box.getElementsByTagName("img");
+			var timer = null;
+			//var timer1 = null;
+			var i = 0;
+			var iHeight = img[0].offsetHeight;  //图片的高度
+			box.innerHTML += box.innerHTML;
+			//console.log(iHeight);  //200
+			//box.innerHTML += box.innerHTML;
+		/*	
+			box.onclick = function(){
+				i++;
+				var iTop = -i * iHeight;
+				move(iTop);
+			}
+		*/	
+			//每隔1s调用一次函数
+			//clearInterval(timer);
+			timer1 = setInterval(sport,3000);
+			function sport(){
+				//console.log("aa");
+				i++;
+				//console.log(i);
+				var iTop = -i*iHeight;
+				move(box,"top",iTop,next);
+			}
+			//sport();
+			function move(obj,attr,target,fn){
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					var current = parseInt(getStyleAttr(obj,attr));
+					//console.log(current);
+					var speed = (target - current)/10;
+					speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+					//console.log(speed);
+					if(current == target){
+						clearInterval(obj.timer);
+						if(fn){
+							fn();
+						}
+						return;
+					}
+					obj.style[attr] = current + speed + "px";
+					//console.log(parseInt(obj.style.top));
+			/*		var newTop = parseInt(box.style.top)+offset;
+					console.log(parseInt(box.style.top));
+					box.style.top = newTop + "px";
+					
+					if(parseInt(box.style.top)==-840){
+						box.style.top = 0;
+					}*/
+					//console.log(img.length);
+				},30);
+			}
+			function getStyleAttr(obj,attr){
+				if(window.getComputedStyle){
+					return getComputedStyle(obj,null)[attr];
+				}
+				return currentStyle[attr];
+			}
+			function next(){
+				if(i>img.length/2){
+						box.style.top = 0;
+						i = 0;
+				}
+			}
+		</script>
+	</body>
+</html>

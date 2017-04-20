@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//拖拽
+			//onmousedown, onmousemove, onmouseup
+			onload = function() {
+				
+				//拖拽功能
+				/*
+				var oBox = document.getElementById("box");
+				
+				//onmousedown
+				oBox.onmousedown = function(evt){
+					var oEvent = evt || event;
+					var disX = oEvent.clientX - oBox.offsetLeft;
+					var disY = oEvent.clientY - oBox.offsetTop;
+					
+					//onmousemove
+					document.onmousemove = function(evt) {
+						var oEvent = evt || event;
+						oBox.style.left = oEvent.clientX - disX + "px";
+						oBox.style.top = oEvent.clientY - disY + "px";
+					}
+					
+					//onmouseup 
+					document.onmouseup = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+				*/
+				
+				
+				//面向对象:实现拖拽功能
+				//dragObj: 拖拽功能的对象
+				var dragObj = {
+					//属性: 需要拖拽的元素节点
+					//方法: 开始拖拽, 拖拽过程中, 拖拽结束
+				};
+				
+				//属性
+				dragObj.box = document.getElementById("box");
+				
+				//开始拖拽/开始移动
+				dragObj.startMove = function(x, y){
+					this.disX = x - dragObj.box.offsetLeft;
+					this.disY = y - dragObj.box.offsetTop;
+					
+					//onmousemove
+					document.onmousemove = function(evt){
+						var oEvent = evt || event;
+						dragObj.moving(oEvent.clientX, oEvent.clientY); //移动过程
+					}
+					//onmouseup
+					document.onmouseup = function() {
+						dragObj.stopMove(); //结束移动
+					}
+					
+				}
+				//拖拽过程中/移动过程中
+				dragObj.moving = function(x, y){
+					dragObj.box.style.left = x - this.disX + "px";
+					dragObj.box.style.top = y - this.disY + "px";
+				}
+				//结束拖拽/结束移动
+				dragObj.stopMove = function() {
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+				
+				//给box一个onmousedown事件
+				dragObj.box.onmousedown = function(evt){
+					var oEvent = evt || event;
+					
+					dragObj.startMove(oEvent.clientX, oEvent.clientY); //开始拖拽
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="background: red; width: 100px; height: 100px; position: absolute; left: 10px; top: 10px;"></div>
+	</body>
+</html>

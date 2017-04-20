@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="txt" type="text" value="请输入电影名"/>
+		<input id="search
+			" type="button" value="搜索" />
+		<script>
+			//DOM简单的操作
+		/*	document.getElementById(""); 获取特定元素的节点
+			
+			访问元素节点的属性
+			value 文本框的value值
+			
+			document.write(); 在文档页面加载完后使用会覆盖页面内容
+			
+		*/
+			var search = document.getElementById("search");
+			var txt = document.getElementById("txt");
+			search.onclick = function(){
+				if(txt.value=="请输入电影名"){
+					txt.value = "";
+				}
+			}
+		</script>
+	</body>
+</html>

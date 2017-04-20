@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.将下面的字符串str的敏感字符*用空字符串""替换；
+			//var str = "Hel **l o Wor   Ld!";
+			//var str1 = str.replace(/\*/gi,"");
+			//console.log(str1);
+			//(要正确表示*得转义成：\*)
+			//2.将str的空格用空字符串""替换
+			//var str = "Hel **l o Wor   Ld!";
+			var str = "Hel **l o Wor   Ld!";
+			var str1 = str.replace(/ /gi,"");  //Hel**loWorLd!
+			console.log(str1);
+			//3.随机产生一个四位数的验证码(纯数字(0-9)生成一个字符串)
+			//Math.random()
+			
+			//var n = parseInt(Math.random()*10000);
+			//console.log(n);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//使用构造器创建对象
+			//构造器本身是一个函数对象
+		/*	function Person(){
+				//此处可以做一些初始化工作
+			}
+			//它有一个名叫prototype的属性
+			Person.prototype = {
+				name: "天下",
+				age : 18,
+				run: function(){
+					console.log("喜欢萌妹子");
+				}
+			}*/
+			//使用new关键字 构造函数
+			//var p = new Person();
+			
+			//构造函数：也是一个函数，我们可以认为这个函数是一个类
+			//构造：构建一个包含属性和方法的类
+			
+			//构造函数Person（这里我们认为是Person类）
+		/*	
+			function Person(){
+				this.name = "天下";
+				this.age = 18;
+				this.run = function(){
+					console.log(this.name + "\n" + this.age);
+				}
+			}
+			//person对象 使用Person类 结合new关键字 来创建对象
+			var person = new Person();
+			console.log(person);  //person对象
+			console.log(typeof person);  // object
+			console.log(person.name); //天下
+			console.log(person.age);	//18
+			//person.run();  //天下 18
+		*/
+			//构造函数的注意事项
+			//1.构造函数的首写字母大写,可以和普通函数做一个区分
+			//2.构造函数必须使用new关键字创建对象,如果不使用new,则是一个普通函数
+			//3.构造函数中this来表示当前使用new关键字创建的对象
+			
+			//构造函数和工厂模式的区别
+			//1.不需要显示创建对象,但是内部隐式创建了对象,内部其实自动添加了
+			//var obj = new Object(); this = obj;
+			//2.在构造函数中需要使用this表示本对象
+			//3.构造函数隐式返回了本对象,内部其实自动会在函数结束前return obj;
+			
+			//动物类：Animal(构造函数)
+			function Animal(name,weight){
+				this.name = name;
+				this.weight = weight;
+				this.run = function(){
+					console.log(this.name+"\n"+this.weight);
+				}
+			}
+			//创建对象
+			var animal = new Animal("小狗",30);
+			console.log(typeof animal);  // object
+			animal.run();
+			console.log(animal instanceof Animal);  //true
+			//人类： Person(构造函数)
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+				this.run = function(){
+					console.log(this.name + "\n" + this.age);
+				}
+			}
+			var person = new Person("天下",18);
+			console.log(person);
+			console.log(typeof person); //object
+			console.log(person.name);
+			person.run();
+			console.log(person instanceof Person);  //true
+			
+			//instanceof 用来检测对象的类型
+			//instanceof 判断一个对象是否是一个构造函数的实例
+			
+			//创建一个狗dog
+			var dog = new Animal();
+			console.log(dog instanceof Object);  //true 说明是对象类型
+			console.log(dog instanceof Animal);  //true 说明是动物
+			
+			var xiaoming = new Person();
+			console.log(xiaoming instanceof Object);    //true //说明是对象类型
+			console.log(xiaoming instanceof Person);	//true	//说明是人
+			console.log(xiaoming instanceof Animal);	//false 说明不是动物
+			
+			var xiaoLi = new Person("xiaoming",18);
+			var xiaoHong = new Person("xiaohong",18);
+			
+			console.log(xiaoLi.name == xiaoHong.name);  //false
+			console.log(xiaoLi.age == xiaoHong.age);	//true
+			
+			console.log(xiaoLi.run == xiaoHong.run); //false 说明run方法是一个引用类型
+			//比较的是内存地址，说明他们的内存地址是不一样的
+			
+			//xiaoLi 和 xiaoHong 是两个不同的对象 所占的内存不一样
+			
+			var xiaoMing = xiaoLi; 
+			console.log(xiaoLi.show == xiaoMing.show);  //true 说明这两个对象所占内存一样
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

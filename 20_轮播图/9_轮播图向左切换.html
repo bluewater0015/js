@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box{
+				width: 400px;
+				height: 200px;
+				margin: 100px auto;
+				position: relative;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+			}
+			#list{
+				width: 3000px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+			}
+			#list li{
+				float: left;
+			}
+			#list li img{
+				display: block;
+				width: 400px;
+				height: 200px;
+			}
+			#btn{
+				width: 90px;
+				height: 30px;
+				position: absolute;
+				left: 175px;
+				top: 160px;
+			}
+			#btn li{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				text-align: center;
+				border: 1px solid #FF0000;
+				border-radius: 100%;
+				background: #ccc;
+				cursor: pointer;
+			}
+			#btn .active{
+				background: #f00;
+			}
+			#left{
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: #f99;
+				position: absolute;
+				top: 80px;
+				left: 20px;
+				color: #fff;
+				font-size: 20px;
+				cursor: pointer;
+			}
+			#right{
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: #f99;
+				position: absolute;
+				top: 80px;
+				left: 350px;
+				color: #fff;
+				font-size: 20px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li ><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+			</ul>
+			<ul id="btn">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div id="left">&lt;</div>
+			<div id="right">&gt;</div>
+		</div>
+		<script src="move1.js"></script>
+		<script>
+			var oList = document.getElementById("list");
+			var imgList = oList.getElementsByTagName("li");
+			var oBtn = document.getElementById("btn");
+			var btnList =oBtn.getElementsByTagName("li");
+			var preLeft = document.getElementById("left");
+			var nextRight = document.getElementById("right");
+			var i = 0;
+			oList.innerHTML += oList.innerHTML;
+			var iWidth = imgList[0].offsetWidth;
+			var timer = setInterval(move,3000);
+			function move(){
+				i++;
+				var iLeft = - i * iWidth;
+				startMove(oList,"left",iLeft,next);
+				//轮播图滑动时 对应的按钮也在改变
+				for(var j=0;j<btnList.length;j++){
+					if(i == j){
+						btnList[j].className = "active";
+					}else{
+						btnList[j].className = "";
+					}
+					if(i == imgList.length/2){
+						btnList[0].className = "active";
+					}
+				}
+			}
+			//动画完成之后 调用
+				function next(){
+					//console.log(imgList.length/2);
+					if(i >= imgList.length/2){
+						oList.style.left = 0;
+						i = 0;
+					}
+				}
+			//当点击按钮式 切换到对应的轮播图
+			for(var j=0;j<btnList.length;j++){
+				btnList[j].index = j;
+				btnList[j].onclick = function(){
+					i = this.index - 1; // -1 0 1
+					btnMove();
+				}
+				//btnMove(); //放在点击事件之外 肯定不会发生效果了
+			}
+			//轮播图移动的函数
+			function btnMove(){
+				move();
+				clearInterval(timer);
+				timer = setInterval(move,3000);
+			}
+			//点击向左的按钮
+			preLeft.onclick = function(){
+				if(i == 0){
+					i = imgList.length/2 - 2;
+				}else{
+					i = i -2;
+				}
+				btnMove();
+			}
+			//点击向右的按钮
+			nextRight.onclick = function(){
+				next();
+				btnMove();
+			}
+		</script>
+	</body>
+</html>

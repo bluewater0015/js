@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="测试重载" name="aa" onclick="aa('晓花');" />
+		<script>
+			function aa(){  
+		        alert("无参的方法");  
+		    }  
+		    //没有方法的重载，后面声明的函数会覆盖之前的函数  
+		    function aa(name){  
+		        alert("有参的方法:\t"+name);  
+		    }  
+		</script>
+	</body>
+</html>

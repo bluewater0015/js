@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<meta charset="utf-8" /> 
+	<title>一个获取元素文本内容的通用函数</title> 
+	</head> 
+	<body> 
+		<p id="p1">中华人民共和国<b>1</b> <span>2</span></p> 
+		<script> 
+			//一个获取元素文本内容的通用函数 
+			function text(e){ 
+				var t = ""; 
+				e = e.childNodes || e;//如果传入的是元素，
+				//则继续遍历其子元素；否则假定它是一个数组
+				for(var i=0;i<e.length;i++){ 
+					//如果不是元素，追回其文本值； 
+					//否则，递归遍历所有元素的子节点； 
+					t += e[i].nodeType != 1 ? e[i].nodeValue : text(e[i].childNodes); 
+				} 
+				return t; 
+			} 
+			var p1=document.getElementById("p1"); 
+			alert(text(p1)); //返回中华人民共和国 1 2 
+			alert(text(p1.lastChild)); // 返回2 
+			alert(text(p1.firstChild.nextSibling));//返回1 
+		</script>
+	</body> 
+</html>

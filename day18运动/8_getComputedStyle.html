@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 500px;
+				background: #ccc;
+			}
+			#sport{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button>向上缓冲</button>
+			<div id="sport">
+				
+			</div>
+		</div>
+		<script src="js/move.js"></script>
+		<script>
+			//getComputedStyle() 方法 用来获取元素中所有可用的css属性列表，
+			//以数组的形式返回，并且是只读的
+			var box = document.getElementById("box");
+			var style = getComputedStyle(box,null).length; //261
+			var style1 = getComputedStyle(box,null).width;
+			//console.log(style1.width);  //500px
+			console.log(style1);  //500px;
+			console.log(style);
+		</script>
+	</body>
+</html>

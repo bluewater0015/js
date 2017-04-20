@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.setDate()用于设置某一个月中的某一天
+			//2.getDate()得到某一个月中的某一天(1-31)
+			//var d = new Date();
+			//time = d.getDate();
+			//console.log(time);
+			//var time = d.setDate(1);
+			//console.log(time);  //1483254702535
+			//为什么会得到一串数字
+			//d.setDate(11);
+			//console.log(d);//Wed Jan 11 2017 15:13:57 GMT+0800 (中国标准时间)
+			
+			//3.getDay() 从某Date对象返回一周中的某一天(0-6)
+			var d = new Date();
+			var week = d.getDay();
+			console.log(week);//1
+			
+			//4.set/getMonth()从Date对象中返回月份
+			var d = new Date();
+			month = d.getMonth();
+			console.log(month);  //0
+			d.setMonth(11);
+			console.log(d);
+			
+			//5.set/getFullYear()从Date对象以四位数返回年份
+			var d = new Date();
+			d.getFullYear();
+			var year = d.getFullYear();
+			console.log(year);  //2017
+			console.log(d.setFullYear(2012));//1327304975843
+			d.setFullYear(2012);
+			console.log(d);//Mon Jan 23 2012 15:57:05 GMT+0800 (中国标准时间)
+			
+			//6.set/getHours 返回Date对象中的小时(0-23)
+			var d = new Date();
+			d.getHours();
+			console.log(d);//Mon Jan 23 2017 15:59:40 GMT+0800 (中国标准时间)
+			var time = d.getHours();
+			console.log(time);  //16
+			d.setHours(22);
+			console.log(d);//Mon Jan 23 2017 22:01:53 GMT+0800 (中国标准时间)
+			
+			//7.set/getMinutes 返回Date对象中的分
+			var d = new Date();
+			var time = d.getMinutes();
+			console.log(time); //3
+			d.setMinutes(22);
+			console.log(d);//Mon Jan 23 2017 16:22:30 GMT+0800 (中国标准时间)
+			
+			//8.set/getSeconds()返回Date对象中的秒数
+			var d = new Date();
+			console.log(d.getSeconds());  //43
+			d.setSeconds(22);
+			console.log(d);  //Mon Jan 23 2017 16:10:22 GMT+0800 (中国标准时间)
+			
+			//9.set/getMilliseconds() 返回Date对象的毫秒
+			var d = new Date();
+			var time = d.getMilliseconds();
+			console.log(d);
+			console.log(time);
+			
+			d.setMilliseconds(100000);
+			console.log(d);
+			
+			//10.set/getTime() 返回1970年1月1日至今的毫秒数
+			var d = new Date();
+			var time = d.getTime();
+			console.log(time);//1485159465006
+			
+			//11.getTimezoneOffset()返回本地时间与格林尼治标准时间的分钟差
+			var d = new Date();
+			var time = d.getTimezoneOffset();
+			console.log(time); //-480
+			
+			
+		</script>
+	</body>
+</html>

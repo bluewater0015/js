@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="form">
+			<input type="text" value="请输入用户名"/>
+			<input type="password" value="请输入密码"/>
+			<input type="submit" />
+			<input type="reset"/>
+		</form>
+		<script>
+			var form = document.getElementById("form");
+			//submit当用户点击提交按钮在<form>元素节点上触发
+			form.onsubmit = function(){
+				console.log("已经提交form表单");
+			}
+			//reset当用户点击重置按钮在form元素节点上触发
+			form.onreset = function(){
+				console.log("已经点击重置按钮");
+			}
+			
+			window.onscroll = function(){
+				console.log("能滚多远就滚多远");
+			}
+		</script>
+	</body>
+</html>
